@@ -26,7 +26,7 @@
     - id: VentClog
     - id: BluespaceCargoCrate # Frontier
     - id: BluespaceMcCargoCrate # Frontier
-    - id: BluespaceSyndicateCrate # Frontier
+#   - id: BluespaceSyndicateCrate # Frontier. Triad edit - Disabled
 #   - id: BluespaceBrokenMcDelivery # Frontier. Mono edit - Disabled
     - id: SmugglingFax # Frontier
     # - id: SnailMigration # Mono. Triad edit - Disable
@@ -398,10 +398,11 @@
     startAnnouncement: station-event-vent-clog-nf-start-announcement # Frontier: add nf-
     startAudio:
       path: /Audio/Announcements/attention.ogg
-    earliestStart: 15
-    minimumPlayers: 15
+    earliestStart: 30 # Triad 30 < 15
+    minimumPlayers: 30 # Triad 30 < 15
     weight: 5
-    duration: 60
+    duration: 15 # Triad 15 < 60
+    reoccurrenceDelay: 90 # Triad, more of an annoying events
   - type: VentClogRule
 
 # Mono Event

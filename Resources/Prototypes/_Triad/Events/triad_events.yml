@@ -1,0 +1,51 @@
+- type: entity
+  id: BaseStationEventTriad
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min:  10
+      max:  20
+    numberOfGrids:
+      min:  5
+      max:  10
+
+- type: entity
+  id: BaseStationEventShortDelayTriad
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min:  10
+      max:  20
+    numberOfGrids:
+      min:  5
+      max:  10
+
+- type: entity
+  id: BaseStationEventModerateDelayTriad
+  parent: BaseGameRule
+  abstract: true
+  components:
+    - type: GameRule
+      delay:
+        min:  30
+        max:  40
+      numberOfGrids:
+        min:  5
+        max:  10
+
+- type: entity
+  id: BaseStationEventLongDelayTriad
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min:  40
+      max:  60
+    numberOfGrids:
+      min:  5
+      max:  10
