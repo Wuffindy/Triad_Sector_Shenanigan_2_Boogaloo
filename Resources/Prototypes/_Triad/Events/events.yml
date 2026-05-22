@@ -1,0 +1,25 @@
+- type: entity
+  id: BaseTriadEventDelay
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min:  10
+      max:  20
+    numberOfGrids:
+      min:  5
+      max:  10
+
+- type: entity
+  id: BaseTriadEventTestDelay
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min:  1
+      max:  2
+    numberOfGrids:
+      min:  5
+      max:  10

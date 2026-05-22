@@ -29,14 +29,15 @@
   components:
   - type: StationEvent
     startAnnouncement: bluespace-cargo-event-announcement
-    earliestStart: 20
+    earliestStart: 30 # Triad 30 < 20
     weight: 5
     duration: 35
     maximumPlayers: 20
-    reoccurrenceDelay: 120 # Mono
+    reoccurrenceDelay: 180 # Triad 180 < 120
   - type: BluespaceCargoRule
     spawnerPrototype: CrateFoodMcCargo
     flashPrototype: EffectFlashMcBluespace
+    maximumSpawns: 1 # Triad, 1 is more than enough to feed 3 people
     requireSafeAtmosphere: true
 
 - type: entity
@@ -59,10 +60,10 @@
 
 - type: entity
   id: SmugglingFax
-  parent: BaseStationEventShortDelay
+  parent: BaseStationEventNFModerateDelay # Triad, change to moderate Delay
   components:
   - type: StationEvent
-    weight: 8 # Fairly common.
+    weight: 6 # Triad, somewhat common.
     duration: 35
     earliestStart: 50
     minimumPlayers: 2

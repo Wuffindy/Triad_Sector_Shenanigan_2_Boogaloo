@@ -26,7 +26,7 @@
     - id: VentClog
     - id: BluespaceCargoCrate # Frontier
     - id: BluespaceMcCargoCrate # Frontier
-    - id: BluespaceSyndicateCrate # Frontier
+#   - id: BluespaceSyndicateCrate # Frontier. Triad edit - Disabled
 #   - id: BluespaceBrokenMcDelivery # Frontier. Mono edit - Disabled
     - id: SmugglingFax # Frontier
     # - id: SnailMigration # Mono. Triad edit - Disable
