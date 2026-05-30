@@ -64,7 +64,7 @@ public static class ShipSaveYamlSanitizer
     {
         // Machines & circuitboards
         // While moving this into a SavingContraband component remove it one by one
-        "CommsComputerCircuitboard",
+        // "CommsComputerCircuitboard",
         "ComputerDNAScanner",
         "ComputerExpeditionDiskPrinter",
         "ComputerFundingAllocation",
@@ -73,7 +73,7 @@ public static class ShipSaveYamlSanitizer
         "ComputerShuttleRecords",
         "ComputerTabletopShuttleAntag",
         "DnaScannerConsoleComputerCircuitboard",
-        "IDComputerCircuitboard",
+        // "IDComputerCircuitboard",
         "StationAiUploadComputer",
         // Vending machines
         "DEBUGVendingMachineAmmoBoxes",

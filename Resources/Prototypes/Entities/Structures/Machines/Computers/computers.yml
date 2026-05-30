@@ -121,6 +121,10 @@
     radius: 1.5
     energy: 1.6
     color: "#43ccb5"
+  # Triad start
+  - type: SavingContraband
+    # examineText: ship-saving-contraband-1-text # hidden at request
+  # Triad end
 
 - type: entity
   parent: BaseComputerAiAccess # Mono
@@ -713,10 +717,15 @@
       board: !type:Container
       IdCardConsole-privilegedId: !type:ContainerSlot
       IdCardConsole-targetId: !type:ContainerSlot
-  # Mono
+  # Mono start
   - type: ShipRepairable
     repairTime: 4
     repairCost: 8
+  # Mono end
+  # Triad start
+  - type: SavingContraband
+    # examineText: ship-saving-contraband-1-text # Hidden text as requested
+  # Triad end
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -786,7 +795,7 @@
     repairCost: 8
   # Triad add start
   - type: SavingContraband
-    examineText: ship-saving-contraband-2-text
+    # examineText: ship-saving-contraband-1-text # Hidden text as requested
   # Triad end
 
 - type: entity

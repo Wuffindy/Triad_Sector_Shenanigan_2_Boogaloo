@@ -304,6 +304,10 @@
       - HighRiskItem
     - type: ComputerTabletopBoard # Frontier
       prototype: ComputerTabletopId # Frontier
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-1-text
+    # Triad end
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -330,6 +334,10 @@
       prototype: ComputerComms
     - type: ComputerTabletopBoard # Frontier
       prototype: ComputerTabletopComms # Frontier
+    # Triad add start
+    - type: SavingContraband
+      examineText: ship-saving-contraband-1-text
+    # Triad end
 
 - type: entity
   parent: BaseComputerCircuitboard
