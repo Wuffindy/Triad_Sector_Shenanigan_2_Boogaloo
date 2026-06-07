@@ -272,7 +272,7 @@
     unpoweredBonus: 4
     damageOverloadTimePunishment: 100
     shieldColor: "#9933FF"
-    collisionResistanceMultiplier: 1.1
+    collisionResistanceMultiplier: 1
   - type: Sprite
     sprite: _Mono/Structures/ShuttleComponents/shield.rsi
     snapCardinals: true
@@ -344,21 +344,193 @@
     repairCost: 125
 
 - type: entity
+  id: ShieldGeneratorAegisFC
+  parent: ShieldGeneratorBase
+  name: MS-250 FC "Aegis" Shield Generator
+  description: a variant of the Aegis shield generator. faster charging at the cost of defensive capability
+  components:
+  - type: ShipShieldEmitter
+    damageLimit: 15000
+    healPerSecond: 250
+    damageExp: 1.05 # Mono
+    baseDraw: 30000
+    maxDraw: 60000
+    unpoweredBonus: 5
+    damageOverloadTimePunishment: 30
+    shieldColor: "#3399FF"
+    collisionResistanceMultiplier: 0.6
+  - type: Sprite
+    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    snapCardinals: true
+    layers:
+    - state: control
+    - state: control_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      visible: false
+      color: "#3399FF"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:ExplodeBehavior
+      - !type:SpawnGasBehavior
+        gasMixture:
+          volume: 1000
+          moles:
+          - 194 # oxygen
+          - 0 # nitrogen
+          - 0 # carbon dioxide
+          - 6 # plasma
+          temperature: 752.48
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 4000
+    intensitySlope: 4
+    totalIntensity: 300
+  - type: ApcPowerReceiver
+    powerLoad: 30000
+  - type: PointLight
+    enabled: false
+    castShadows: true
+    radius: 2
+    energy: 1.5
+    color: "#3399FF"
+  - type: Machine
+    board: MachineShieldMS100Circuitboard
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: PirateBountyItem
+    id: ShipShield
+  - type: ShipRepairable
+    repairTime: 20
+    repairCost: 200
+
+- type: entity
+  id: ShieldGeneratorMediumRM
+  parent: ShieldGeneratorBase
+  name: MS-250 RM "Aegis" Shield Generator
+  description: a variant of the Aegis shield generator, higher ram resistance at the cost of defensive capability
+  components:
+  - type: ShipShieldEmitter
+    damageLimit: 20000
+    healPerSecond: 200
+    damageExp: 1.05 # Mono
+    baseDraw: 30000
+    maxDraw: 50000
+    unpoweredBonus: 4
+    damageOverloadTimePunishment: 50
+    shieldColor: "#FF3333"
+    collisionResistanceMultiplier: 0.2
+  - type: Sprite
+    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    snapCardinals: true
+    layers:
+    - state: control
+    - state: control_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      visible: false
+      color: "#FF3333"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:ExplodeBehavior
+      - !type:SpawnGasBehavior
+        gasMixture:
+          volume: 1000
+          moles:
+          - 194 # oxygen
+          - 0 # nitrogen
+          - 0 # carbon dioxide
+          - 6 # plasma
+          temperature: 752.48
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 4000
+    intensitySlope: 4
+    totalIntensity: 300
+  - type: ApcPowerReceiver
+    powerLoad: 40000
+  - type: PointLight
+    enabled: false
+    castShadows: true
+    radius: 2
+    energy: 1.5
+    color: "#FF3333"
+  - type: Machine
+    board: MachineShieldMS100Circuitboard
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: PirateBountyItem
+    id: ShipShield
+  - type: ShipRepairable
+    repairTime: 25
+    repairCost: 200
+
+- type: entity
   id: ShieldGeneratorMediumDR
   parent: ShieldGeneratorBase
-  name: MS-150 DR "Sentinel" Shield Generator
-  description: a variant of the Sentinel shield generator, higher defensive capability at the cost of recharge time
+  name: MS-250 DR "Aegis" Shield Generator
+  description: a variant of the Aegis shield generator, higher defensive capability at the cost of recharge time
   components:
   - type: ShipShieldEmitter
     damageLimit: 40000
-    healPerSecond: 125
+    healPerSecond: 200
     damageExp: 1.05 # Mono
-    baseDraw: 15000
-    maxDraw: 30000
-    unpoweredBonus: 4
+    baseDraw: 20000
+    maxDraw: 40000
+    unpoweredBonus: 5
     damageOverloadTimePunishment: 100
     shieldColor: "#9933FF"
-    collisionResistanceMultiplier: 1.1
+    collisionResistanceMultiplier: 0.9
   - type: Sprite
     sprite: _Mono/Structures/ShuttleComponents/shield.rsi
     snapCardinals: true
@@ -404,7 +576,7 @@
     intensitySlope: 4
     totalIntensity: 300
   - type: ApcPowerReceiver
-    powerLoad: 15000
+    powerLoad: 20000
   - type: PointLight
     enabled: false
     castShadows: true
@@ -426,5 +598,5 @@
   - type: PirateBountyItem
     id: ShipShield
   - type: ShipRepairable
-    repairTime: 20
-    repairCost: 125
+    repairTime: 25
+    repairCost: 200
