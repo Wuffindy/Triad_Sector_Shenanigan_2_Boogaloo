@@ -1,17 +1,20 @@
-# Base
+# Remember to clean the circuit board later
 - type: entity
-  id: ShieldGeneratorBase
-  parent: BaseMachinePowered
-  name: Shield Generator
-  abstract: true
+  id: ShieldGeneratorSmallCiv
+  parent: ShieldGeneratorBase
+  name: MS-50 "Knight" Shield Generator
+  description: a lightweight civilian shield, reliable at for preventing major crashes around high traffic area
   components:
-  - type: AmbientOnPowered
-  - type: AmbientSound
-    volume: -5
-    range: 30
-    enabled: false
-    sound:
-      path: /Audio/Ambience/Objects/anomaly_generator.ogg
+  - type: ShipShieldEmitter
+    damageLimit: 2000
+    healPerSecond: 100
+    damageExp: 1.05 # Mono uses all of this on all, so idk, following them
+    baseDraw: 5000
+    maxDraw: 5000
+    unpoweredBonus: 2
+    damageOverloadTimePunishment: 45
+    shieldColor: "#24FF61"
+    collisionResistanceMultiplier: 0.2
   - type: Sprite
     sprite: _Mono/Structures/ShuttleComponents/shield.rsi
     snapCardinals: true
@@ -21,18 +24,7 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
-      color: "#FF3333"
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
-    snapCardinals: true
-  - type: Physics
-    bodyType: Static
-  - type: Transform
-    noRot: true
+      color: "#24FF61"
   - type: Destructible
     thresholds:
     - trigger:
@@ -53,7 +45,7 @@
           temperature: 752.48
     - trigger:
         !type:DamageTrigger
-        damage: 1000
+        damage: 500
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -66,41 +58,17 @@
     explosionType: Default
     maxIntensity: 4000
     intensitySlope: 4
-    totalIntensity: 600
-  - type: Repairable
-    doAfterDelay: 8
+    totalIntensity: 300
+  - type: ApcPowerReceiver
+    powerLoad: 5000
   - type: PointLight
     enabled: false
     castShadows: true
     radius: 2
     energy: 1.5
-    color: "#FF3333"
-  - type: AnimationPlayer
-  - type: LitOnPowered
-  - type: PowerSwitch
-  - type: ApcPowerReceiver
-    powerLoad: 60000
-  - type: Appearance
-  - type: ShipShieldEmitter
-    damageLimit: 60000
-    damageOverloadTimePunishment: 40
-    healPerSecond: 600 # Base is 250
-    damageExp: 1.05 # Base is 1.1
-    baseDraw: 40000 # Base is 50000
-    maxDraw: 100000 # Base is 150000
-    unpoweredBonus: 7 # Base is 6
-    shieldColor: "#FF3333"
-    collisionResistanceMultiplier: 1.0
-    powerUpSound: !type:SoundPathSpecifier
-        path: "/Audio/Effects/teleport_arrival.ogg"
-        params:
-          pitch: 0.5
-    powerDownSound: !type:SoundPathSpecifier
-        path: "/Audio/Effects/teleport_departure.ogg"
-        params:
-          pitch: 0.5
+    color: "#24FF61"
   - type: Machine
-    board: MachineShieldMS500Circuitboard
+    board: MachineShieldMS100Circuitboard # TO CHANGE
   - type: Construction
     graph: Machine
     node: machine
@@ -113,36 +81,36 @@
       machine_parts: !type:Container
   - type: PirateBountyItem
     id: ShipShield
+  - type: ShipRepairable
+    repairTime: 20
+    repairCost: 100
 
-# POI
 - type: entity
-  id: ShieldGeneratorPOI
+  id: ShieldGeneratorSmallFC
   parent: ShieldGeneratorBase
-  name: FS-421 "Fortress" Outpost Shield Generator
-  description: The Fortress. The latest and greatest in static, large-scale shielding.
-  suffix: POI ONLY
+  name: MS-125 FC "Sentinel" Shield Generator
+  description: a variant of the Sentinel shield generator. faster charging at the cost of defensive capability
   components:
   - type: ShipShieldEmitter
-    damageLimit: 250000
-    healPerSecond: 1000
-    damageExp: 1
-    baseDraw: 80000
-    maxDraw: 150000
-    unpoweredBonus: 7
-    powerModifier: 0.25
-    damageOverloadTimePunishment: 45
-    shieldColor: "#FF9933"
-    collisionResistanceMultiplier: 0.0
+    damageLimit: 10000
+    healPerSecond: 250
+    damageExp: 1.05 # Mono
+    baseDraw: 10000
+    maxDraw: 20000
+    unpoweredBonus: 4 # Triad 4 < 3
+    damageOverloadTimePunishment: 40 # Triad 40 < 80
+    shieldColor: "#3399FF"
+    collisionResistanceMultiplier: 0.6
   - type: Sprite
-    sprite: _Mono/Structures/ShuttleComponents/fobshield.rsi
+    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
     snapCardinals: true
     layers:
-    - state: fobshield
-    - state: fobshield_on
+    - state: control
+    - state: control_on
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
-      color: "#FF9933"
+      color: "#3399FF"
   - type: Destructible
     thresholds:
     - trigger:
@@ -176,142 +144,135 @@
     explosionType: Default
     maxIntensity: 4000
     intensitySlope: 4
-    totalIntensity: 1000
+    totalIntensity: 300
   - type: ApcPowerReceiver
-    powerLoad: 80000
+    powerLoad: 10000
   - type: PointLight
     enabled: false
     castShadows: true
     radius: 2
     energy: 1.5
-    color: "#FF9933"
-  # can repair it if you really want to
+    color: "#3399FF"
+  - type: Machine
+    board: MachineShieldMS100Circuitboard
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: PirateBountyItem
+    id: ShipShield
   - type: ShipRepairable
-    repairTime: 30
-    repairCost: 300
-  - type: SavingContraband
-    examineText: ship-saving-contraband-3-text
+    repairTime: 20
+    repairCost: 125
 
-# TSF capital shield - inbetween POI and MS-500, meant for flyssa
 - type: entity
-  id: ShieldGeneratorTSFCapital
+  id: ShieldGeneratorSmallRM
   parent: ShieldGeneratorBase
-  name: LM-212 "Vanguard" Capital Shield Generator
-  description: A heavy capital shield. Good durability, quick recharge and anti-collison built in one.
-  suffix: TSF CAPITAL ONLY
+  name: MS-150 RM "Sentinel" Shield Generator
+  description: a variant of the Sentinel shield generator, higher ram resistance at the cost of defensive capability
   components:
   - type: ShipShieldEmitter
-    damageLimit: 85000
-    healPerSecond: 800
-    damageExp: 1
-    baseDraw: 60000
-    maxDraw: 100000
-    unpoweredBonus: 6
-    damageOverloadTimePunishment: 35
-    shieldColor: "#FF0A70"
-    collisionResistanceMultiplier: 0.05
-  - type: Sprite
-    sprite: _Mono/Structures/ShuttleComponents/fobshield.rsi
-    snapCardinals: true
-    layers:
-    - state: fobshield
-    - state: fobshield_on
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-      visible: false
-      color: "#FF0A70"
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 1500
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:ExplodeBehavior
-      - !type:SpawnGasBehavior
-        gasMixture:
-          volume: 1000
-          moles:
-          - 194 # oxygen
-          - 0 # nitrogen
-          - 0 # carbon dioxide
-          - 6 # plasma
-          temperature: 752.48
-    - trigger:
-        !type:DamageTrigger
-        damage: 500
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 2
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-  - type: Explosive
-    explosionType: Default
-    maxIntensity: 4000
-    intensitySlope: 4
-    totalIntensity: 1000
-  - type: ApcPowerReceiver
-    powerLoad: 60000
-  - type: PointLight
-    enabled: false
-    castShadows: true
-    radius: 2
-    energy: 1.5
-    color: "#FF0A70"
-  - type: ShipRepairable
-    repairTime: 30
-    repairCost: 300
-  - type: SavingContraband
-    examineText: ship-saving-contraband-3-text
-
-# High-End
-- type: entity
-  id: ShieldGenerator
-  parent: ShieldGeneratorBase
-  name: MS-500 "Titan" Shield Generator
-  description: The Titan. Advanced shielding, with a quick recharge time, and excels against colisions.
-  suffix: ADS ONLY
-  components:
-  - type: ShipShieldEmitter
-    damageLimit: 75000
-    damageOverloadTimePunishment: 40
-    healPerSecond: 950 # Base is 250
-    damageExp: 1.05 # Base is 1.1
-    baseDraw: 40000 # Base is 50000
-    maxDraw: 100000 # Base is 150000
-    unpoweredBonus: 6 # Base is 6
+    damageLimit: 12000
+    healPerSecond: 120
+    damageExp: 1.05 # Mono
+    baseDraw: 10000
+    maxDraw: 20000
+    unpoweredBonus: 4
+    damageOverloadTimePunishment: 60
     shieldColor: "#FF3333"
-    collisionResistanceMultiplier: 0.05
+    collisionResistanceMultiplier: 0.2
+  - type: Sprite
+    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    snapCardinals: true
+    layers:
+    - state: control
+    - state: control_on
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+      visible: false
+      color: "#FF3333"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:ExplodeBehavior
+      - !type:SpawnGasBehavior
+        gasMixture:
+          volume: 1000
+          moles:
+          - 194 # oxygen
+          - 0 # nitrogen
+          - 0 # carbon dioxide
+          - 6 # plasma
+          temperature: 752.48
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 4000
+    intensitySlope: 4
+    totalIntensity: 300
+  - type: ApcPowerReceiver
+    powerLoad: 10000
+  - type: PointLight
+    enabled: false
+    castShadows: true
+    radius: 2
+    energy: 1.5
+    color: "#FF3333"
+  - type: Machine
+    board: MachineShieldMS100Circuitboard
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_board
+    - machine_parts
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: PirateBountyItem
+    id: ShipShield
   - type: ShipRepairable
-    repairTime: 30
-    repairCost: 300
-  - type: ShipRepairableRestrict
-    toolWhitelist:
-      tags:
-      - ADSRepairTool
+    repairTime: 20
+    repairCost: 125
 
-# Medium-End
 - type: entity
-  id: ShieldGeneratorMedium
+  id: ShieldGeneratorSmallDR
   parent: ShieldGeneratorBase
-  name: MS-250 "Aegis" Shield Generator
-  description: The Aegis. Advanced shielding, with a long recharge time, with very high durability.
-  suffix: ADS/TSF ONLY, SCI VOUCHER SHIPS ONLY
+  name: MS-150 DR "Sentinel" Shield Generator
+  description: a variant of the Sentinel shield generator, higher defensive capability at the cost of recharge time
   components:
   - type: ShipShieldEmitter
-    damageLimit: 180000
-    healPerSecond: 750 # Base is 250
-    damageExp: 1.05 # Base is 1.1
-    baseDraw: 30000 # Base is 50000
-    maxDraw: 75000 # Base is 150000
-    unpoweredBonus: 4 # Base is 6
+    damageLimit: 20000
+    healPerSecond: 125
+    damageExp: 1.05 # Mono
+    baseDraw: 15000
+    maxDraw: 30000
+    unpoweredBonus: 4
     damageOverloadTimePunishment: 100
     shieldColor: "#9933FF"
-    collisionResistanceMultiplier: 0.6
+    collisionResistanceMultiplier: 1.1
   - type: Sprite
     sprite: _Mono/Structures/ShuttleComponents/shield.rsi
     snapCardinals: true
@@ -342,7 +303,7 @@
           temperature: 752.48
     - trigger:
         !type:DamageTrigger
-        damage: 750
+        damage: 500
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
@@ -355,17 +316,17 @@
     explosionType: Default
     maxIntensity: 4000
     intensitySlope: 4
-    totalIntensity: 400
+    totalIntensity: 300
   - type: ApcPowerReceiver
-    powerLoad: 40000
+    powerLoad: 15000
   - type: PointLight
     enabled: false
     castShadows: true
     radius: 2
     energy: 1.5
-    color: "#9933FF"
+    color: "#3399FF"
   - type: Machine
-    board: MachineShieldMS250Circuitboard
+    board: MachineShieldMS100Circuitboard
   - type: Construction
     graph: Machine
     node: machine
@@ -379,26 +340,25 @@
   - type: PirateBountyItem
     id: ShipShield
   - type: ShipRepairable
-    repairTime: 25
-    repairCost: 200
+    repairTime: 20
+    repairCost: 125
 
-# Low-End
 - type: entity
-  id: ShieldGeneratorSmall
+  id: ShieldGeneratorMediumDR
   parent: ShieldGeneratorBase
-  name: MS-100 "Sentinel" Shield Generator
-  description: The Sentinel. A good, reliable shield.
+  name: MS-150 DR "Sentinel" Shield Generator
+  description: a variant of the Sentinel shield generator, higher defensive capability at the cost of recharge time
   components:
   - type: ShipShieldEmitter
-    damageLimit: 15000 # Triad 15000 < 65000
-    healPerSecond: 100 # Triad 250 < 500
+    damageLimit: 40000
+    healPerSecond: 125
     damageExp: 1.05 # Mono
-    baseDraw: 15000 # Triad 
+    baseDraw: 15000
     maxDraw: 30000
-    unpoweredBonus: 5 # Triad 5 < 3
-    damageOverloadTimePunishment: 80
-    shieldColor: "#3399FF"
-    collisionResistanceMultiplier: 0.8
+    unpoweredBonus: 4
+    damageOverloadTimePunishment: 100
+    shieldColor: "#9933FF"
+    collisionResistanceMultiplier: 1.1
   - type: Sprite
     sprite: _Mono/Structures/ShuttleComponents/shield.rsi
     snapCardinals: true
@@ -408,7 +368,7 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
       visible: false
-      color: "#3399FF"
+      color: "#9933FF"
   - type: Destructible
     thresholds:
     - trigger:
