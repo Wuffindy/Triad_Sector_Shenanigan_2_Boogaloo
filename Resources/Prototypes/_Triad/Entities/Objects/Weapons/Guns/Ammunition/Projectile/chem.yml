@@ -1,0 +1,13 @@
+- type: entity
+  parent: SplatterChemBase
+  id: SplatterChemAcid
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      vapor:
+        maxVol: 50
+        canReact: false
+        reagents:
+        - ReagentId: FluorosulfuricAcid
+          Quantity: 5 

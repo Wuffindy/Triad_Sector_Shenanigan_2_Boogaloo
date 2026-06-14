@@ -8,7 +8,7 @@
   - type: Ammo
     muzzleFlash: null
   - type: TimedDespawn
-    lifetime: 10
+    lifetime: 5
   - type: Projectile
     damage:
       types:

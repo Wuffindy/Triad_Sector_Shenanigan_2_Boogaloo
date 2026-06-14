@@ -54,7 +54,7 @@
   name: syndicate captain
   parent: MobSyndicateNavalBase
   id: MobSyndicateNavalCaptainA
-  description: The executive officer in lieu of the commander, syndicate captains ensure operations onboard go smoothly. Equipped with a 45_magnum revolver.
+  description: The executive officer in lieu of the commander, syndicate captains ensure operations onboard go smoothly. Equipped with a .45 magnum revolver. # Triad fix desc
   categories: [ HideSpawnMenu ]
   components:
     - type: Loadout
@@ -190,21 +190,27 @@
       prototypes:
         - SyndicateNavalMedicGearA
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 2
+      rechargeCooldown: 0.5
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateImpedrezene
-      capacity: 1
-      count: 1
+      proto: DartSyndicateSaponin
+      capacity: 3
+      count: 3
     - type: Gun
       showExamineText: false
+      minAngle: 2
+      maxAngle: 16
       fireRate: 4
-      selectedMode: SemiAuto
+      angleIncrease: 4
+      angleDecay: 2
+      selectedMode: Burst
       availableModes:
-      - SemiAuto
-      soundGunshot:
-        collection: BulletMiss
+        - Burst
+      burstCooldown: 2
+      burstFireRate: 0.8
+      shotsPerBurst: 2
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/syringe_gun.ogg
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -214,6 +220,8 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalMedicGearB
+    - type: BasicEntityAmmoProvider
+      proto: DartSyndicateSaponin
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -224,9 +232,7 @@
       prototypes:
         - SyndicateNavalMedicGearB
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateTranquilizer
-      capacity: 1
-      count: 1
+      proto: DartSyndicateLipolicide
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -237,9 +243,7 @@
       prototypes:
         - SyndicateNavalMedicGearD
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateTranquilizer
-      capacity: 1
-      count: 1
+      proto: DartSyndicateLipolicide
 
 # Second Officer, "armed" with Advanced Laser Pistol
 - type: entity
@@ -312,24 +316,27 @@
       prototypes:
         - SyndicateNavalOperatorGearA
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1.5
+      rechargeCooldown: 0.5
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
       proto: Bullet9x19mmFMJ
-      capacity: 7
-      count: 7
+      capacity: 15
+      count: 15
     - type: Gun
       showExamineText: false
-      minAngle: 10
+      minAngle: 5
       maxAngle: 30
-      fireRate: 5
-      angleIncrease: 3
-      angleDecay: 6
-      selectedMode: FullAuto
+      fireRate: 4
+      angleIncrease: 2
+      angleDecay: 2
+      selectedMode: Burst
       availableModes:
-        - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/smg.ogg
+        - Burst
+      burstCooldown: 1.5
+      burstFireRate: 6
+      shotsPerBurst: 4
+      soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/atreides_fire.ogg
 
 - type: entity
   parent: MobSyndicateNavalOperatorA
@@ -679,19 +686,22 @@
     prototypes:
     - SyndicateNavalChemwarriorGearA
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 2
+    rechargeCooldown: 0.4
     rechargeSound:
       path: /Audio/_NF/Effects/silence.ogg
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemCold
-    capacity: 3
-    count: 3
+    proto: SplatterChemAcid
+    capacity: 30
+    count: 30
   - type: Gun
     showExamineText: false
     fireRate: 4
-    selectedMode: SemiAuto
+    selectedMode: Burst
     availableModes:
-    - SemiAuto
+    - Burst
+    burstCooldown: 2
+    burstFireRate: 8
+    shotsPerBurst: 5
     soundGunshot: /Audio/Weapons/Guns/Gunshots/water_spray.ogg
 
 - type: entity
@@ -703,9 +713,7 @@
     prototypes:
     - SyndicateNavalChemwarriorGearB
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemDrugs
-    capacity: 1
-    count: 1
+    proto: SplatterChemAcid
 
 - type: entity
   parent: MobSyndicateNavalChemwarriorA
@@ -716,9 +724,7 @@
     prototypes:
     - SyndicateNavalChemwarriorGearC
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemMute
-    capacity: 1
-    count: 1
+    proto: SplatterChemAcid
 
 - type: entity
   parent: MobSyndicateNavalChemwarriorA
@@ -729,9 +735,7 @@
     prototypes:
     - SyndicateNavalChemwarriorGearD
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemWeh
-    capacity: 1
-    count: 1
+    proto: SplatterChemAcid
 
 # Void Troopers
 # Syndicate Captain, "armed" with Python

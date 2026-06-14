@@ -1,7 +1,7 @@
 # BASE
 - type: entity
   parent:
-  - Dart
+  - MiniSyringe
   - ConjuredObject10 # Despawns in 10 seconds
   id: MobHostileThrowableWeapon
   name: dart
@@ -16,20 +16,22 @@
     muzzleFlash: null
   - type: ChemicalAmmo
   - type: EmbeddableProjectile
+    minimumSpeed: 5
+    removalTime: 0.5
     deleteOnRemove: true
     sound: /Audio/Weapons/star_hit.ogg
   - type: DamageOtherOnHit
     damage:
       types:
-        Piercing: 6
+        Piercing: 5
   - type: SolutionContainerManager
     solutions:
       ammo:
-        maxVol: 2
+        maxVol: 5
   - type: SolutionTransfer
-    maxTransferAmount: 4
+    maxTransferAmount: 5
   - type: SolutionInjectOnEmbed
-    transferAmount: 2
+    transferAmount: 5
     solution: ammo
   - type: InjectableSolution
     solution: ammo

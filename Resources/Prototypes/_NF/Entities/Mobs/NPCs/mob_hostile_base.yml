@@ -333,6 +333,12 @@
         true
       NavSmash: !type:Bool # They use this option too much for my liking, but I'll keep it here as an option
         true
+      AggroVisionRadius: !type:Single
+        16
+      VisionRadius: !type:Single
+        16
+      RangedRange: !type:Single
+        12
 
 - type: entity
   id: MobHumanoidHostileAIComplex
@@ -382,8 +388,8 @@
     critThreshold: 100
   - type: SlowOnDamage
     speedModifierThresholds:
-      60: 0.7
-      80: 0.5
+      60: 0.8 # Triad 0.8 < 0.7
+      80: 0.6 # Triad 0.6 < 0.5
   - type: Blindable
   - type: Butcherable
     butcheringType: Spike

@@ -1,0 +1,20 @@
+- type: reagent
+  id: Saponin
+  name: reagent-name-saponin
+  group: Toxins
+  desc: reagent-desc-saponin
+  physicalDesc: reagent-physical-desc-grainy
+  flavor: bitter
+  color: "#7A5A19"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.5
+      effects:
+      - !type:ChemVomit
+        conditions:
+        - !type:OrganType # Goobstation - Yowie
+          type: Yowie
+          shouldHave: false
+        - !type:ReagentThreshold
+          min: 4
+        probability: 0.9

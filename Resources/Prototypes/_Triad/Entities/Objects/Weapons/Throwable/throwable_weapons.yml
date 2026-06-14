@@ -1,0 +1,36 @@
+## Syndicate Naval Medic Projectile
+- type: entity
+  parent: MobHostileThrowableWeapon
+  id: DartSyndicateSaponin
+  name: syndicate saponin dart
+  description: Blurgh, pricked myself accidentally
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: icon
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        maxVol: 5
+        reagents:
+        - ReagentId: Saponin
+          Quantity: 5
+
+# - type: entity
+#   parent: MobHostileThrowableWeapon
+#   id: DartSyndicateToxin
+#   name: syndicate toxin dart
+#   description: Try not to prick yourself.
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Sprite
+#     sprite: Objects/Fun/Darts/dart_red.rsi
+#     state: icon
+#   - type: SolutionContainerManager
+#     solutions:
+#       ammo:
+#         maxVol: 2
+#         reagents:
+#         - ReagentId: Toxin
+#           Quantity: 2
