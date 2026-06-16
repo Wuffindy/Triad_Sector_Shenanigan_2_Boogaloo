@@ -65,6 +65,14 @@
     rootTask:
       task: TurretCompound
     blackboard:
+      # BufferRange: !type:Single
+      #   20
+      # VisionRadius: !type:Single
+      #   20
+      AggroVisionRadius: !type:Single
+        20
+      # RangedRange: !type:Single
+      #   20
       RotateSpeed: !type:Single
         3.141
       SoundTargetInLOS: !type:SoundPathSpecifier

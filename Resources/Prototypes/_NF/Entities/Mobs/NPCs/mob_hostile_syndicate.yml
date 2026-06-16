@@ -85,7 +85,7 @@
       prototypes:
         - SyndicateNavalCaptainGearB
     - type: BasicEntityAmmoProvider
-      proto: Bullet45_magnumFMJ
+      proto: Bullet45_magnumAP
       capacity: 1
       count: 1
 
@@ -221,7 +221,7 @@
       prototypes:
         - SyndicateNavalMedicGearB
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateSaponin
+      proto: DartSyndicatePhlogiston
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -232,7 +232,7 @@
       prototypes:
         - SyndicateNavalMedicGearB
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateLipolicide
+      proto: DartSyndicateCarcinogen
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -243,7 +243,7 @@
       prototypes:
         - SyndicateNavalMedicGearD
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateLipolicide
+      proto: DartSyndicateToxin
 
 # Second Officer, "armed" with Advanced Laser Pistol
 - type: entity
@@ -261,16 +261,19 @@
       fireCost: 100
     - type: BatterySelfRecharger
       autoRecharge: true
-      autoRechargeRate: 50
-    - type: Battery
-      maxCharge: 600
-      startingCharge: 600
+      autoRechargeRate: 100
+    - type: Battery # Triad increased max charges
+      maxCharge: 700
+      startingCharge: 700
     - type: Gun
       showExamineText: false
-      fireRate: 1
-      selectedMode: SemiAuto
+      fireRate: 1.6 # Triad increased fire rate
+      selectedMode: Burst
       availableModes:
-        - SemiAuto
+        - Burst
+      burstCooldown: 2
+      burstFireRate: 4
+      shotsPerBurst: 2
       soundGunshot: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
 
 - type: entity
@@ -316,14 +319,14 @@
       prototypes:
         - SyndicateNavalOperatorGearA
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 0.5
+      rechargeCooldown: 0.2 # Triad reduced cooldown to work properly with Burst
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
-    - type: BasicEntityAmmoProvider
+    - type: BasicEntityAmmoProvider # Triad increased total ammo
       proto: Bullet9x19mmFMJ
       capacity: 15
       count: 15
-    - type: Gun
+    - type: Gun # Triad adjusted a bunch of stats for custom fire pattern
       showExamineText: false
       minAngle: 5
       maxAngle: 30
@@ -333,7 +336,7 @@
       selectedMode: Burst
       availableModes:
         - Burst
-      burstCooldown: 1.5
+      burstCooldown: 1.6
       burstFireRate: 6
       shotsPerBurst: 4
       soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/atreides_fire.ogg
@@ -377,9 +380,13 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalGrenadierGearA
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        100: Dead
     - type: AutoImplant
       implants:
-      - DeathAcidifierImplantNF
+      - MicroBombImplant
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 5
       rechargeSound:
@@ -395,6 +402,17 @@
       availableModes:
         - SemiAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+    # - type: Destructible
+    #   thresholds:
+    #   - trigger:
+    #       !type:DamageTrigger
+    #       damage: 99
+    #     behaviors:
+    #     - !type:SpawnEntitiesBehavior
+    #       spawn:
+    #         ClothingBackpackSyndicateGrenadierLootA:
+    #           min: 1
+    #           max: 1
 
 - type: entity
   parent: MobSyndicateNavalGrenadierA
@@ -440,26 +458,29 @@
   name: syndicate saboteur
   parent: MobSyndicateNavalBase
   id: MobSyndicateNavalSaboteurA
-  description: Specialist trained in the art of sabotaging NT shuttles and facilities. Equipped with EMP rounds, take caution.
+  description: Specialist trained in the art of sabotaging shuttles and facilities. Equipped with EMP rounds, take caution. # Triad, removed NT
   categories: [ HideSpawnMenu ]
   components:
     - type: Loadout
       prototypes:
         - SyndicateNavalSaboteurGearA
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1
+      rechargeCooldown: 0.2
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
       proto: Bullet9x19mmEmp
-      capacity: 4
-      count: 4
+      capacity: 10
+      count: 10
     - type: Gun
       showExamineText: false
       fireRate: 6
-      selectedMode: FullAuto
+      selectedMode: Burst
       availableModes:
-      - FullAuto
+      - Burst
+      burstCooldown: 3
+      burstFireRate: 6
+      shotsPerBurst: 4
       soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
 
 - type: entity
@@ -536,27 +557,58 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalCommanderGearA
+      # Triad Start
+    - type: MobThresholds # Buffed health as a Boss
+      thresholds:
+        0: Alive
+        150: Critical
+        175: Dead 
+    - type: MovementSpeedModifier
+      baseWalkSpeed : 3
+      baseSprintSpeed : 3
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        80: 0.8
+        120: 0.6
+      # Triad End
     - type: Stamina
       critThreshold: 500 # Extra hard to incapacitate and loot
     - type: AutoImplant
       implants:
       - DeathRattleImplant
+      - MicroBombImplant # Triad
       #- DeathAcidifierImplantNF
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1.5
+      rechargeCooldown: 0.2 # Triad reduced cooldown to work properly with Burst
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
-    - type: BasicEntityAmmoProvider
+    - type: BasicEntityAmmoProvider # Triad increased total ammo
       proto: Cartridge762x39mmFMJ
-      capacity: 4
-      count: 4
-    - type: Gun
+      capacity: 30
+      count: 30
+    - type: Gun # Triad adjusted a bunch of stats for custom fire pattern
       showExamineText: false
-      fireRate: 5
-      selectedMode: SemiAuto
+      minAngle: 5
+      maxAngle: 25
+      fireRate: 4
+      angleIncrease: 3
+      angleDecay: 3
+      selectedMode: Burst
       availableModes:
-      - SemiAuto
+      - Burst
+      burstCooldown: 2
+      burstFireRate: 9
+      shotsPerBurst: 6
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rifle2.ogg
+    # - type: ProjectileBatteryAmmoProvider # Triad, added throwing bombs as secondary attack (A bit janky)
+    #   proto: ExGrenadeLaunched
+    #   fireCost: 100
+    # - type: Battery
+    #   maxCharge: 100
+    #   startingCharge: 100
+    # - type: BatterySelfRecharger
+    #   autoRecharge: true
+    #   autoRechargeRate: 8
 
 - type: entity
   parent: MobSyndicateNavalCommanderA
@@ -568,15 +620,6 @@
         - SyndicateNavalCommanderGearB
     - type: BasicEntityAmmoProvider
       proto: Cartridge556x45mmFMJ
-      capacity: 4
-      count: 4
-    - type: Gun
-      showExamineText: false
-      fireRate: 5
-      selectedMode: SemiAuto
-      availableModes:
-      - SemiAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg
 
 - type: entity
   parent: MobSyndicateNavalCommanderB
@@ -611,16 +654,23 @@
       rechargeCooldown: 1
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
-    - type: BasicEntityAmmoProvider
+    - type: BasicEntityAmmoProvider # Triad increased total ammo
       proto: Bullet9x19mmFMJ
-      capacity: 4
-      count: 4
-    - type: Gun
+      capacity: 15
+      count: 15
+    - type: Gun # Triad adjusted a bunch of stats for custom fire pattern
       showExamineText: false
-      fireRate: 0.5
-      selectedMode: FullAuto
+      minAngle: 2
+      maxAngle: 16
+      fireRate: 4
+      angleIncrease: 5
+      angleDecay: 2
+      selectedMode: Burst
       availableModes:
-      - FullAuto
+      - Burst
+      burstCooldown: 1.6
+      burstFireRate: 4
+      shotsPerBurst: 2
       soundGunshot: /Audio/Weapons/Guns/Gunshots/pistol.ogg
 
 - type: entity

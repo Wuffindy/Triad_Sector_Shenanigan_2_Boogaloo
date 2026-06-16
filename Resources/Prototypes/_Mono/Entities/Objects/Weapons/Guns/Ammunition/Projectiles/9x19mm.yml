@@ -68,7 +68,7 @@
   - type: Projectile
     damage:
       types:
-        Shock: 0
+        Shock: 4 # Triad, 4 < 0, for Syndicate Saboteour
 
 # Mono AP syst
 #anti-flesh:

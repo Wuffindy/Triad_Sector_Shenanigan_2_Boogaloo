@@ -12,25 +12,61 @@
   - type: SolutionContainerManager
     solutions:
       ammo:
-        maxVol: 5
+        maxVol: 2
         reagents:
         - ReagentId: Saponin
-          Quantity: 5
+          Quantity: 2
 
-# - type: entity
-#   parent: MobHostileThrowableWeapon
-#   id: DartSyndicateToxin
-#   name: syndicate toxin dart
-#   description: Try not to prick yourself.
-#   categories: [ HideSpawnMenu ]
-#   components:
-#   - type: Sprite
-#     sprite: Objects/Fun/Darts/dart_red.rsi
-#     state: icon
-#   - type: SolutionContainerManager
-#     solutions:
-#       ammo:
-#         maxVol: 2
-#         reagents:
-#         - ReagentId: Toxin
-#           Quantity: 2
+- type: entity
+  parent: MobHostileThrowableWeapon
+  id: DartSyndicateCarcinogen
+  name: syndicate carcinogen dart
+  description: Something's off but i don't know why
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: icon
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        maxVol: 3
+        reagents:
+        - ReagentId: Benzene
+          Quantity: 3
+
+- type: entity
+  parent: MobHostileThrowableWeapon
+  id: DartSyndicatePhlogiston
+  name: syndicate phlogiston dart
+  description: Why do I feel hot all of the sudden.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: icon
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        maxVol: 3
+        reagents:
+        - ReagentId: Phlogiston
+          Quantity: 3
+
+- type: entity
+  parent: MobHostileThrowableWeapon
+  id: DartSyndicateToxin
+  name: syndicate toxin dart
+  description: Try not to prick yourself.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: icon
+  - type: SolutionContainerManager
+    solutions:
+      ammo:
+        maxVol: 2
+        reagents:
+        - ReagentId: Toxin
+          Quantity: 2

@@ -180,11 +180,15 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      85: Dead #Mono, health adjustments
+      100: Dead #Mono, health adjustments
   - type: SlowOnDamage
     speedModifierThresholds:
-      36: 0.7
-      48: 0.5
+      60: 0.8
+      80: 0.6
+  - type: PointLight
+    radius: 1.5
+    energy: 3
+    color: "#693b00"
   - type: Stamina
     critThreshold: 600
 
@@ -430,10 +434,6 @@
         overlayUnshaded:
           overlay_critdmg: ""
           mask_null: ""
-  - type: PointLight
-    radius: 2.5
-    color: orange
-    energy: 0.5
   - type: CanMoveInAir
   - type: Fixtures
     fixtures:
@@ -638,7 +638,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      25: Dead #Mono, health adjustments
+      20: Dead #Mono, health adjustments
   - type: DamageStateVisuals
     states:
       Alive:
@@ -677,7 +677,7 @@
   id: MobRogueSiliconServo
   name: servo unit
   description: With its programming rewritten, this crash test dummy will stop at nothing in exacting its revenge.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Loadout
     prototypes:
@@ -706,6 +706,10 @@
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
+  - type: PointLight
+    radius: 2
+    energy: 3
+    color: "#660000"
 
 - type: entity
   parent:
@@ -715,7 +719,7 @@
   id: MobRogueSiliconHerder
   name: herder unit
   description: This rogue silicon unit's primary directive is to corral and herd captives. Its stun prod can be used to good effect, take caution.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Loadout
     prototypes:
@@ -751,7 +755,7 @@
     defaultRotation: 90
     horizontalRotation: 90
   - type: StaminaDamageOnHit
-    damage: 10
+    damage: 20
     sound: /Audio/Weapons/egloves.ogg
   - type: MeleeWeapon
     attackRate: 1.0
@@ -765,6 +769,10 @@
         Structural: 20
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  - type: PointLight
+    radius: 1.5
+    energy: 3
+    color: "#00144d"
 
 - type: entity
   parent:
@@ -828,7 +836,7 @@
   id: MobRogueSiliconCatcher
   name: catcher unit
   description: Equipped with bolas, this unit is designed to slow, capture, and detain targets.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Loadout
     prototypes:
@@ -868,20 +876,23 @@
     count: 1
   - type: Gun
     showExamineText: false
-    fireRate: 0.075
-    selectedMode: FullAuto
+    fireRate: 0.1
+    selectedMode: Burst
     availableModes:
-    - FullAuto
+    - Burst
+    burstCooldown: 9
+    burstFireRate: 4
+    shotsPerBurst: 2
     soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: SpawnMobViscerator
     fireCost: 100
   - type: Battery
-    maxCharge: 100
-    startingCharge: 100
+    maxCharge: 200
+    startingCharge: 200
   - type: BatterySelfRecharger
     autoRecharge: true
-    autoRechargeRate: 5
+    autoRechargeRate: 50
 
 ## Tier 3
 - type: entity
@@ -892,7 +903,7 @@
   id: MobRogueSiliconTesla
   name: tesla unit
   description: Originally designed to service tesla power generators, this silicon's equipment has been repurposed as a makeshift stun gun.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Loadout
     prototypes:
@@ -920,11 +931,11 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      145: Dead #Mono, health adjustments
-  - type: SlowOnDamage
+      140: Dead # Triad, 140 < 145
+  - type: SlowOnDamage # Triad, adjusted stats
     speedModifierThresholds:
-      66: 0.7
-      88: 0.5
+      70: 0.8 
+      90: 0.6
   - type: Stamina
     critThreshold: 600
   - type: ProjectileBatteryAmmoProvider
@@ -939,24 +950,22 @@
   - type: Gun
     projectileSpeed: 10
     showExamineText: false
-    fireRate: 0.55 # Mono 0.75 -> 0.55
-    minAngle: 0
-    maxAngle: 15
+    fireRate: 0.6 # Triad 0.55 -> 0.6
     soundGunshot:
       path: /Audio/Effects/Lightning/lightningshock.ogg
       params:
         variation: 0.2
   - type: PointLight
-    radius: 1
-    energy: 1.5
-    color: "#47f8ff"
+    radius: 2
+    energy: 3
+    color: "#660000"
 
 #Mono Start: version of the tesla projectile for tesla-unit, less cancerous, more dangerous
 - type: entity
   name: tesla gun lightning
   id: TeslaGunBulletRogueSilicon
   parent: BaseBullet
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
     lifetime: 5
@@ -1086,23 +1095,30 @@
       400: Dead #Mono, health adjustments
   - type: SlowOnDamage
     speedModifierThresholds:
-      200: 0.7
-      260: 0.5
+      200: 0.8 # Triad 0.8 < 0.7
+      300: 0.6 # Triad 0.6 < 0.5, 300 < 260
   - type: Stamina
     critThreshold: 600
+  - type: RechargeBasicEntityAmmo # Triad reduced chargeCD so the pattern can fire properly
+    rechargeCooldown: 0.2
+    rechargeSound:
+      path: /Audio/_NF/Effects/silence.ogg
   - type: BasicEntityAmmoProvider
     proto: CartridgeRocketMiniNF
     capacity: 10
     count: 10
-  - type: Gun
+  - type: Gun # Triad, Changed a bunch of stats, converted to burst for fire pattern
     projectileSpeed: 10
     showExamineText: false
-    fireRate: 1
-    minAngle: 30
-    maxAngle: 45
-    selectedMode: FullAuto
+    fireRate: 4
+    minAngle: 5
+    maxAngle: 25
+    selectedMode: Burst
     availableModes:
-    - FullAuto
+    - Burst
+    burstCooldown: 4
+    burstFireRate: 6
+    shotsPerBurst: 6
     soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: FootstepModifier
     footstepSoundCollection:
@@ -1116,7 +1132,7 @@
   - MobRogueSiliconScrapBase
   - MobRogueSiliconAISimpleMelee
   id: MobRogueSiliconScrapAsteroid
-  name: malfunctionnig scrap unit
+  name: malfunctioning scrap unit  #Triad name fix
   categories: [ HideSpawnMenu ]
   components:
   - type: MovementSpeedModifier

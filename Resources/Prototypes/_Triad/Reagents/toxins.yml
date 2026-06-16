@@ -3,12 +3,13 @@
   name: reagent-name-saponin
   group: Toxins
   desc: reagent-desc-saponin
+  evaporationSpeed: 0.5
   physicalDesc: reagent-physical-desc-grainy
   flavor: bitter
   color: "#7A5A19"
   metabolisms:
     Poison:
-      metabolismRate: 0.5
+      metabolismRate: 1
       effects:
       - !type:ChemVomit
         conditions:
@@ -16,5 +17,5 @@
           type: Yowie
           shouldHave: false
         - !type:ReagentThreshold
-          min: 4
+          min: 1
         probability: 0.9

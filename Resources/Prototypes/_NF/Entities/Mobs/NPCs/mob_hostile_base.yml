@@ -333,12 +333,16 @@
         true
       NavSmash: !type:Bool # They use this option too much for my liking, but I'll keep it here as an option
         true
+      # Triad Start
+      BufferRange: !type:Single
+        16
       AggroVisionRadius: !type:Single
         16
       VisionRadius: !type:Single
         16
       RangedRange: !type:Single
-        12
+        16
+      # Triad End
 
 - type: entity
   id: MobHumanoidHostileAIComplex
