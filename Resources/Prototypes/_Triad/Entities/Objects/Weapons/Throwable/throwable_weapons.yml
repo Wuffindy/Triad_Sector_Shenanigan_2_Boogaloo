@@ -69,4 +69,4 @@
         maxVol: 2
         reagents:
         - ReagentId: Toxin
-          Quantity: 2
+          Quantity: 1

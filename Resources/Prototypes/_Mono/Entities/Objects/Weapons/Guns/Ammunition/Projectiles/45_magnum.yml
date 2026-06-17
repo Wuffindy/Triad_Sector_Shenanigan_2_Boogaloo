@@ -55,7 +55,8 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 26 # 20% decrease
+        Piercing: 24 # Triad 24 < 26
+        Structural: 70 # Triad, following PlasteelAP's Struct
     ignoreResistances: true
 
 - type: entity

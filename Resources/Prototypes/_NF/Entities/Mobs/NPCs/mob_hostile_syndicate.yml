@@ -22,10 +22,10 @@
     - SyndicateNamesPrefix
     - SyndicateNamesNormal
     - SyndicateNamesElite
-  #- type: AutoImplant
-    #implants:
-    #- DeathRattleImplant
+  # - type: AutoImplant
+  #   implants:
     #- DeathAcidifierImplantNF
+    #- DeathRattleImplant
     #- DeathAcidifierImplant
     #- MicroBombImplant
   - type: RechargeBasicEntityAmmo
@@ -44,9 +44,23 @@
     deleteOrgans: true
     gib: false
     useArgumentEntity: true
+  - type: MobThresholds # Triad, removed crit to trigger
+    thresholds:
+      0: Alive
+      100: Dead 
   - type: MovementSpeedModifier
     baseWalkSpeed : 4.5
     baseSprintSpeed : 4.5
+  # Triad Start
+  - type: HTN
+    blackboard:
+      AggroVisionRadius: !type:Single
+        12
+      VisionRadius: !type:Single
+        12
+      RangedRange: !type:Single
+        12
+    # Triad End
 
 # Humans
 # Syndicate Captain, "armed" with AP Python
@@ -75,6 +89,27 @@
       availableModes:
       - SemiAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/revolver.ogg
+    # Triad Start
+    - type: HTN # Increased range since they are 
+      blackboard:
+        AggroVisionRadius: !type:Single
+          14
+        VisionRadius: !type:Single
+          14
+        RangedRange: !type:Single
+          14
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 98
+        behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ClothingBackpackSyndicateCaptainLootA:
+              min: 1
+              max: 1
+      # Triad End
 
 - type: entity
   parent: MobSyndicateNavalCaptainA
@@ -86,8 +121,6 @@
         - SyndicateNavalCaptainGearB
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumAP
-      capacity: 1
-      count: 1
 
 - type: entity
   parent: MobSyndicateNavalCaptainA
@@ -99,8 +132,6 @@
         - SyndicateNavalCaptainGearC
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumFMJ
-      capacity: 1
-      count: 1
 
 - type: entity
   parent: MobSyndicateNavalCaptainA
@@ -112,8 +143,6 @@
         - SyndicateNavalCaptainGearD
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumFMJ
-      capacity: 1
-      count: 1
 
 # Syndicate Engineer, "armed" with shotgun
 - type: entity
@@ -384,6 +413,9 @@
       thresholds:
         0: Alive
         100: Dead
+    - type: MovementSpeedModifier
+      baseWalkSpeed : 3
+      baseSprintSpeed : 3
     - type: AutoImplant
       implants:
       - MicroBombImplant

@@ -706,8 +706,8 @@
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
-  - type: PointLight
-    radius: 2
+  - type: PointLight # Triad added light
+    radius: 1.5
     energy: 3
     color: "#660000"
 
@@ -719,7 +719,7 @@
   id: MobRogueSiliconHerder
   name: herder unit
   description: This rogue silicon unit's primary directive is to corral and herd captives. Its stun prod can be used to good effect, take caution.
-  # categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Triad
   components:
   - type: Loadout
     prototypes:
@@ -769,7 +769,7 @@
         Structural: 20
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
-  - type: PointLight
+  - type: PointLight # Triad added light
     radius: 1.5
     energy: 3
     color: "#00144d"
@@ -893,6 +893,10 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 50
+  - type: PointLight # Triad added light
+    radius: 1.5
+    energy: 3
+    color: "#660000"
 
 ## Tier 3
 - type: entity
@@ -1003,7 +1007,7 @@
   id: MobRogueSiliconGuardian
   name: guardian unit
   description: An advanced security silicon, typically used to safeguard high-security areas such as vaults and server rooms. After being hacked, this unit carries out the AI's will.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ] # Triad, unhides from spawn
   components:
   - type: Loadout
     prototypes:
@@ -1059,10 +1063,10 @@
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
       params:
         variation: 0.2
-  - type: PointLight
-    radius: 2
-    energy: 2.5
-    color: "#47f8ff"
+  - type: PointLight #Triad Dimmer Lighting, also keeping old color for backup
+    radius: 3
+    energy: 0.6
+    color: cyan #"#47f8ff"
 
 - type: entity
   parent:
@@ -1092,11 +1096,14 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      400: Dead #Mono, health adjustments
+      500: Dead #Triad, 500 < 400
+  - type: MovementSpeedModifier #Triad, reduced speed at the cost of tank & rockets
+    baseWalkSpeed : 2.5
+    baseSprintSpeed : 2.5
   - type: SlowOnDamage
     speedModifierThresholds:
-      200: 0.8 # Triad 0.8 < 0.7
-      300: 0.6 # Triad 0.6 < 0.5, 300 < 260
+      320: 0.8 # Triad 0.8 < 0.7, 320 < 200
+      420: 0.6 # Triad 0.6 < 0.5, 420 < 260
   - type: Stamina
     critThreshold: 600
   - type: RechargeBasicEntityAmmo # Triad reduced chargeCD so the pattern can fire properly
@@ -1116,13 +1123,17 @@
     selectedMode: Burst
     availableModes:
     - Burst
-    burstCooldown: 4
-    burstFireRate: 6
-    shotsPerBurst: 6
+    burstCooldown: 4.5
+    burstFireRate: 5
+    shotsPerBurst: 4
     soundGunshot: /Audio/Weapons/Guns/Gunshots/rpgfire.ogg
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: PointLight # Triad added light
+    radius: 3
+    color: cyan
+    energy: 0.2
 
 
 ### Asteroid scrap bots: no regen
@@ -1255,7 +1266,7 @@
   - MobRogueSiliconScrapBase
   - MobRogueSiliconAISimpleMelee
   id: MobRogueSiliconScrapThrustersAsteroid
-  name: malfunctionnig scrap unit
+  name: malfunctioning scrap unit # Triad fix typo
   categories: [ HideSpawnMenu ]
   components:
   - type: MovementSpeedModifier
