@@ -6,8 +6,8 @@
   - type: Tag
     tags:
       - MagazineSmartLMG
-  - type: Item
-    size: Small
+  - type: Item # Triad, change size to normal 2x2
+    size: Normal 
   - type: BallisticAmmoProvider
     proto: CartridgeSmart
     capacity: 150

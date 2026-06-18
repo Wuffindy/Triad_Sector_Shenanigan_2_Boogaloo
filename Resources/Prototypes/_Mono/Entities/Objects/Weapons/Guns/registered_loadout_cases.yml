@@ -147,7 +147,7 @@
     - id: MLA79Harness
       amount: 1
     - id: MagazineSmartLMG
-      amount: 6
+      amount: 2 # Triad  2 < 6, could make it 3 later if 2 is too stingy
 
 - type: entity
   parent: WeaponCaseLong

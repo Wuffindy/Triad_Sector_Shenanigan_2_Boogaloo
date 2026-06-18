@@ -113,8 +113,8 @@
     # Triad: MLA-79 needs this powered belt harness for full accuracy, movement, and heavy weapon support.
     - id: MLA79Harness
       amount: 1
-    - id: MagazineSmartLMG
-      amount: 6
+    - id: MagazineSmartLMG 
+      amount: 2 # Triad  2 < 6, could make it 3 later if 2 is too stingy
 
 - type: entity
   parent: WeaponCaseHeavy
@@ -125,8 +125,8 @@
     contents:
     - id: WeaponDP29
       amount: 1
-    - id: MagazineDP29
-      amount: 6
+    - id: MagazineDP29 
+      amount: 4 # Triad 6 < 4
 
 - type: entity
   parent: WeaponCaseLong
