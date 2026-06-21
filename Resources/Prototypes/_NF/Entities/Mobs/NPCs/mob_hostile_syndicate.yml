@@ -55,9 +55,9 @@
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        12
+        14
       VisionRadius: !type:Single
-        12
+        16
       RangedRange: !type:Single
         12
     # Triad End
@@ -90,14 +90,6 @@
       - SemiAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/revolver.ogg
     # Triad Start
-    - type: HTN # Increased range since they are 
-      blackboard:
-        AggroVisionRadius: !type:Single
-          14
-        VisionRadius: !type:Single
-          14
-        RangedRange: !type:Single
-          14
     - type: Destructible
       thresholds:
       - trigger:
@@ -290,7 +282,7 @@
       fireCost: 100
     - type: BatterySelfRecharger
       autoRecharge: true
-      autoRechargeRate: 100
+      autoRechargeRate: 200
     - type: Battery # Triad increased max charges
       maxCharge: 700
       startingCharge: 700
@@ -301,9 +293,22 @@
       availableModes:
         - Burst
       burstCooldown: 2
-      burstFireRate: 4
+      burstFireRate: 3
       shotsPerBurst: 2
       soundGunshot: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+    # Triad Start
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 98
+        behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ClothingBackpackSyndicateSecondOfficerLootA:
+              min: 1
+              max: 1
+      # Triad End
 
 - type: entity
   parent: MobSyndicateNavalSecondOfficerA
@@ -331,9 +336,6 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalSecondOfficerGearD
-    - type: HitscanBatteryAmmoProvider
-      proto: RedLaser
-      fireCost: 50
 
 # Syndicate Security Operative, "armed" with Atreides SMG
 - type: entity
@@ -347,6 +349,9 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalOperatorGearA
+    - type: AutoImplant # Triad
+      implants:
+      - DeathAcidifierImplantNF
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 0.2 # Triad reduced cooldown to work properly with Burst
       rechargeSound:
@@ -369,6 +374,20 @@
       burstFireRate: 6
       shotsPerBurst: 4
       soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/atreides_fire.ogg
+    # Triad Start
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 98
+        behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ClothingBackpackSyndicateOperatorLootA:
+              min: 1
+              max: 1
+      # Triad End
+
 
 - type: entity
   parent: MobSyndicateNavalOperatorA
@@ -496,6 +515,9 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalSaboteurGearA
+    - type: AutoImplant
+      implants:
+      - DeathAcidifierImplantNF
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 0.2
       rechargeSound:
@@ -662,7 +684,7 @@
       prototypes:
         - SyndicateNavalCommanderGearC
 
-- type: entity
+- type: entity # Triad, Custom Triad chance of Juggernaut Commander
   parent: MobSyndicateNavalCommanderB
   id: MobSyndicateNavalCommanderD
   categories: [ HideSpawnMenu ]

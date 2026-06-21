@@ -104,7 +104,7 @@
     burstCooldown: 1.5
     burstFireRate: 10
     shotsPerBurst: 8
-    soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/atreides_fire.ogg
+    soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/l6_fire.ogg
   - type: PointLight
     radius: 5
     energy: 2

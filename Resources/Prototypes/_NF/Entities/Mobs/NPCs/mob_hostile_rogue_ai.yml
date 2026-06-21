@@ -18,6 +18,12 @@
         true
       SoundTargetInLOS: !type:SoundPathSpecifier
         path: /Audio/Effects/double_beep.ogg
+  # Triad Start
+      AggroVisionRadius: !type:Single
+        14
+      VisionRadius: !type:Single
+        14
+    # Triad End
 
 - type: entity
   id: MobRogueSiliconAISimpleRanged
@@ -35,6 +41,14 @@
         true
       NavSmash: !type:Bool
         true
+  # Triad Start
+      AggroVisionRadius: !type:Single
+        14
+      VisionRadius: !type:Single
+        16
+      RangedRange: !type:Single
+        12
+    # Triad End
       SoundTargetInLOS: !type:SoundPathSpecifier
         path: /Audio/Effects/double_beep.ogg
 
@@ -459,19 +473,28 @@
   parent:
   - MobRogueSiliconScrapThrusters
   id: MobRogueSiliconScrapThrustersRanged
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
     fireCost: 100
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 150
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
   - type: Gun
     showExamineText: false
-    fireRate: 0.7
+    fireRate: 4
     minAngle: 5
     maxAngle: 10
-    selectedMode: FullAuto
+    selectedMode: Burst
     availableModes:
-    - FullAuto
+    - Burst
+    burstCooldown: 3
+    burstFireRate: 4
+    shotsPerBurst: 2
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
       params:
@@ -544,7 +567,7 @@
   - RogueSiliconT1LootLoadout
   id: MobRogueSiliconDroneLethals
   description: Hacked by a rogue AI, these security drones are programmed to kill.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -561,6 +584,29 @@
       state: base_eyes
       shader: unshaded
       color: "#990000"
+    # Triad Start
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 150
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: Gun
+    showExamineText: false
+    fireRate: 0.8
+    minAngle: 0
+    maxAngle: 10
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    burstCooldown: 3
+    burstFireRate: 4
+    shotsPerBurst: 3
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      params:
+        variation: 0.2
+    # Triad Start
 
 - type: entity
   parent:
@@ -569,7 +615,7 @@
   - RogueSiliconT1LootLoadout
   id: MobRogueSiliconDroneNonLethals
   description: These engineering drones are capable of shooting disabler bolts. Dangerous in combination with other enemies.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -589,6 +635,29 @@
   - type: ProjectileBatteryAmmoProvider
     proto: BulletDisabler
     fireCost: 100
+    # Triad Start
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 150
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: Gun
+    showExamineText: false
+    fireRate: 0.8
+    minAngle: 0
+    maxAngle: 15
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    burstCooldown: 2.5
+    burstFireRate: 8
+    shotsPerBurst: 3
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      params:
+        variation: 0.2
+    # Triad Start
 
 - type: entity
   parent:
@@ -597,7 +666,7 @@
   - RogueSiliconT1LootLoadout
   id: MobRogueSiliconDroneScience
   description: A science drone, this rogue drone comes equipped with an experimental C.H.I.M.P. cannon.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -616,6 +685,30 @@
   - type: ProjectileBatteryAmmoProvider
     proto: AnomalousParticleSigmaStrong
     fireCost: 100
+    # Triad Start
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 150
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+  - type: Gun
+    projectileSpeed: 3
+    showExamineText: false
+    fireRate: 0.8
+    minAngle: 0
+    maxAngle: 15
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    burstCooldown: 3
+    burstFireRate: 6
+    shotsPerBurst: 3
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+      params:
+        variation: 0.2
+    # Triad Start
 
 - type: entity
   parent:
@@ -782,7 +875,7 @@
   id: MobRogueSiliconHunter
   name: hunter unit
   description: These mobile drones are tasked with reconnaissance, threat identification, and target elimination.
-  categories: [ HideSpawnMenu ]
+  # categories: [ HideSpawnMenu ]
   components:
   - type: Loadout
     prototypes:
@@ -812,18 +905,32 @@
       state: equipped-NECK
     - sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
       state: wielded-inhand-right
+  # Triad Start
   - type: PointLight
     radius: 3.5
     color: orange
     energy: 0.5
+  - type: HitscanBatteryAmmoProvider
+    proto: RedMediumLaser
+    fireCost: 100
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 150
+  - type: Battery
+    maxCharge: 500
+    startingCharge: 500
+    # Triad End
   - type: Gun
     showExamineText: false
     fireRate: 0.8
     minAngle: 0
     maxAngle: 5
-    selectedMode: FullAuto
+    selectedMode: Burst
     availableModes:
-    - FullAuto
+    - Burst
+    burstCooldown: 2.5
+    burstFireRate: 4
+    shotsPerBurst: 2
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
       params:
@@ -1115,7 +1222,7 @@
     capacity: 10
     count: 10
   - type: Gun # Triad, Changed a bunch of stats, converted to burst for fire pattern
-    projectileSpeed: 10
+    projectileSpeed: 15
     showExamineText: false
     fireRate: 4
     minAngle: 5

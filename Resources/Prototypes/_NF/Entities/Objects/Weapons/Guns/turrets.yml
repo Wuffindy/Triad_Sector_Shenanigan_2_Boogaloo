@@ -175,11 +175,13 @@
   - type: HTN
     blackboard:
       AggroVisionRadius: !type:Single
-        16
+        14
       VisionRadius: !type:Single
-        16
+        14
       RangedRange: !type:Single
-        16
+        14
+      RotateSpeed: !type:Single
+        5
     # Triad End
 
 - type: entity

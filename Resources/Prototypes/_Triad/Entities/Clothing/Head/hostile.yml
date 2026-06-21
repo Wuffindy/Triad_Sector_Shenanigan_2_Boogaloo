@@ -1,0 +1,12 @@
+# Syndicate Juggernaut NPC, Unremovable
+- type: entity
+  parent:
+  - ClothingHeadHelmetHardsuitCybersun
+  id: ClothingHeadHelmetHardsuitJuggernautUnremoveable
+  name: cybersun juggernaut helmet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+  - type: PointLight
+    radius: 5 # Mono
+    color: green

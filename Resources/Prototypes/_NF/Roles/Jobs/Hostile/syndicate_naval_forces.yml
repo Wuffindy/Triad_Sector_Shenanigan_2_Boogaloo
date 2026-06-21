@@ -477,16 +477,14 @@
 - type: startingGear
   id: SyndicateNavalCommanderGearD
   equipment:
-#    mask: ClothingMaskGasSyndicate
+    # mask: ClothingMaskGasSyndicate
     jumpsuit: ClothingUniformJumpsuitSyndieFormalNF
-    outerClothing: ClothingOuterHardsuitSyndieBloodRedUnremoveable
-    head: ClothingHeadHelmetHardsuitSyndieUnremoveable
+    outerClothing: ClothingOuterHardsuitJuggernautUnremoveable # Triad
+    head: ClothingHeadHelmetHardsuitJuggernautUnremoveable # Triad
     gloves: ClothingHandsGlovesColorBlackAK
     shoes: ClothingShoesBootsMagSyndie
     back: ClothingBackpackSyndicateCommanderLootD
     pocket2: DoubleEmergencyAirTankFilled
-  # inhand: # Triad
-  #   - CaptainSabre
 
 # Syndicate Deckhand
 - type: startingGear
