@@ -1,17 +1,19 @@
 - type: entity
   name: Mauler-H
-  # categories: [ HideSpawnMenu ]
+  # suffix: [AI, Mech, Syndicate]
   parent:
   - MobNonHumanHostileBase
   - MobHumanoidHostileAISimpleMelee
   - MobHumanoidHostileAISimpleRanged
-  #- MobLaserReflect # Added to prevent laser abuse from players
   id: MobMechMauler
   description: You really dont want this to get too close to you, really.
   components:
   - type: Loadout
     prototypes:
     - MobHumanoidExplorerGearMechT3
+  - type: NpcFactionMember
+    factions:
+    - SyndicateNF
   - type: Damageable
     damageModifierSet: MobRogueSiliconDamageModifierSet
   - type: Sprite
