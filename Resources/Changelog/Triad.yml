@@ -1478,3 +1478,400 @@ Entries:
   id: 2288
   time: '2026-06-11T22:51:16.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/161
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: Bomber jackets are now insulative, like winter coats
+  id: 2289
+  time: '2026-06-13T00:32:16.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/214
+- author: Minerva
+  changes:
+    - type: Add
+      message: >-
+        Decorative ship greebles are now constructable and deconstructable:
+        antennas, radar panels, and ELINT. These still have no function. Be
+        aware that they have an offset the construction ghost doesn't show,
+        allowing you to build "off the grid".
+  id: 2290
+  time: '2026-06-13T23:10:41.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/213
+- author: RemervKeberb
+  changes:
+    - type: Add
+      message: a new drone to Far Reaches IV
+  id: 2291
+  time: '2026-06-14T00:29:47.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/218
+- author: Dimasw99
+  changes:
+    - type: Add
+      message: >-
+        Avali, Protogen and Hydrakin cubes have been added to the biocube
+        fabricator.
+  id: 2292
+  time: '2026-06-14T00:37:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/215
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: >-
+        Chameleon Projector will no longer cause you to be permanently slowed
+        down
+  id: 2293
+  time: '2026-06-14T01:22:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/221
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: The public transit shuttle no longer gets stuck and unable to depart.
+    - type: Fix
+      message: Disposal units once again trigger their linked devices for automation.
+    - type: Fix
+      message: >-
+        Welding-repairing a silicon no longer errors when the target is missing
+        a damage type the welder can heal.
+  id: 2294
+  time: '2026-06-14T02:36:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/220
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Character traits are now grouped into categories (Physical, Medical,
+        Mental, Disabilities, Accents, Languages), each with its own limits, on
+        top of an overall trait-point budget. Negative-cost traits grant extra
+        points to spend.
+    - type: Tweak
+      message: >-
+        The Traits menu now opens with categories collapsed and supports
+        searching.
+    - type: Tweak
+      message: >-
+        Existing trait selections have been reset as part of the trait rework;
+        please reselect your traits.
+  id: 2295
+  time: '2026-06-14T03:53:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/179
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: 'Revert the #220 PR because issues'
+  id: 2296
+  time: '2026-06-14T05:25:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/223
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        An estimated appraisal of your ship will be displayed when you select a
+        saved ship in the shipyard console. This value will not be visible if
+        your ship was saved pre-tamper update. Resaving your ship will fix this,
+        however.
+  id: 2297
+  time: '2026-06-14T13:28:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/222
+- author: SquishyEmmaaaa
+  changes:
+    - type: Fix
+      message: >-
+        Fixed seed packets being affected by the original plant even after
+        clipping.
+  id: 2298
+  time: '2026-06-14T17:01:23.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/194
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Service workers now can access Janitor supplies, within reason
+  id: 2299
+  time: '2026-06-14T17:04:39.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/202
+- author: runicguardian
+  changes:
+    - type: Add
+      message: Added LessLethal ammo (EMP and Flash) to the China Lake! PLOOP!
+  id: 2300
+  time: '2026-06-14T17:07:17.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/219
+- author: runicguardian
+  changes:
+    - type: Tweak
+      message: >-
+        Filled chef belt now contains a knife, rolling pin, and selective
+        dropper!
+  id: 2301
+  time: '2026-06-14T22:45:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/225
+- author: SketchiiArtist
+  changes:
+    - type: Add
+      message: Added back the Russian accent!
+  id: 2302
+  time: '2026-06-14T22:48:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/227
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added german accent back
+  id: 2303
+  time: '2026-06-15T13:02:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/231
+- author: SomeoneElsHere
+  changes:
+    - type: Add
+      message: >-
+        Added a noise and message to Handheld/Non-Handheld Crew Monitoring
+        Consoles if you gain 100+ damage at once.
+  id: 2304
+  time: '2026-06-15T13:06:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/192
+- author: TheBweepers
+  changes:
+    - type: Add
+      message: Allows Slime People to eat cloth, paper, raw meat, and everything else!
+    - type: Tweak
+      message: >-
+        Adjusts Allicin and Theobromise to stop slime people from being effected
+        by them after the above change made them suseptable
+  id: 2305
+  time: '2026-06-15T13:10:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/169
+- author: Dimasw99
+  changes:
+    - type: Fix
+      message: >-
+        EventHealthChange affects limbs now. Making meds like cryoxadone heal
+        limbs now too.
+  id: 2306
+  time: '2026-06-16T02:39:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/232
+- author: Virnazush
+  changes:
+    - type: Add
+      message: MLA-79 Harness
+    - type: Tweak
+      message: >-
+        MLA-79 Smartgun weapon now requires the Harness to function, without it
+        the player will suffer movement and accuracy penalties.
+  id: 2307
+  time: '2026-06-16T03:00:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/176
+- author: SquishyEmmaaaa
+  changes:
+    - type: Add
+      message: In-hand sprites for various liquors and snacks.
+    - type: Add
+      message: Spacepresso machines for your ship lounges.
+    - type: Add
+      message: >-
+        New reagent: Caramexinin! Now your fluffy friends can have a coffee
+        spiked with this safely, as a treat.
+    - type: Tweak
+      message: Booze-o-Mats now get pineapple juice cartons.
+  id: 2308
+  time: '2026-06-19T07:07:27.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/230
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Character traits now use per-category limits and points. Accents cost
+        from their own pool, so you get one dialect accent, while stutter, lisp,
+        and accentless are free and stack with it.
+    - type: Tweak
+      message: >-
+        Drawback traits (disabilities and most medical/mental traits) are now
+        free.
+    - type: Fix
+      message: >-
+        Contradictory traits can no longer be taken together (opposing
+        endurance/toughness traits, a mute with an accent, wheelchair-bound with
+        bionic legs, and more).
+    - type: Fix
+      message: Feeble and Steadfast now actually change how much damage slows you down.
+    - type: Fix
+      message: >-
+        Trait names and descriptions in the editor read cleanly: no mid-sentence
+        line breaks, consistent Title Case.
+    - type: Tweak
+      message: >-
+        Redesigned the character traits editor with clickable rows, colour-coded
+        states, and hover reasons for disabled traits.
+  id: 2309
+  time: '2026-06-19T13:34:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/234
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Returning from a salvage expedition early no longer deletes your ship if
+        you do it right after jumping in.
+  id: 2310
+  time: '2026-06-19T15:11:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/236
+- author: rebaserHEAD
+  changes:
+    - type: Add
+      message: >-
+        Most speech accents got a big personality pass: real phonetic quirks,
+        occasional verbal tics, and a lot more dialect vocabulary.
+    - type: Add
+      message: >-
+        German, Russian, Dwarven, Spanish, and French accents now have a
+        "(Mild)" trait variant that stays easier to read.
+    - type: Tweak
+      message: >-
+        Southern and Cowboy now share one drawl engine, and the Scottish accent
+        is now the Dwarven Brogue.
+    - type: Tweak
+      message: >-
+        Dwarves and Goblins can't double up on accents; take the free Accentless
+        trait to swap to a different one.
+    - type: Tweak
+      message: >-
+        enriched accents now show lore names (Terra Gallic, Heartworld Gentry,
+        Dustkin, and so on); the Italian trait is retired and Mobster is now the
+        New Brooklyn accent.
+  id: 2311
+  time: '2026-06-19T18:17:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/235
+- author: Upstream
+  changes:
+    - type: Add
+      message: Added stencil lettering decals to the spraypainter.
+  id: 2312
+  time: '2026-06-19T19:38:26.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/237
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        The RPD builds vents, scrubbers, injectors, filters, mixers, valves, and
+        canister ports on the pipe layer you're aiming at, just like pipes.
+    - type: Fix
+      message: >-
+        The RPD can deconstruct pipes hidden under floor tiles or sitting
+        beneath firelocks, and it targets the layer you aim at.
+    - type: Fix
+      message: >-
+        RPD-built devices respect their facing at placement time, so rotated
+        builds no longer collide with devices they don't actually overlap.
+  id: 2313
+  time: '2026-06-19T20:13:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/216
+- author: Lazlo23
+  changes: []
+  id: 2314
+  time: '2026-06-20T02:22:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/204
+- author: rebaserHEAD
+  changes:
+    - type: Tweak
+      message: >-
+        Accents no longer tack random interjections and sign-offs onto your
+        speech; their pronunciation and word swaps are unchanged.
+  id: 2315
+  time: '2026-06-20T06:05:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/241
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Procedural dungeon generation (bluespace asteroid events and salvage
+        expeditions) no longer causes a server lag spike when it spawns.
+  id: 2316
+  time: '2026-06-20T08:17:28.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/229
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: Singularity and tesla no longer slide on friction incorrectly.
+    - type: Fix
+      message: Gas tanks now disconnect when dropped or stored during their cooldown.
+    - type: Fix
+      message: Closed entity storage no longer traps gas before it is map-initialized.
+    - type: Fix
+      message: Closed the shoot-from-inside-a-morgue exploit.
+    - type: Fix
+      message: Powered devices no longer report as powered while drawing zero load.
+    - type: Fix
+      message: Lightning beams now rotate correctly.
+    - type: Fix
+      message: Damage visuals now show on walls.
+    - type: Fix
+      message: The round-end summary window no longer needs two presses to toggle.
+    - type: Fix
+      message: Fixed a mispredict when using tools on the recycler.
+    - type: Tweak
+      message: Storage occupancy is dramatically faster.
+    - type: Tweak
+      message: Ship AI / HTN piloting fixes and upgrades.
+  id: 2317
+  time: '2026-06-20T08:55:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/217
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: Added Craftable extended pistol magazines for 9x19mm, 45 ACP, 45 Magnum
+    - type: Tweak
+      message: Renamed all Machine Pistol Magazines to Extended Pistol Magazines
+    - type: Tweak
+      message: Extended Mag .45 Magnum capacity 14 < 16
+    - type: Tweak
+      message: Extended Mag 9x19mm capacity 31 < 34
+  id: 2318
+  time: '2026-06-20T14:54:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/224
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fix ironman loading ship bug, now's unable to load any ship.
+    - type: Fix
+      message: Chemmaster bricked saving and loading.
+    - type: Tweak
+      message: >-
+        Fragment drone gun is unable to save due to it's instability and
+        complicated mechanism.
+    - type: Tweak
+      message: >-
+        Loading a ship can no longer put you into debt, it will fail if you do
+        not have enough funds.
+  id: 2319
+  time: '2026-06-21T07:16:46.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/162
+- author: Wuffindy
+  changes:
+    - type: Add
+      message: >-
+        Cherry-picked a bunch of Vulp sprites for most hardsuits, modsuits,
+        masks & etc
+    - type: Fix
+      message: fixed some Hydrakin & Vox sprite
+    - type: Fix
+      message: ATU Tacsuit sprite nose sticking out
+  id: 2320
+  time: '2026-06-21T07:19:29.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/196
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Hostile drones no longer self-pilot across the sector into safe zones
+        when no players are nearby.
+    - type: Tweak
+      message: >-
+        Reduced hostile drone target-detection and wake ranges back to their
+        pre-2x values.
+  id: 2321
+  time: '2026-06-21T07:53:08.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/244
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Ship autopilot now keeps the dampener mode (Drive/Cruise/Park) you
+        selected instead of forcing the ship into Cruise.
+  id: 2322
+  time: '2026-06-21T07:54:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/245
