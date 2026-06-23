@@ -480,7 +480,7 @@
        task: KillerTomatoCompound
     blackboard:
       NavClimb: !type:Bool
-        false
+        true # Triad
       NavInteract: !type:Bool
         true
       NavPry: !type:Bool

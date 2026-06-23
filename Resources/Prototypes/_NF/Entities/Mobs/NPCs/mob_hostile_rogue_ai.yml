@@ -9,7 +9,7 @@
        task: SimpleHostileCompound
     blackboard:
       NavClimb: !type:Bool
-        false
+        true # Triad
       NavInteract: !type:Bool
         true
       NavPry: !type:Bool
@@ -34,7 +34,7 @@
        task: SimpleRangedHostileCompound
     blackboard:
       NavClimb: !type:Bool
-        false
+        true # Triad
       NavInteract: !type:Bool
         true
       NavPry: !type:Bool

@@ -6,16 +6,6 @@
   - type: NpcFactionMember
     factions:
     - Syndicate
-  # Triad Start
-  - type: HTN
-    blackboard:
-      AggroVisionRadius: !type:Single
-        16
-      VisionRadius: !type:Single
-        16
-      RangedRange: !type:Single
-        16
-    # Triad End
 
 - type: entity
   parent: BaseWeaponBallisticTurret

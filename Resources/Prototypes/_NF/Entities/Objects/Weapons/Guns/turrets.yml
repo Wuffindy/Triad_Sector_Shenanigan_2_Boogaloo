@@ -171,18 +171,6 @@
   - type: NpcFactionMember
     factions:
     - SyndicateNF
-  # Triad Start
-  - type: HTN
-    blackboard:
-      AggroVisionRadius: !type:Single
-        14
-      VisionRadius: !type:Single
-        14
-      RangedRange: !type:Single
-        14
-      RotateSpeed: !type:Single
-        5
-    # Triad End
 
 - type: entity
   id: WeaponTurretLaserHostileNF
