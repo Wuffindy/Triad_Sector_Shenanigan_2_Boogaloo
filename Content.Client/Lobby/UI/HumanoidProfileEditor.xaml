@@ -75,22 +75,22 @@
                     <SpriteView Name="SpriteView" Scale="8 8" Margin="4" SizeFlagsStretchRatio="1" />
                 </BoxContainer>
                 <!-- Import/Export - Slider - Show Clothting -->
-                <BoxConta   iner Orientation="Vertical" MinSize="240 0" HorizontalExpand="True" HorizontalAlignment="Right">
+                <BoxContainer Orientation="Vertical" MinSize="240 0" HorizontalExpand="True" HorizontalAlignment="Right">
                     <!-- Import/Export -->
                     <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Center">
                         <ui:HighlightedContainer Name="ProfileHighlight">
                             <BoxContainer Orientation="Horizontal">
                                 <BoxContainer Orientation ="Vertical">
-                                    <Button Name="SaveButton" MinSize="180 40" Text="{Loc 'humanoid-profile-editor-save-button'}"/>
-                                    <Button Name="ResetButton" Disabled="True" MinSize="180 40" Text="{Loc 'humanoid-profile-editor-reset-button'}"/>
+                                    <Button Name="SaveButton" MinSize="160 40" Text="{Loc 'humanoid-profile-editor-save-button'}"/>
+                                    <Button Name="ResetButton" Disabled="True" MinSize="160 40" Text="{Loc 'humanoid-profile-editor-reset-button'}"/>
                                 </BoxContainer>
                                 <BoxContainer Orientation ="Vertical">
-                                    <Button Name="ImportButton" MinSize="180 40" Text="{Loc 'humanoid-profile-editor-import-button'}"/>
-                                    <Button Name="ExportButton" MinSize="180 40" Text="{Loc 'humanoid-profile-editor-export-button'}"/>
+                                    <Button Name="ImportButton" MinSize="160 40" Text="{Loc 'humanoid-profile-editor-import-button'}"/>
+                                    <Button Name="ExportButton" MinSize="160 40" Text="{Loc 'humanoid-profile-editor-export-button'}"/>
                                 </BoxContainer>
                                 <BoxContainer Orientation ="Vertical">
-                                    <Button Name="ExportImageButton" MinSize="180 40" Text="{Loc 'humanoid-profile-editor-export-image-button'}"/>
-                                    <Button Name="OpenImagesButton" MinSize="180 40" Text="{Loc 'humanoid-profile-editor-open-image-button'}"/>
+                                    <Button Name="ExportImageButton" MinSize="160 40" Text="{Loc 'humanoid-profile-editor-export-image-button'}"/>
+                                    <Button Name="OpenImagesButton" MinSize="160 40" Text="{Loc 'humanoid-profile-editor-open-image-button'}"/>
                                 </BoxContainer>
                             </BoxContainer>
                         </ui:HighlightedContainer>
