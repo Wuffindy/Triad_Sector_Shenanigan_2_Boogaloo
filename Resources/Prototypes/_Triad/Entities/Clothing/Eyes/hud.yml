@@ -3,6 +3,8 @@
   id: ClothingEyesHudSecurityTdf
   suffix: TDF
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/Eyes/Hud/tdf.rsi
   - type: Clothing

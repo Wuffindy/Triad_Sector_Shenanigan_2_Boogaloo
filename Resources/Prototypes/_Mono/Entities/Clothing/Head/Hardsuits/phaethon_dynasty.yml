@@ -5,6 +5,8 @@
   description: A combat hardsuit helmet designed by the Phaethon Dynasty. A basic monotube night vision system is installed.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/syndicate.rsi
   - type: Clothing
@@ -26,6 +28,8 @@
   description: A hardsuit helmet by the Phaethon Dynasty. Has a built-in medical HUD complemented by thermal pulse systems.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/pdv_medic.rsi
   - type: Clothing
@@ -62,6 +66,8 @@
   description: Based off of the CV-32 hardsuit, this tacsuit sacrifices heavy armor plates for environmental protection, and an advanced NVD suite.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/syndieelite.rsi
   - type: Clothing
@@ -83,6 +89,8 @@
   description: An adorned tacsuit designed with an imperfect nanolaminate composition. High maneuverability, sturdy armor.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/pdv_vizier.rsi
   - type: Clothing

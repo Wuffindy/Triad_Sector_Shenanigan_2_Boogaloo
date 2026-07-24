@@ -27,6 +27,8 @@
   name: chief enforcer's armored trenchcoat
   description: A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence. Has a nice and gold TDF stripe around the coat.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/ce_trenchcoat.rsi
   - type: Clothing
@@ -38,6 +40,8 @@
   name: TDF warden's armored jacket
   description: A sturdy, utilitarian jacket designed to protect a warden from any brig-bound threats.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden_jacket.rsi
   - type: Clothing
@@ -49,6 +53,8 @@
   name: TDF warden's armored coat
   description: A sturdy, utilitarian coat designed to protect a warden from any brig-bound threats and hypothermic events.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/tdf_warden.rsi
   - type: Clothing
@@ -67,6 +73,8 @@
   name: TFA high command armored dress coat
   description: A dress coat enhanced with a special alloy for some extra protection and style for Triad Frontier Association high command members.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Coats/high_command_jacket.rsi
   - type: Clothing

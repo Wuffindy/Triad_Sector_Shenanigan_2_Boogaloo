@@ -5,6 +5,8 @@
   description: An advanced pre-fracture harness. Incredibly rare, and practically alien in technology compared to modern tacsuits. Once equipped, the armor binds itself with the wearer and cannot be removed without external release.
   suffix: SelfUnremovable
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/asakim.rsi
   - type: Clothing

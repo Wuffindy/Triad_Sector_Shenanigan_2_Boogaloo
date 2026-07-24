@@ -5,6 +5,8 @@
   description: The interchangeable helmet system for the majority of TA-21 hardsuits. Has a newly fitted night vision optic, compared to NanoTrasen's original N-20 design.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hardsuits/tdf.rsi
   - type: Clothing
@@ -42,6 +44,8 @@
   name: TA-21 medic helmet
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-medic.rsi
   - type: Clothing
@@ -54,6 +58,8 @@
   description: An armored tacsuit helmet used by the TDF. Comes with an advanced heads-up display allowing you to view security and medical records.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hardsuits/tdf-chief.rsi
   - type: Clothing

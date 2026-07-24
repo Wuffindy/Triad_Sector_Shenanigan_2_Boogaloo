@@ -5,6 +5,8 @@
   description: Part of an advanced pre-fracture combat harness.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/asakim.rsi
   - type: Clothing

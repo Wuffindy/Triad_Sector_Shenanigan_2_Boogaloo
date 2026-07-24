@@ -4,6 +4,8 @@
   name: TSFMC type-45U combat uniform
   description: A combat uniform in TSF Type-45U urban camouflage. Its outfitted with a blue TSF flag armband.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/tsfmc.rsi
   - type: Clothing
@@ -18,6 +20,8 @@
   name: TSFMC type-47D combat uniform
   description: A combat uniform in TSF Type-47D desert camouflage. Its outfitted with a blue TSF flag armband.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/tsfmc_digital.rsi
   - type: Clothing
@@ -32,6 +36,8 @@
   name: TSFMC type-49C MOPP suit
   description: A heavy protective suit. It'll slow you down a bit, but it'll make sure nothing you don't want gets in your body. Be the bane of all Chimeras.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/mopp-tsfmc.rsi
   - type: Clothing
@@ -91,6 +97,8 @@
   name: TSFMC engineer uniform
   description: A combat uniform in TSF Type-45U urban camouflage. It has high-vis markings for engineers.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/tsfmcengi.rsi
   - type: Clothing
@@ -105,6 +113,8 @@
   name: TSFMC dress uniform
   description: A military dress uniform for special occasions, complete with stripes and rank insignia.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/tsfmcdressuni.rsi
   - type: Clothing
@@ -133,6 +143,8 @@
   name: rogue field suit
   description: A matte black tactical outfit worn by independent agents working on contracts. The red armband marks affiliation—loose as it may be.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/rogue/tactical.rsi
   - type: Clothing
@@ -147,6 +159,8 @@
   name: rogue field pants
   description: A matte black tactical outfit worn by independent agents working on contracts. The red ar- wait it's just the pants?
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/rogue/shirtless.rsi
   - type: Clothing
@@ -161,6 +175,8 @@
   name: rogue field suit (jeans)
   description: A matte black shirt paired with jeans. Worn by independent agents who prefer fieldwork with a bit more flexibility. The red armband still signals uncertain allegiance.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/rogue/tactical_jeans.rsi
   - type: Clothing
@@ -175,6 +191,8 @@
   name: rogue field suit (cargos)
   description: A matte black tactical top combined with durable brown cargo pants, suited for terrain-heavy contracts. Independent agents favor this blend of function and subtle defiance. The red armband stays—barely.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/rogue/tactical_cargo.rsi
   - type: Clothing
@@ -189,6 +207,8 @@
   name: rogue warm field suit
   description: A heavily insulated variant of the rogue field suit, lined for extreme environments. Built for survival without compromise.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Uniforms/Jumpsuit/rogue/warm.rsi
   - type: Clothing
@@ -343,6 +363,8 @@
   description: A uniform bearing the colours of an elite Spinward Syndicate member. Somehow still intact after all these years. # Triad - desc
   categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: StaticPrice
     price: 700
     vendPrice: 1150
@@ -361,6 +383,8 @@
   description: A uniform bearing the colours of an elite Spinward Syndicate member. Somehow still intact after all these years. # Triad - desc
   categories: [DoNotMap, HideSpawnMenu] # Triad
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: StaticPrice
     price: 700
     vendPrice: 1150

@@ -4,6 +4,8 @@
   name: PDV SCAF hardsuit
   description: An old SCAF suit painted in an PDV tan color scheme. The armor feels degraded, but lighter.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/scaf_pirate.rsi
   - type: Item
@@ -51,6 +53,8 @@
   name: PDV CV-32 combat hardsuit
   description: A combat hardsuit designed by the Phaethon Dynasty. A heavier but still general-purpose hardsuit, effective but not stellar against most damage types.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/syndicate.rsi
   - type: Clothing
@@ -73,6 +77,8 @@
   name: PDV CV-82 combat tacsuit
   description: A field medic combat hardsuit designed by the Phaethon Dynasty. The armor features various reinforced plating in vital areas.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/pdv_medic.rsi
   - type: Item
@@ -120,6 +126,8 @@
   name: PDV CV-67 combat tacsuit
   description: An adorned tacsuit designed with an imperfect nanolaminate composition. High maneuverability, sturdy armor.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/pdv_vizier.rsi
   - type: Clothing
@@ -142,6 +150,8 @@
   name: PDV CV-53 combat tacsuit
   description: Originally based off of the CV-32 hardsuit, the CV-53 tacsuit sacrifices conventional armor plating for environmental protection, and a rechargeable hard-shield.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/syndieelite.rsi
   - type: Clothing

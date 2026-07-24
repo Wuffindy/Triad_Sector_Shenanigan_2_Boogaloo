@@ -4,6 +4,8 @@
   id: ClothingHeadsetAltTsfmc
   name: TSFMC over-ear headset
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: ContainerFill
     containers:
       key_slots:
@@ -20,6 +22,8 @@
   id: ClothingHeadsetAltTsfmcCommander
   name: TSFMC command over-ear headset
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: ContainerFill
     containers:
       key_slots:
@@ -34,6 +38,8 @@
   id: ClothingHeadsetTsfmc
   name: TSFMC headset
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
   - type: Clothing
@@ -49,6 +55,8 @@
   id: ClothingHeadsetAltTsfmcMarsoc
   name: TSFMC MARSOC over-ear headset
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: ContainerFill
     containers:
       key_slots:
@@ -69,6 +77,8 @@
   id: ClothingHeadsetAltTsfmcMarsocFtl
   name: TSFMC MARSOC command over-ear headset
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: ContainerFill
     containers:
       key_slots:
@@ -118,25 +128,29 @@
   id: ClothingHeadsetAltVanguardCommand
   name: vanguard command over-ear headset
   components:
-    - type: Headset
-  #  - type: EncryptionKeyHolder #Mono parity with ClothingHeadset key capacity.
-  #      keySlots: 5
-    - type: ContainerFill
-      containers:
-        key_slots:
-          - EncryptionKeyFreelance
-          - EncryptionKeyVanguardCommand
-          - EncryptionKeyCommon # Mono
-    - type: Sprite
-      sprite: Clothing/Ears/Headsets/freelance.rsi
-    - type: Clothing
-      sprite: Clothing/Ears/Headsets/freelance.rsi
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
+  - type: Headset
+#  - type: EncryptionKeyHolder #Mono parity with ClothingHeadset key capacity.
+#      keySlots: 5
+  - type: ContainerFill
+    containers:
+      key_slots:
+        - EncryptionKeyFreelance
+        - EncryptionKeyVanguardCommand
+        - EncryptionKeyCommon # Mono
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/freelance.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/freelance.rsi
 
 #Overseer (Locker spare)
 - type: entity
   parent: ClothingHeadsetAltCentCom
   id: ClothingHeadsetAltCentComSR
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: ContainerFill
     containers:
       key_slots:

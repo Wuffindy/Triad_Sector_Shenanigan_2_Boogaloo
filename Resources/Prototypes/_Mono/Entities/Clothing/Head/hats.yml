@@ -147,6 +147,8 @@
   name: vizier cap
   description: A fashionable cap worn by the Vizier to denote his official status in the Phaethon dynasty above the rest of the Imperials.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: Clothing/Head/Hats/purplecap.rsi
   - type: Clothing

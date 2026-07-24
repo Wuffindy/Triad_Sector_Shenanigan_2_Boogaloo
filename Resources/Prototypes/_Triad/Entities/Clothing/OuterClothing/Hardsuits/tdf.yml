@@ -4,6 +4,8 @@
   name: TA-21 hardsuit
   description: Originally of NanoTrasen design, this hardsuit has been reverse-engineered by the TDF and is now issued to enforcers operating in low-pressure and high-risk environments. Specialized in bullet protection.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf.rsi
   - type: Item
@@ -50,6 +52,8 @@
   name: TA-21 medic hardsuit
   description: Medic variant of the TA-21 outfitted with caustic and radiological shielding. Some of the blunt-absorbent gel layer is sacrificed for the NBC protection.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-medic.rsi
   - type: Clothing
@@ -78,6 +82,8 @@
   name: TDF TA-35 'gilded' chief enforcer tacsuit
   description: A powerful tacsuit made from remains of a NT bulwark modsuit. Lightweight and capable of taking a lot of physical damage. A premium tacsuit for only the most prestiged of TDF enforcers.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/Hardsuits/tdf-chief.rsi
   - type: Clothing

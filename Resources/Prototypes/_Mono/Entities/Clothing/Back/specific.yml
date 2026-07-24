@@ -35,6 +35,8 @@
   name: solarian PMC backpack
   description: Part of a standard marine load bearing system.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Back/Backpacks/tsfmc.rsi
 
@@ -44,6 +46,8 @@
   name: solarian PMC duffel bag
   description: Part of a standard marine load bearing system.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Back/Duffels/tsfmc.rsi
 
@@ -53,6 +57,8 @@
   name: solarian PMC satchel
   description: Part of a standard marine load bearing system.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Back/Satchels/tsfmc.rsi
 
@@ -64,6 +70,8 @@
   name: vanguard tactical backpack
   description: A tactical backpack developed for the dynast troops of Helios.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Back/Backpacks/pdv.rsi
 
@@ -73,6 +81,8 @@
   name: vanguard tactical duffel
   description: A tactical duffel bag developed for the dynast troops of Helios.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Back/Duffels/pdv.rsi
 
@@ -82,5 +92,7 @@
   name: vanguard tactical satchel
   description: A tactical satchel developed for the dynast troops of Helios.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Back/Satchels/pdv.rsi

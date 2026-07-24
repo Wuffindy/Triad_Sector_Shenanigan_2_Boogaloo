@@ -5,6 +5,8 @@
   name: TFA high command jumpskirt
   description: Paper-pusher.
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/Uniforms/Jumpskirts/highcom.rsi
   - type: SavingContraband

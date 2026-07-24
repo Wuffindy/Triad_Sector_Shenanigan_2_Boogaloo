@@ -5,6 +5,8 @@
   categories: [ HideSpawnMenu ]
   name: high command hood
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/Head/Hoods/Coat/high_com.rsi
   - type: Clothing

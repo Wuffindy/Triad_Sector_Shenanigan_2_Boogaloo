@@ -5,6 +5,8 @@
   description: A hardsuit helmet with signature markings of the Viper Group. Has a built-in night-vision system complemented by flash resistant viewports.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/viper_group_standard.rsi
   - type: Clothing
@@ -45,6 +47,8 @@
   description: A hardsuit helmet with signature markings of the Viper Group. Has a built-in medical HUD complemented by thermal pulse systems.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/viper_group_medic.rsi
   - type: Clothing
@@ -81,6 +85,8 @@
   description: A hardsuit helmet with signature markings of the Viper Group. Has a built-in identity tracking HUD complemented by a night-vision system.
   categories: [ HideSpawnMenu ]
   components:
+  - type: Tag # Triad
+    tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Mono/Clothing/Head/Hardsuits/viper_group_juggernaut.rsi
   - type: Clothing
