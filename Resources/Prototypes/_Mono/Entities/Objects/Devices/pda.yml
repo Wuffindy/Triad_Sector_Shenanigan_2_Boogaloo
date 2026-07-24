@@ -157,6 +157,8 @@
   name: TSFMC engineer PDA
   description: A standard TSFMC personal computer.
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: TsfEngiIDCard
     bookSlot: # Frontier
@@ -188,6 +190,8 @@
   name: TSFMC MARSOC fire team leader PDA
   description: A standard TSFMC personal computer.
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: TsfMarsocFTLIDCard
   - type: CartridgeLoader
@@ -213,6 +217,8 @@
   name: TSFMC MARSOC operative PDA
   description: A standard TSFMC personal computer.
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: TsfMarsocIDCard
   - type: CartridgeLoader
@@ -238,6 +244,8 @@
   description: A basic personal computer for access restriction and organization, manufactured in the Phaethon Dynasty.
   abstract: true
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: CartridgeLoader
     preinstalled:
     - CrewManifestCartridge
@@ -267,6 +275,8 @@
   id: PDVRakhshanPDA
   name: PDV rakhshan PDA
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: PDVRakhshanIDCard
   - type: Appearance
@@ -287,6 +297,8 @@
   id: PDVGrandVizierPDA
   name: PDV grand vizier PDA
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: PDVGrandVizierIDCard
   - type: Appearance
@@ -316,6 +328,8 @@
   id: PDVAsvaranPDA
   name: PDV asvaran PDA
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: PDVAsvaranIDCard
   - type: Appearance
@@ -337,6 +351,8 @@
   id: PDVSpasakaPDA
   name: PDV spasaka PDA
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: PDVSpasakaIDCard
   - type: Appearance
@@ -357,6 +373,8 @@
   id: PDVDenasvarPDA
   name: PDV denasvar PDA
   components:
+  - type: Tag # Triad
+    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
   - type: Pda
     id: PDVDenasvarIDCard
   - type: Appearance
