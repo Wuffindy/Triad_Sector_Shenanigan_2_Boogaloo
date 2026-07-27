@@ -4,7 +4,7 @@
   name: chief enforcer's winter trenchcoat
   description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat.
   components:
-  - type: Tag # Triad
+  - type: Tag
     tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/WinterCoats/coatcearmored.rsi
@@ -24,7 +24,7 @@
   name: TFA high command winter coat
   description: A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. Very special. Usually worn by Triad Frontier Association officials.
   components:
-  - type: Tag # Triad
+  - type: Tag
     tags: [] # ignore "WhitelistChameleon" tag
   - type: Sprite
     sprite: _Triad/Clothing/OuterClothing/WinterCoats/high_command.rsi
