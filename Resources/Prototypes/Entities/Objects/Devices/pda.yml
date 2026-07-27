@@ -165,8 +165,9 @@
   id: BaseSecurityPDA
   abstract: true
   components:
-  - type: Tag # Triad, makes most linked Mono TSF pda unchameleonable
-    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
+  - type: Tag #Triad, Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
   - type: CartridgeLoader
     preinstalled:
     - CrewManifestCartridge

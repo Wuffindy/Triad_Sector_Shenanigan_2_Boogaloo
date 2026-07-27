@@ -3,8 +3,9 @@
   id: TriadBasePDA
   abstract: true
   components:
-  - type: Tag # removing the base chameleon for future faction pda, remove if planning to add non faction pda
-    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
+  - type: Tag # Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
   - type: Sprite
     sprite: _Triad/Objects/Devices/pda.rsi
     layers:

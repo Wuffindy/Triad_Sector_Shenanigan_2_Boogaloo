@@ -238,8 +238,9 @@
   description: A basic personal computer for access restriction and organization, manufactured in the Phaethon Dynasty.
   abstract: true
   components:
-  - type: Tag # Triad
-    tags: [ DoorBumpOpener ] # ignore "WhitelistChameleon" tag
+  - type: Tag #Triad, Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener
   - type: CartridgeLoader
     preinstalled:
     - CrewManifestCartridge
