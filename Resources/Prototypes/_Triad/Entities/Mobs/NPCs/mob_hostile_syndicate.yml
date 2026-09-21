@@ -1,0 +1,56 @@
+# Syndicate Juggernaut, "armed" with a modified L6
+- type: entity
+  name: syndicate juggernaut
+  parent: MobSyndicateNavalBase
+  id: MobSyndicateNavalJuggernaut
+  description: The syndicate's juggernaut, the most elite and fearsome ones. Armed with a modified L6 and the juggernaut suit.
+  components:
+    - type: Loadout
+      prototypes:
+        - SyndicateNavalJuggernautGear
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        100: Dead 
+    - type: MovementSpeedModifier
+      baseWalkSpeed : 3
+      baseSprintSpeed : 3
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        80: 0.8
+        100: 0.6
+    - type: Stamina
+      critThreshold: 500 # Extra hard to incapacitate and loot
+    - type: AutoImplant
+      implants:
+      - MicroBombImplant
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 0.2
+      rechargeSound:
+        path: /Audio/_NF/Effects/silence.ogg
+    - type: BasicEntityAmmoProvider
+      proto: Cartridge762x39mmFMJ
+      capacity: 40
+      count: 40
+    - type: Gun
+      showExamineText: false
+      minAngle: 8
+      maxAngle: 35
+      fireRate: 8
+      angleIncrease: 3
+      angleDecay: 3
+      selectedMode: Burst
+      availableModes:
+      - Burst
+      burstCooldown: 5
+      burstFireRate: 8
+      shotsPerBurst: 16
+      soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/l6_fire.ogg
+    - type: HTN
+      blackboard:
+        AggroVisionRadius: !type:Single
+          16
+        VisionRadius: !type:Single
+          16
+        RangedRange: !type:Single
+          16

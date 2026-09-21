@@ -473,8 +473,8 @@
 #    mask: ClothingMaskGasSyndicate
     neck: BedsheetSyndie
     jumpsuit: ClothingUniformJumpsuitSyndieFormalNF
-    outerClothing: ClothingOuterHardsuitSyndieBloodRedUnremoveable
-    head: ClothingHeadHelmetHardsuitSyndieUnremoveable
+    outerClothing: ClothingOuterHardsuitJuggernautUnremoveable # Triad
+    head: ClothingHeadHelmetHardsuitJuggernautUnremoveable # Triad
     gloves: ClothingHandsGlovesColorBlackAK
     shoes: ClothingShoesBootsMagSyndie
     back: ClothingBackpackSyndicateCommanderLootC

@@ -44,9 +44,23 @@
     deleteOrgans: true
     gib: false
     useArgumentEntity: true
+  - type: MobThresholds # Triad, removed crit to trigger rattles
+    thresholds:
+      0: Alive
+      100: Dead 
   - type: MovementSpeedModifier
     baseWalkSpeed : 4.5
     baseSprintSpeed : 4.5
+  # Triad Start
+  - type: HTN
+    blackboard:
+      AggroVisionRadius: !type:Single
+        11
+      VisionRadius: !type:Single
+        12
+      RangedRange: !type:Single
+        12
+    # Triad End
 
 # Humans
 # Syndicate Captain, "armed" with AP Python
@@ -54,7 +68,7 @@
   name: syndicate captain
   parent: MobSyndicateNavalBase
   id: MobSyndicateNavalCaptainA
-  description: The executive officer in lieu of the commander, syndicate captains ensure operations onboard go smoothly. Equipped with a 45_magnum revolver.
+  description: The executive officer in lieu of the commander, syndicate captains ensure operations onboard go smoothly. Equipped with a .45 magnum revolver. #Triad fix desc
   categories: [ HideSpawnMenu ]
   components:
     - type: Loadout
@@ -88,9 +102,7 @@
       prototypes:
         - SyndicateNavalCaptainGearB
     - type: BasicEntityAmmoProvider
-      proto: Bullet45_magnumFMJ
-      capacity: 1
-      count: 1
+      proto: Bullet45_magnumAP
 
 - type: entity
   parent: MobSyndicateNavalCaptainA
@@ -102,8 +114,6 @@
         - SyndicateNavalCaptainGearC
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumFMJ
-      capacity: 1
-      count: 1
 
 - type: entity
   parent: MobSyndicateNavalCaptainA
@@ -115,8 +125,6 @@
         - SyndicateNavalCaptainGearD
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumFMJ
-      capacity: 1
-      count: 1
 
 # Syndicate Engineer, "armed" with shotgun
 - type: entity
@@ -192,22 +200,28 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalMedicGearA
-    - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 2
+    - type: RechargeBasicEntityAmmo0
+      rechargeCooldown: 0.5
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateImpedrezene
-      capacity: 1
-      count: 1
+      proto: DartSyndicateToxin
+      capacity: 3
+      count: 3
     - type: Gun
       showExamineText: false
+      minAngle: 2
+      maxAngle: 16
       fireRate: 4
-      selectedMode: SemiAuto
+      angleIncrease: 4
+      angleDecay: 2
+      selectedMode: Burst
       availableModes:
-      - SemiAuto
-      soundGunshot:
-        collection: BulletMiss
+        - Burst
+      burstCooldown: 2
+      burstFireRate: 0.8
+      shotsPerBurst: 2
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/syringe_gun.ogg
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -217,6 +231,8 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalMedicGearB
+    - type: BasicEntityAmmoProvider
+      proto: DartSyndicatePhlogiston
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -227,9 +243,7 @@
       prototypes:
         - SyndicateNavalMedicGearB
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateTranquilizer
-      capacity: 1
-      count: 1
+      proto: DartSyndicateCarcinogen
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -240,9 +254,7 @@
       prototypes:
         - SyndicateNavalMedicGearD
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateTranquilizer
-      capacity: 1
-      count: 1
+      proto: DartSyndicateToxin
 
 # Second Officer, "armed" with Advanced Laser Pistol
 - type: entity
@@ -260,16 +272,19 @@
       fireCost: 100
     - type: BatterySelfRecharger
       autoRecharge: true
-      autoRechargeRate: 50
-    - type: Battery
-      maxCharge: 600
-      startingCharge: 600
+      autoRechargeRate: 200
+    - type: Battery # Triad increased max charges
+      maxCharge: 700
+      startingCharge: 700
     - type: Gun
       showExamineText: false
-      fireRate: 1
-      selectedMode: SemiAuto
+      fireRate: 1.6 # Triad increased fire rate
+      selectedMode: Burst
       availableModes:
-        - SemiAuto
+        - Burst
+      burstCooldown: 2
+      burstFireRate: 3
+      shotsPerBurst: 2
       soundGunshot: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
 
 - type: entity
@@ -298,9 +313,6 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalSecondOfficerGearD
-    - type: HitscanBatteryAmmoProvider
-      proto: RedLaser
-      fireCost: 50
 
 # Syndicate Security Operative, "armed" with Atreides SMG
 - type: entity
@@ -314,25 +326,31 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalOperatorGearA
+    - type: AutoImplant # Triad
+      implants:
+      - DeathAcidifierImplantNF
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1.5
+      rechargeCooldown: 0.2 # Triad reduced cooldown to work properly with Burst
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
-    - type: BasicEntityAmmoProvider
+    - type: BasicEntityAmmoProvider # Triad increased total ammo
       proto: Bullet9x19mmFMJ
-      capacity: 7
-      count: 7
-    - type: Gun
+      capacity: 15
+      count: 15
+    - type: Gun # Triad adjusted a bunch of stats for custom fire pattern
       showExamineText: false
-      minAngle: 10
+      minAngle: 5
       maxAngle: 30
-      fireRate: 5
-      angleIncrease: 3
-      angleDecay: 6
-      selectedMode: FullAuto
+      fireRate: 4
+      angleIncrease: 2
+      angleDecay: 2
+      selectedMode: Burst
       availableModes:
-        - FullAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/smg.ogg
+        - Burst
+      burstCooldown: 2
+      burstFireRate: 6
+      shotsPerBurst: 4
+      soundGunshot: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/atreides_fire.ogg
 
 - type: entity
   parent: MobSyndicateNavalOperatorA
@@ -436,26 +454,32 @@
   name: syndicate saboteur
   parent: MobSyndicateNavalBase
   id: MobSyndicateNavalSaboteurA
-  description: Specialist trained in the art of sabotaging NT shuttles and facilities. Equipped with EMP rounds, take caution.
+  description: Specialist trained in the art of sabotaging shuttles and facilities. Equipped with EMP rounds, take caution. # Triad, removed NT
   categories: [ HideSpawnMenu ]
   components:
     - type: Loadout
       prototypes:
         - SyndicateNavalSaboteurGearA
+    - type: AutoImplant
+      implants:
+      - DeathAcidifierImplantNF
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1
+      rechargeCooldown: 0.2
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
       proto: Bullet9x19mmEmp
-      capacity: 4
-      count: 4
+      capacity: 10
+      count: 10
     - type: Gun
       showExamineText: false
       fireRate: 6
-      selectedMode: FullAuto
+      selectedMode: Burst
       availableModes:
-      - FullAuto
+      - Burst
+      burstCooldown: 3
+      burstFireRate: 6
+      shotsPerBurst: 4
       soundGunshot:
         path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/viper_fire.ogg
 
@@ -533,26 +557,48 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalCommanderGearA
+      # Triad Start
+    - type: MobThresholds # Buffed health as a Boss
+      thresholds:
+        0: Alive
+        120: Critical
+        150: Dead 
+    - type: MovementSpeedModifier
+      baseWalkSpeed : 3
+      baseSprintSpeed : 3
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        80: 0.8
+        100: 0.7
+      # Triad End
     - type: Stamina
       critThreshold: 500 # Extra hard to incapacitate and loot
     - type: AutoImplant
       implants:
       - DeathRattleImplant
+      - MicroBombImplant # Triad
       #- DeathAcidifierImplantNF
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 1.5
+      rechargeCooldown: 0.2 # Triad reduced cooldown to work properly with Burst
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
-    - type: BasicEntityAmmoProvider
+    - type: BasicEntityAmmoProvider # Triad increased total ammo
       proto: Cartridge762x39mmFMJ
-      capacity: 4
-      count: 4
-    - type: Gun
+      capacity: 30
+      count: 30
+    - type: Gun # Triad adjusted a bunch of stats for custom fire pattern
       showExamineText: false
-      fireRate: 5
-      selectedMode: SemiAuto
+      minAngle: 5
+      maxAngle: 25
+      fireRate: 4
+      angleIncrease: 3
+      angleDecay: 3
+      selectedMode: Burst
       availableModes:
-      - SemiAuto
+      - Burst
+      burstCooldown: 3
+      burstFireRate: 6
+      shotsPerBurst: 5
       soundGunshot: /Audio/Weapons/Guns/Gunshots/rifle2.ogg
 
 - type: entity
@@ -565,15 +611,6 @@
         - SyndicateNavalCommanderGearB
     - type: BasicEntityAmmoProvider
       proto: Cartridge556x45mmFMJ
-      capacity: 4
-      count: 4
-    - type: Gun
-      showExamineText: false
-      fireRate: 5
-      selectedMode: SemiAuto
-      availableModes:
-      - SemiAuto
-      soundGunshot: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg
 
 - type: entity
   parent: MobSyndicateNavalCommanderB
@@ -608,16 +645,23 @@
       rechargeCooldown: 1
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
-    - type: BasicEntityAmmoProvider
+    - type: BasicEntityAmmoProvider # Triad increased total ammo
       proto: Bullet9x19mmFMJ
-      capacity: 4
-      count: 4
-    - type: Gun
+      capacity: 15
+      count: 15
+    - type: Gun # Triad adjusted a bunch of stats for custom fire pattern
       showExamineText: false
-      fireRate: 0.5
-      selectedMode: FullAuto
+      minAngle: 2
+      maxAngle: 16
+      fireRate: 4
+      angleIncrease: 5
+      angleDecay: 2
+      selectedMode: Burst
       availableModes:
-      - FullAuto
+      - Burst
+      burstCooldown: 1.6
+      burstFireRate: 4
+      shotsPerBurst: 2
       soundGunshot:
         path: /Audio/_Mono/Weapons/Guns/SmallArms/Gunshots/viper_fire.ogg
 
@@ -684,19 +728,22 @@
     prototypes:
     - SyndicateNavalChemwarriorGearA
   - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 2
+    rechargeCooldown: 0.4
     rechargeSound:
       path: /Audio/_NF/Effects/silence.ogg
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemCold
-    capacity: 3
-    count: 3
+    proto: SplatterChemAcid
+    capacity: 30
+    count: 30
   - type: Gun
     showExamineText: false
     fireRate: 4
-    selectedMode: SemiAuto
+    selectedMode: Burst
     availableModes:
-    - SemiAuto
+    - Burst
+    burstCooldown: 2
+    burstFireRate: 8
+    shotsPerBurst: 5
     soundGunshot: /Audio/Weapons/Guns/Gunshots/water_spray.ogg
 
 - type: entity
@@ -708,9 +755,7 @@
     prototypes:
     - SyndicateNavalChemwarriorGearB
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemDrugs
-    capacity: 1
-    count: 1
+    proto: SplatterChemAcid
 
 - type: entity
   parent: MobSyndicateNavalChemwarriorA
@@ -721,9 +766,7 @@
     prototypes:
     - SyndicateNavalChemwarriorGearC
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemMute
-    capacity: 1
-    count: 1
+    proto: SplatterChemAcid
 
 - type: entity
   parent: MobSyndicateNavalChemwarriorA
@@ -734,9 +777,7 @@
     prototypes:
     - SyndicateNavalChemwarriorGearD
   - type: BasicEntityAmmoProvider
-    proto: SplatterChemWeh
-    capacity: 1
-    count: 1
+    proto: SplatterChemAcid
 
 # Void Troopers
 # Syndicate Captain, "armed" with Python

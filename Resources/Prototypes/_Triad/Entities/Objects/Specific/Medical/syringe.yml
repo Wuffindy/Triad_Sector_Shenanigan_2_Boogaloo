@@ -1,0 +1,14 @@
+- type: entity
+  parent: PrefilledSyringe
+  suffix: saponin
+  id: SyringeSaponin
+  components:
+  - type: Label
+    currentLabel: reagent-name-saponin
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Saponin
+          Quantity: 15

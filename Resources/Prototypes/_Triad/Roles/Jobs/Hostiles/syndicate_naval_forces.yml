@@ -1,0 +1,11 @@
+# Juggernaut
+- type: startingGear
+  id: SyndicateNavalJuggernautGear
+  equipment:
+    head: ClothingHeadHelmetHardsuitJuggernautUnremoveable
+    jumpsuit: ClothingUniformJumpsuitSyndieFormalNF
+    shoes: ClothingShoesBootsMagSyndie
+    gloves: ClothingHandsGlovesColorBlackL6
+    mask: ClothingMaskGasSyndicate
+    outerClothing: ClothingOuterHardsuitJuggernautUnremoveable
+    pocket2: DoubleEmergencyAirTankFilled

@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingHandsGlovesColorBlackSMG
+  id: ClothingHandsGlovesColorBlackL6
+  name: combat gloves
+  suffix: china lake
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clothing
+    clothingVisuals:
+      gloves:
+      - sprite: Clothing/Hands/Gloves/Color/color.rsi
+        state: equipped-HAND
+        color: "#535353"
+      - sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+        state: inhand-left
