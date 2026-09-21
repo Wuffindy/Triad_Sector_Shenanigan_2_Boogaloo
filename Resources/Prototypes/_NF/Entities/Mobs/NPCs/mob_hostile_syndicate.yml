@@ -200,12 +200,12 @@
     - type: Loadout
       prototypes:
         - SyndicateNavalMedicGearA
-    - type: RechargeBasicEntityAmmo0
+    - type: RechargeBasicEntityAmmo
       rechargeCooldown: 0.5
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateToxin
+      proto: DartSyndicateSaponin
       capacity: 3
       count: 3
     - type: Gun
