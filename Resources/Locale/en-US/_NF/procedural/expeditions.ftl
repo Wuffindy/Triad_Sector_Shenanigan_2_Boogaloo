@@ -11,19 +11,7 @@ salvage-time-mod-standard-time = Normal Duration
 salvage-time-mod-rush = Rush
 
 salvage-weather-mod-heavy-snowfall = Heavy Snowfall
-salvage-weather-mod-medium-snowfall = Medium Snowfall
-salvage-weather-mod-light-snowfall = Light Snowfall
-salvage-weather-mod-heavy-ashfall = Heavy Ashfall
-salvage-weather-mod-medium-ashfall = Medium Ashfall
-salvage-weather-mod-light-ashfall = Light Ashfall
-salvage-weather-mod-fallout = Fallout
-salvage-weather-mod-heavy-sandstorm = Heavy Sandstorm
-salvage-weather-mod-sandstorm = Sandstorm
-salvage-weather-mod-hail = Hail
-salvage-weather-mod-rain-light = Light Rain
 salvage-weather-mod-rain = Rain
-salvage-weather-mod-storm = Storm
-salvage-weather-mod-none = Clear Weather
 
 salvage-biome-mod-shadow = Shadow
 
@@ -53,7 +41,3 @@ salvage-air-mod-16 = 34 CO2, 34 NH3, 34 N2O
 salvage-air-mod-17 = 34 H2O, 34 NH3, 34 N2O
 salvage-air-mod-18 = 34 H2O, 34 N2O, 17 NH3, 17 CO2
 salvage-air-mod-unknown = Unknown atmosphere
-
-salvage-expedition-difficulty-NFModerate = Moderate
-salvage-expedition-difficulty-NFHazardous = Hazardous
-salvage-expedition-difficulty-NFExtreme = Extreme
