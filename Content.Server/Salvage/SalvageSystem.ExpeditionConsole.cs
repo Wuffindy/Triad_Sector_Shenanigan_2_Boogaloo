@@ -78,7 +78,7 @@ public sealed partial class SalvageSystem
             var bounds = _transform.GetWorldMatrix(ourGrid).TransformBox(gridComp.LocalAABB).Enlarged(ShuttleFTLRange);
             var bodyQuery = GetEntityQuery<PhysicsComponent>();
             var otherGrids = new List<Entity<MapGridComponent>>();
-            _mapManager.FindGridsIntersecting(xform.MapID, bounds, ref otherGrids);
+            _mapSystem.FindGridsIntersecting(xform.MapID, bounds, ref otherGrids);
             // Keep track of docked grids to exclude them from the proximity check
 
             var dockedGrids = new HashSet<EntityUid>();
