@@ -1,5 +1,55 @@
 - type: entity
   parent: ClothingHandsGlovesColorBlackSMG
+  id: ClothingHandsGlovesColorBlackDualPython
+  name: combat gloves
+  suffix: python
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clothing
+    clothingVisuals:
+      gloves:
+      - sprite: Clothing/Hands/Gloves/Color/color.rsi
+        state: equipped-HAND
+        color: "#535353"
+      - sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+        state: inhand-left
+      - sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+        state: inhand-right
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlackSMG
+  id: ClothingHandsGlovesColorBlackC20r
+  name: combat gloves
+  suffix: c20r
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clothing
+    clothingVisuals:
+      gloves:
+      - sprite: Clothing/Hands/Gloves/Color/color.rsi
+        state: equipped-HAND
+        color: "#535353"
+      - sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+        state: inhand-left
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlackSMG
+  id: ClothingHandsGlovesColorBlackBulldog
+  name: combat gloves
+  suffix: bulldog
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Clothing
+    clothingVisuals:
+      gloves:
+      - sprite: Clothing/Hands/Gloves/Color/color.rsi
+        state: equipped-HAND
+        color: "#535353"
+      - sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+        state: inhand-left
+
+- type: entity
+  parent: ClothingHandsGlovesColorBlackSMG
   id: ClothingHandsGlovesColorBlackL6
   name: combat gloves
   suffix: china lake

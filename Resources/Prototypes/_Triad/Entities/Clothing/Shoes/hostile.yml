@@ -1,0 +1,8 @@
+# Syndicate Magboots NPC, Unremovable
+- type: entity
+  parent: ClothingShoesBootsMagSyndie
+  id: ClothingShoesBootsMagSyndieUnremoveable
+  name: cybersun juggernaut helmet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable

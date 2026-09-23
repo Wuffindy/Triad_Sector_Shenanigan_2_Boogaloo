@@ -57,9 +57,9 @@
       AggroVisionRadius: !type:Single
         11
       VisionRadius: !type:Single
-        12
+        11
       RangedRange: !type:Single
-        12
+        11
     # Triad End
 
 # Humans
@@ -73,7 +73,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCaptainGearA
+        - SyndicateNavalCaptainGearT1
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 0.75
       rechargeSound:
@@ -100,7 +100,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCaptainGearB
+        - SyndicateNavalCaptainGearT1
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumAP
 
@@ -111,7 +111,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCaptainGearC
+        - SyndicateNavalCaptainGearT1
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumFMJ
 
@@ -122,7 +122,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCaptainGearD
+        - SyndicateNavalCaptainGearT1
     - type: BasicEntityAmmoProvider
       proto: Bullet45_magnumFMJ
 
@@ -136,13 +136,13 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalEngineerGearA
+        - SyndicateNavalEngineerGearT1
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 2
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: ShellShotgun12_gaugeSlug
+      proto: ShellShotgun12_gaugeBuckshot
       capacity: 1
       count: 1
     - type: Gun
@@ -160,11 +160,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalEngineerGearB
-    - type: BasicEntityAmmoProvider
-      proto: ShellShotgun12_gaugeBuckshot
-      capacity: 1
-      count: 1
+        - SyndicateNavalEngineerGearT1
 
 - type: entity
   parent: MobSyndicateNavalEngineerB
@@ -173,7 +169,9 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalEngineerGearC
+        - SyndicateNavalEngineerGearT1
+    - type: BasicEntityAmmoProvider
+      proto: ShellShotgun12_gaugeSlug
 
 - type: entity
   parent: MobSyndicateNavalEngineerB
@@ -182,12 +180,21 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalEngineerGearD
-    - type: BasicEntityAmmoProvider
-      proto: Pellet12_gaugeBeanbag
-      capacity: 1
-      count: 1
-
+        - SyndicateNavalEngineerGearT2 #Triad : T2 Blood Red + Bulldog
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 0.5
+      rechargeSound:
+        path: /Audio/_NF/Effects/silence.ogg
+    - type: Gun
+      showExamineText: false
+      fireRate: 2 # Triad increased fire rate
+      selectedMode: Burst
+      availableModes:
+        - Burst
+      burstCooldown: 3.5
+      burstFireRate: 1.5
+      shotsPerBurst: 2
+      soundGunshot: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
 # Syndicate "Medic", throws poisoned darts laced with 2u of Impedrezene (hallucinogenic, deals minor poison damage, makes you barf and slows you down)
 # Look for darts here: /Resources/Prototypes/_NF/Entities/Objects/Weapons/Throwable/throwable_weapons.yml
 - type: entity
@@ -205,13 +212,13 @@
       rechargeSound:
         path: /Audio/_NF/Effects/silence.ogg
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateSaponin
+      proto: DartSyndicateToxin
       capacity: 3
       count: 3
     - type: Gun
       showExamineText: false
       minAngle: 2
-      maxAngle: 16
+      maxAngle: 12
       fireRate: 4
       angleIncrease: 4
       angleDecay: 2
@@ -219,7 +226,7 @@
       availableModes:
         - Burst
       burstCooldown: 2
-      burstFireRate: 0.8
+      burstFireRate: 1.2
       shotsPerBurst: 2
       soundGunshot: /Audio/Weapons/Guns/Gunshots/syringe_gun.ogg
 
@@ -232,7 +239,7 @@
       prototypes:
         - SyndicateNavalMedicGearB
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicatePhlogiston
+      proto: DartSyndicateCarcinogen
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -243,7 +250,7 @@
       prototypes:
         - SyndicateNavalMedicGearB
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateCarcinogen
+      proto: DartSyndicatePhlogiston
 
 - type: entity
   parent: MobSyndicateNavalMedicA
@@ -254,7 +261,7 @@
       prototypes:
         - SyndicateNavalMedicGearD
     - type: BasicEntityAmmoProvider
-      proto: DartSyndicateToxin
+      proto: DartSyndicateSaponin
 
 # Second Officer, "armed" with Advanced Laser Pistol
 - type: entity
@@ -325,7 +332,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalOperatorGearA
+        - SyndicateNavalOperatorGearT1
     - type: AutoImplant # Triad
       implants:
       - DeathAcidifierImplantNF
@@ -359,7 +366,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalOperatorGearB
+        - SyndicateNavalOperatorGearT1
 
 - type: entity
   parent: MobSyndicateNavalOperatorA
@@ -368,7 +375,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalOperatorGearC
+        - SyndicateNavalOperatorGearT1
 
 - type: entity
   parent: MobSyndicateNavalOperatorA
@@ -377,7 +384,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalOperatorGearD
+        - SyndicateNavalOperatorGearT1
 
 # Syndicate Grenadier, "armed" with china lake
 - type: entity
@@ -390,7 +397,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalGrenadierGearA
+        - SyndicateNavalGrenadierGearT1
     - type: AutoImplant
       implants:
       - DeathAcidifierImplantNF
@@ -417,7 +424,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalGrenadierGearB
+        - SyndicateNavalGrenadierGearT1
     - type: BasicEntityAmmoProvider
       proto: 40mmGrenadeThermobaric
       capacity: 1
@@ -430,7 +437,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalGrenadierGearC
+        - SyndicateNavalGrenadierGearT1
     - type: BasicEntityAmmoProvider
       proto: 40mmGrenadeBaton
       capacity: 1
@@ -443,7 +450,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalGrenadierGearD
+        - SyndicateNavalGrenadierGearT1
     - type: BasicEntityAmmoProvider
       proto: 40mmGrenadeFlash
       capacity: 2
@@ -459,7 +466,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalSaboteurGearA
+        - SyndicateNavalSaboteurGearT1
     - type: AutoImplant
       implants:
       - DeathAcidifierImplantNF
@@ -490,7 +497,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalSaboteurGearB
+        - SyndicateNavalSaboteurGearT1
 
 - type: entity
   parent: MobSyndicateNavalSaboteurA
@@ -499,7 +506,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalSaboteurGearC
+        - SyndicateNavalSaboteurGearT1
 
 - type: entity
   parent: MobSyndicateNavalSaboteurA
@@ -508,7 +515,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalSaboteurGearD
+        - SyndicateNavalSaboteurGearT1
 
 # Hostile Victim of Experimentation, "armed" with shiv
 - type: entity
@@ -556,7 +563,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCommanderGearA
+        - SyndicateNavalCommanderGearV1
       # Triad Start
     - type: MobThresholds # Buffed health as a Boss
       thresholds:
@@ -608,7 +615,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCommanderGearB
+        - SyndicateNavalCommanderGearV1
     - type: BasicEntityAmmoProvider
       proto: Cartridge556x45mmFMJ
 
@@ -619,7 +626,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCommanderGearC
+        - SyndicateNavalCommanderGearV1
 
 - type: entity
   parent: MobSyndicateNavalCommanderB
@@ -628,7 +635,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalCommanderGearD
+        - SyndicateNavalCommanderGearV1
 
 # Syndicate Deckhand, "armed" with Viper
 - type: entity
@@ -640,7 +647,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalDeckhandGearA
+        - SyndicateNavalDeckhandGearT1
     - type: RechargeBasicEntityAmmo
       rechargeCooldown: 1
       rechargeSound:
@@ -672,7 +679,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalDeckhandGearB
+        - SyndicateNavalDeckhandGearT1
 
 - type: entity
   parent: MobSyndicateNavalDeckhandA
@@ -681,7 +688,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalDeckhandGearC
+        - SyndicateNavalDeckhandGearT1
 
 - type: entity
   parent: MobSyndicateNavalDeckhandA
@@ -690,7 +697,7 @@
   components:
     - type: Loadout
       prototypes:
-        - SyndicateNavalDeckhandGearD
+        - SyndicateNavalDeckhandGearT1
 
 # Syndicate Mime, melee, "armed" with chainsaw
 - type: entity

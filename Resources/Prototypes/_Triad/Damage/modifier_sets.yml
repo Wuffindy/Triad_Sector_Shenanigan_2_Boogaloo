@@ -1,0 +1,16 @@
+# Mech Modifier Sets
+- type: damageModifierSet
+  id: MobMechBaseDamageModifierSet
+  coefficients:
+    Structural: 1.2
+    Blunt: 0.75
+    Slash: 0.5
+    Piercing: 0.6
+    Shock: 1.5
+    Caustic: 0.9
+    Radiation: 1.2
+    Cold: 0.0
+    Poison: 0.0
+    Asphyxiation: 0.0
+    Bloodloss: 0.0
+    Cellular: 0.0

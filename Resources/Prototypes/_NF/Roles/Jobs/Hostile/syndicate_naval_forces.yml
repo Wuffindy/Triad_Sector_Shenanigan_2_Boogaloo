@@ -447,7 +447,7 @@
     outerClothing: ClothingOuterHardsuitSyndieEliteUnremoveable
     head: ClothingHeadHelmetHardsuitSyndieEliteUnremoveable
     gloves: ClothingHandsGlovesColorBlackAK
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     back: ClothingBackpackSyndicateCommanderLootA
     pocket2: DoubleEmergencyAirTankFilled
   inhand:
@@ -461,7 +461,7 @@
     outerClothing: ClothingOuterHardsuitSyndieEliteUnremoveable
     head: ClothingHeadHelmetHardsuitSyndieEliteUnremoveable
     gloves: ClothingHandsGlovesColorBlackAK
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     back: ClothingBackpackSyndicateCommanderLootB
     pocket2: DoubleEmergencyAirTankFilled
   inhand:
@@ -476,7 +476,7 @@
     outerClothing: ClothingOuterHardsuitJuggernautUnremoveable # Triad
     head: ClothingHeadHelmetHardsuitJuggernautUnremoveable # Triad
     gloves: ClothingHandsGlovesColorBlackAK
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     back: ClothingBackpackSyndicateCommanderLootC
     pocket2: DoubleEmergencyAirTankFilled
   inhand:
@@ -490,7 +490,7 @@
     outerClothing: ClothingOuterHardsuitSyndieBloodRedUnremoveable
     head: ClothingHeadHelmetHardsuitSyndieUnremoveable
     gloves: ClothingHandsGlovesColorBlackAK
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     back: ClothingBackpackSyndicateCommanderLootD
     pocket2: DoubleEmergencyAirTankFilled
   inhand:
@@ -633,7 +633,7 @@
     head: ClothingHeadHelmetSyndicate
     outerClothing: ClothingOuterHardsuitSyndicate
     jumpsuit: ClothingUniformJumpsuitRecruitSyndieNF
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     gloves: ClothingHandsGlovesColorBlackPistol
     back: ClothingBackpackSyndicateDeckhandLootA
     pocket2: DoubleEmergencyAirTankFilled
@@ -647,7 +647,7 @@
     head: ClothingHeadHelmetSyndicate
     outerClothing: ClothingOuterHardsuitSyndicate
     jumpsuit: ClothingUniformJumpsuitChiefEngineerSyndieNF
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     gloves: ClothingHandsGlovesColorBlackShotgun
     belt: ClothingBeltUtility
 #    mask: ClothingMaskGasSyndicate
@@ -662,7 +662,7 @@
     head: ClothingHeadHelmetHardsuitSyndieUnremoveable
     jumpsuit: ClothingUniformJumpsuitOperative
     back: ClothingBackpackSyndicateOperativeLootA
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     gloves: ClothingHandsGlovesColorBlackSMG
     belt: ClothingBeltMilitaryWebbing
 #    mask: ClothingMaskGasSyndicate
@@ -676,7 +676,7 @@
   equipment:
     head: ClothingHeadHatHoodBioArmoredSyndicate
     jumpsuit: ClothingUniformJumpsuitRecruitSyndieNF
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     gloves: ClothingHandsGlovesColorBlackLaserPistol
     eyes: ClothingEyesGlassesSunglasses
     belt: ClothingBeltMilitaryWebbing
@@ -692,7 +692,7 @@
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieEliteUnremoveable
     jumpsuit: ClothingUniformJumpsuitSyndieFormalNF
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     gloves: ClothingHandsGlovesColorBlackPython
     neck: ClothingNeckScarfStripedSyndieRed
 #    mask: ClothingMaskGasSyndicate
@@ -708,7 +708,7 @@
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieMedicUnremoveable
     jumpsuit: ClothingUniformJumpsuitParamedicSyndieNF
-    shoes: ClothingShoesBootsMagSyndie
+    shoes: ClothingShoesBootsMagSyndieUnremoveable
     belt: ClothingBeltMedicalFilled
     neck: ClothingNeckStethoscope
 #    mask: ClothingMaskGasSyndicate

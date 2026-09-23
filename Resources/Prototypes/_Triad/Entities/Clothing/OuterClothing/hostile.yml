@@ -1,9 +1,16 @@
 # Syndicate Juggernaut NPC, Unremovable
 - type: entity
-  parent:
-  - ClothingOuterHardsuitJuggernaut
+  parent: ClothingOuterHardsuitJuggernaut
   id: ClothingOuterHardsuitJuggernautUnremoveable
   name: cybersun juggernaut suit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Unremoveable
+
+- type: entity
+  parent: ClothingOuterSuitBombSyndie
+  id: ClothingOuterSuitBombSyndieUnremovable
+  name: syndicate bomb suit
   categories: [ HideSpawnMenu ]
   components:
   - type: Unremoveable
