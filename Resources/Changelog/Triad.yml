@@ -4901,3 +4901,98 @@ Entries:
   id: 2610
   time: '2026-09-21T03:27:37.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/649
+- author: TheRealMasterChief117
+  changes:
+    - type: Fix
+      message: >-
+        Fixed some items inside of safety deposit boxes, specifically nested
+        storage, not initializing properly to where they have infinite use delay
+        or contraband permit data is erased.
+    - type: Fix
+      message: Fixed safety deposit consoles not having powered states.
+    - type: Fix
+      message: Fixed safety deposit consoles not having keyboard sounds on UI activate.
+  id: 2611
+  time: '2026-09-21T19:57:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/652
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed ship filename not sanitized
+  id: 2612
+  time: '2026-09-21T20:05:42.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/640
+- author: Stedar111
+  changes:
+    - type: Add
+      message: >-
+        Added the Bombadier, a brand new hybrid grenade launcher/shotgun hybrid
+        for the mercs and TDF!  Only takes 12 gauge box mags and 18.5x76mm box
+        mags, no drums.
+    - type: Add
+      message: >-
+        Added 18.5x76mm, a brand new caliber with exotic payloads (8 different
+        round types total!), can be researched, obtained through factional
+        techdisks, or bought via a tdf uplink.
+    - type: Tweak
+      message: >-
+        Changed Burner to take 18.5x76mm, fire slightly faster and have actual
+        accuracy! (Still unobtainable)
+    - type: Tweak
+      message: >-
+        Changed 12 gauge drum magazines to hold 12 shells, bulldog users
+        rejoice!
+  id: 2613
+  time: '2026-09-21T20:16:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/648
+- author: Dizzy-Eevee
+  changes:
+    - type: Fix
+      message: Fixed modsuit guns not working after being loaded from a ship/stash.
+  id: 2614
+  time: '2026-09-22T02:20:56.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/653
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Reworked the thermal properties of heat exchangers and gas channels
+        within nuclear reactors- heat exchangers are far better at conducting
+        and moving heat now than they were, and now actually worth using in
+        reactor designs for their listed purpose.
+  id: 2615
+  time: '2026-09-22T10:17:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/639
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Tweaked some areas on Anomalous Lab and replaced its all-comms telecomms
+        server with a science one.
+  id: 2616
+  time: '2026-09-22T20:48:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/655
+- author: Skybailey-dev
+  changes:
+    - type: Add
+      message: >-
+        Added a recipe for using plutonium and other materials to make RTG
+        flatpacks!
+    - type: Add
+      message: >-
+        You can now scrap antique power cells for trace amounts of plutonium! 10
+        will get you one bar.
+    - type: Tweak
+      message: >-
+        Changed the antique power cell's description to hint at it containing
+        plutonium!
+  id: 2617
+  time: '2026-09-22T21:20:09.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/654
+- author: Skybailey-dev
+  changes:
+    - type: Fix
+      message: RTG flatpacks no longer called RTG Generator flatpacks.
+  id: 2618
+  time: '2026-09-23T04:33:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/657
