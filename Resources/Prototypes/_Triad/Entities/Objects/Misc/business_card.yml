@@ -7,19 +7,9 @@
       tags:
       - Paper
       - Card
-    - type: Sprite
-      sprite: _Triad/Objects/Misc/business_card.rsi
-      layers:
-      - state: business_card
-      - state: business_card-words
-        map: ["enum.PaperVisualLayers.Writing"]
-        visible: false
-      - state: paper_stamp-generic
-        sprite: Objects/Misc/bureaucracy.rsi
-        map: ["enum.PaperVisualLayers.Stamp"]
-        visible: false
     - type: Flammable
-      resisting: true # Premium business cards (for the sake of players, lore and memo)
+      # resisting: true # Resistant but not damage proof business cards
+      canResistFire: true
     - type: Paper
     - type: PaperVisuals
       headerMargin: 0.0, 2.0, 0.0, 0.0
@@ -101,5 +91,62 @@
       backgroundModulate: "#121212"
       backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
       contentMargin: 4.0, 4.0, 4.0, 4.0
-      fontAccentColor: White
+      maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: BusinessCardSilver
+  name: business card
+  parent: BaseBusinessCard
+  description: Silver metallic card, a premium for proffesionals.
+  components:
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card
+        color: "#636363"
+      - state: business_card-words
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+      - state: business_card-shine
+    - type: Paper
+      content: business-card-template-black
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundModulate: "#414141"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: BusinessCardGold
+  name: business card
+  parent: BaseBusinessCard
+  description: Golden metallic card, a premium for proffesionals.
+  components:
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card
+        color: "#f8ba46"
+      - state: business_card-words
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+      - state: business_card-shine
+    - type: Paper
+      content: business-card-template-white
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundModulate: "#e0b32b"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
       maxWritableArea: 400.0, 256.0
