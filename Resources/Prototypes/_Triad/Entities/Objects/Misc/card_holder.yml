@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, RecyclableItemNoMats]
+  parent: [BaseStorageItem, Clothing, RecyclableItemNoMats]
   id: BaseBusinessCardHolder
   name: card holder
   abstract: true
@@ -7,29 +7,69 @@
   - type: Item
     size: Small
     shape:
-    - 0,0,1,0
+    - 0,0,0,1
   - type: Storage
-    maxItemSize: tiny
+    storageInsertSound:
+        collection: cardSlide
+    storageOpenSound:
+        collection: cardSlide
+    maxItemSize: Tiny
     grid:
-    - 0,0,2,0
+    - 0,0,1,5
     quickInsert: true
     areaInsert: true
     whitelist:
       tags:
+      - Paper
       - Card
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
+    blacklist:
+      tags:
+      - Book
+  - type: UseDelay # Mono
+    delay: 0.1
+  - type: Clothing
+    slots: [wallet]
+    quickEquip: false
+  - type: Appearance
+  # - type: ContainerContainer
+  #   containers:
+  #     storagebase: !type:Container
+  #       ents: []
+  - type: ItemMapper
+    mapLayers:
+      closed-paper:
+        whitelist:
+          components:
+          - Paper
+          - Card
+  - type: GenericVisualizer
+    visuals:
+      enum.SharedBagOpenVisuals.BagState:
+        closeLayer:
+          Open: { visible: false }
+          Closed: { visible: true }
+        openLayer:
+          Open: { visible: true }
+          Closed: { visible: false }
+        closed-paper:
+          Open: { state: open-paper }
+          Closed: { state: closed-paper }
   - type: StaticPrice
     price: 0.01
 
 - type: entity
   parent: BaseBusinessCardHolder
-  id: MetalCardHolder
+  id: CardHolder
   name: card holder
   components:
   - type: Sprite
-    sprite: _Triad/Objects/Misc/card_holder.rsi #to sprite
+    sprite: _Triad/Objects/Misc/card_holder.rsi
     layers:
-    - state: card_holder-metal
+    - state: closed
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+      visible: false
+    - state: closed-paper
+      map: ["closed-paper"]
+      visible: false

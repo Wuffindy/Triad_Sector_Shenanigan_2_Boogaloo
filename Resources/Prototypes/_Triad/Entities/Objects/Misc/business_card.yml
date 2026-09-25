@@ -3,18 +3,19 @@
   parent: Paper
   abstract: true
   components:
-    - type: tags
+    - type: Tag
       tags:
       - Paper
       - Card
     - type: Sprite
-      sprite: Objects/Misc/bureaucracy.rsi
+      sprite: _Triad/Objects/Misc/business_card.rsi
       layers:
       - state: business_card
       - state: business_card-words
         map: ["enum.PaperVisualLayers.Writing"]
         visible: false
       - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
         map: ["enum.PaperVisualLayers.Stamp"]
         visible: false
     - type: Flammable
@@ -27,7 +28,27 @@
       contentMargin: 4.0, 4.0, 4.0, 4.0
       maxWritableArea: 400.0, 256.0
     - type: Engraveable
-
+    - type: EmitSoundOnPickup
+      sound:
+        collection: cardSlide
+    - type: EmitSoundOnDrop
+      sound:
+        collection: cardPlace
+    - type: EmitSoundOnUse
+      sound:
+        path: /Audio/_Goobstation/Items/handling/paper_use.ogg
+        params:
+          volume: -6
+    - type: EmitSoundOnCollide
+      sound:
+        collection: cardShove
+    - type: EmitSoundOnThrow
+      sound:
+        collection: cardSlide
+    - type: EmitSoundOnLand
+      sound:
+        collection: cardPlace
+        
 - type: entity
   id: BusinessCardWhite
   name: business card
@@ -35,16 +56,18 @@
   description: A business card printed with a bone color
   components:
     - type: Sprite
-      sprite: Objects/Misc/bureaucracy.rsi
+      sprite: _Triad/Objects/Misc/business_card.rsi
       layers:
-      - state: business_card
-      - state: business_card
+      - state: business_card  
+      - state: business_card-words
         map: ["enum.PaperVisualLayers.Writing"]
         visible: false
       - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
         map: ["enum.PaperVisualLayers.Stamp"]
         visible: false
     - type: Paper
+      content: business-card-template-white
     - type: PaperVisuals
       headerMargin: 0.0, 2.0, 0.0, 0.0
       backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
@@ -59,30 +82,24 @@
   description: Business card in black, for the discerning professional.
   components:
     - type: Sprite
-      sprite: Objects/Misc/bureaucracy.rsi
+      sprite: _Triad/Objects/Misc/business_card.rsi
       layers:
       - state: business_card
-      - state: business_card
+        color: "#363636"
+      - state: business_card-words
         map: ["enum.PaperVisualLayers.Writing"]
         visible: false
       - state: paper_stamp-generic
+        sprite: Objects/Misc/bureaucracy.rsi
         map: ["enum.PaperVisualLayers.Stamp"]
         visible: false
     - type: Paper
+      content: business-card-template-black
     - type: PaperVisuals
       headerMargin: 0.0, 2.0, 0.0, 0.0
       backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
-      backgroundModulate: "#363636"
+      backgroundModulate: "#121212"
       backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
       contentMargin: 4.0, 4.0, 4.0, 4.0
-      DefaultTextColor: "#FFFFFF"
+      fontAccentColor: White
       maxWritableArea: 400.0, 256.0
-    # - type: Item
-    #   inhandVisuals:
-    #     left:
-    #     - state: paper-inhand-left
-    #       color: "#363636"
-    #     right:
-    #     - state: paper-inhand-right
-    #       color: "#363636"
-    - type: Engraveable
