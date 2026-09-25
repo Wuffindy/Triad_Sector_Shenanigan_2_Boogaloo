@@ -1,0 +1,88 @@
+- type: entity
+  id: BaseBusinessCard
+  parent: Paper
+  abstract: true
+  components:
+    - type: tags
+      tags:
+      - Paper
+      - Card
+    - type: Sprite
+      sprite: Objects/Misc/bureaucracy.rsi
+      layers:
+      - state: business_card
+      - state: business_card-words
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+    - type: Flammable
+      resisting: true # Premium business cards (for the sake of players, lore and memo)
+    - type: Paper
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      maxWritableArea: 400.0, 256.0
+    - type: Engraveable
+
+- type: entity
+  id: BusinessCardWhite
+  name: business card
+  parent: BaseBusinessCard
+  description: A business card printed with a bone color
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/bureaucracy.rsi
+      layers:
+      - state: business_card
+      - state: business_card
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+    - type: Paper
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: BusinessCardBlack
+  name: business card
+  parent: BaseBusinessCard
+  description: Business card in black, for the discerning professional.
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/bureaucracy.rsi
+      layers:
+      - state: business_card
+      - state: business_card
+        map: ["enum.PaperVisualLayers.Writing"]
+        visible: false
+      - state: paper_stamp-generic
+        map: ["enum.PaperVisualLayers.Stamp"]
+        visible: false
+    - type: Paper
+    - type: PaperVisuals
+      headerMargin: 0.0, 2.0, 0.0, 0.0
+      backgroundImagePath: "/Textures/Interface/Paper/paper_background_default.svg.96dpi.png"
+      backgroundModulate: "#363636"
+      backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
+      contentMargin: 4.0, 4.0, 4.0, 4.0
+      DefaultTextColor: "#FFFFFF"
+      maxWritableArea: 400.0, 256.0
+    # - type: Item
+    #   inhandVisuals:
+    #     left:
+    #     - state: paper-inhand-left
+    #       color: "#363636"
+    #     right:
+    #     - state: paper-inhand-right
+    #       color: "#363636"
+    - type: Engraveable

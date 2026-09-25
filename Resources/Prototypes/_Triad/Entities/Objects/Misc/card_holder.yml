@@ -1,0 +1,35 @@
+- type: entity
+  parent: [BaseItem, RecyclableItemNoMats]
+  id: BaseBusinessCardHolder
+  name: card holder
+  abstract: true
+  components:
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,0
+  - type: Storage
+    maxItemSize: tiny
+    grid:
+    - 0,0,2,0
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      tags:
+      - Card
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: StaticPrice
+    price: 0.01
+
+- type: entity
+  parent: BaseBusinessCardHolder
+  id: MetalCardHolder
+  name: card holder
+  components:
+  - type: Sprite
+    sprite: _Triad/Objects/Misc/card_holder.rsi #to sprite
+    layers:
+    - state: card_holder-metal
