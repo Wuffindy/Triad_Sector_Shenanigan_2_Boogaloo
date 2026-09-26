@@ -8,7 +8,7 @@
       - Paper
       - Card
     - type: Flammable
-      # resisting: true # Resistant but not damage proof business cards
+      resisting: true # Resistant but not damage proof business cards
       canResistFire: true
     - type: Paper
     - type: PaperVisuals
@@ -150,3 +150,38 @@
       backgroundPatchMargin: 16.0, 16.0, 16.0, 16.0
       contentMargin: 4.0, 4.0, 4.0, 4.0
       maxWritableArea: 400.0, 256.0
+
+- type: entity
+  id: BusinessCardPackWhite
+  name: business card pack (white)
+  parent: BaseItem
+  description: a pack of 12 white business card
+  components:
+    - type: Item
+      size: Tiny
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card-stack
+    - type: SpawnItemsOnUse
+      items:
+      - id: BusinessCardWhite
+        amount: 12
+
+- type: entity
+  id: BusinessCardPackBlack
+  name: business card pack (black)
+  parent: BaseItem
+  description: a pack of 12 black business card
+  components:
+    - type: Item
+      size: Tiny
+    - type: Sprite
+      sprite: _Triad/Objects/Misc/business_card.rsi
+      layers:
+      - state: business_card-stack
+        color: "#363636"
+    - type: SpawnItemsOnUse
+      items:
+      - id: BusinessCardBlack
+        amount: 12

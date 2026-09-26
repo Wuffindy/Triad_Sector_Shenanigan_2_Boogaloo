@@ -1009,6 +1009,9 @@
   - ContractorBoxFolderMedicalDoctor
   - ContractorBrbSign
   - ContractorHandLabeler
+  - ContractorCardHolder # Triad - Card Holders
+  - ContractorBusinessCardPackWhite # Triad 
+  - ContractorBusinessCardPackBlack # Triad
   - ContractorStampsApprovedDenied
   - ContractorRubberStampCaptain
   - ContractorRubberStampChaplain

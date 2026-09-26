@@ -31,10 +31,6 @@
     slots: [wallet]
     quickEquip: false
   - type: Appearance
-  # - type: ContainerContainer
-  #   containers:
-  #     storagebase: !type:Container
-  #       ents: []
   - type: ItemMapper
     mapLayers:
       closed-paper:
@@ -73,3 +69,25 @@
     - state: closed-paper
       map: ["closed-paper"]
       visible: false
+
+- type: entity
+  parent: CardHolder
+  id: CardHolderFilledWhite
+  name: business card pack (white) 
+  suffix: Filled, white
+  components:
+  - type: OpenTriggeredStorageFill
+    contents:
+    - id: BusinessCardWhite
+      amount: 12
+
+- type: entity
+  parent: CardHolder
+  id: CardHolderFilledBlack
+  name: business card pack (black)
+  suffix: Filled, Black
+  components:
+  - type: OpenTriggeredStorageFill
+    contents:
+    - id: BusinessCardBlack
+      amount: 12
