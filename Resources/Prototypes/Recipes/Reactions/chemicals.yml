@@ -203,7 +203,7 @@
       rangePerUnit: 0.2
       maxRange: 6
       energyConsumption: 675000 # Frontier: 12.5kJ<675kJ
-      duration: 15
+      duration: 4 # Triad, 4 < 15, Ghetto EMP shouldn't be super strong
 
 - type: reaction
   id: Flash

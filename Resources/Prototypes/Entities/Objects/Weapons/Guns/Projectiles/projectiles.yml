@@ -1280,7 +1280,7 @@
   - type: EmpOnTrigger
     range: 4
     energyConsumption: 2700000
-    disableDuration: 60
+    disableDuration: 20 # Triad 20 < 60
 
 - type: entity
   parent: BaseBulletTrigger
@@ -1315,7 +1315,7 @@
   - type: EmpOnTrigger
     range: 2
     energyConsumption: 2700000
-    disableDuration: 30
+    disableDuration: 20 # Triad 20 < 30
 
 - type: entity
   id: BulletCannonBallEmp

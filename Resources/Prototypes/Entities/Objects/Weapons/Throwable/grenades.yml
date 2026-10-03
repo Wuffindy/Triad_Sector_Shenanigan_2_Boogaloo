@@ -371,6 +371,7 @@
   - type: EmpOnTrigger
     range: 5.5
     energyConsumption: 2700000 # Frontier: Upstream - #28984, 50000<2700000
+    duration: 10 # Triad, default is 60s, it was never added
   - type: DeleteOnTrigger
   - type: Appearance
   - type: TimerTriggerVisuals
