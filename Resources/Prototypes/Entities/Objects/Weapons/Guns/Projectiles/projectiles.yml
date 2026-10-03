@@ -848,7 +848,7 @@
   - type: EmpOnTrigger
     range: 5
     energyConsumption: 2700000
-    disableDuration: 10
+    disableDuration: 6 # Triad, Less than grenade since cheaper
   - type: Ammo
     muzzleFlash: null
   - type: PointLight
