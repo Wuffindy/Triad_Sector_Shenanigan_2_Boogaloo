@@ -175,7 +175,7 @@ public sealed class SalvageExpeditionConsoleBoundUserInterface : BoundUserInterf
             // Reward
             offering.AddContent(new Label
             {
-                Text = Loc.GetString("salvage-expedition-window-reward")
+                Text = Loc.GetString("salvage-expedition-window-rewards")
             });
 
             offering.AddContent(new Label
