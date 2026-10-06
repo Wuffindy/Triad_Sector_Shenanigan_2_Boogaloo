@@ -184,6 +184,13 @@ public sealed partial class SalvageSystem
             component.NextOffer = _timing.CurTime + TimeSpan.FromSeconds(_cooldown);
             component.CooldownTime = TimeSpan.FromSeconds(_cooldown);
             Announce(uid, Loc.GetString("salvage-expedition-mission-completed"));
+
+            // Get the active mission's difficulty and look up the prototype
+            if (component.Missions.TryGetValue(component.ActiveMission, out var mission))
+            {
+                var difficultyProto = _prototypeManager.Index<SalvageDifficultyPrototype>(mission.Difficulty);
+                GiveRewards(expeditionComp, difficultyProto);
+            }
         }
         else
         {
@@ -278,6 +285,30 @@ public sealed partial class SalvageSystem
 
     // Frontier: exped job handling, ghost reparenting
     // Handle exped spawn job failures gracefully - reset the console
+
+    private void GiveRewards(SalvageExpeditionComponent comp, SalvageDifficultyPrototype difficulty)
+    {
+        // if (!_cfgManager.GetCVar(NFCCVars.SalvageExpeditionRewardsEnabled))
+        //     return;
+
+        var palletList = new List<EntityUid>();
+        var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
+        var reward = difficulty.ExpeditionReward;
+        while (pallets.MoveNext(out var pallet, out var palletComp))
+        {
+            if (_station.GetOwningStation(pallet) == comp.Station)
+            {
+                palletList.Add(pallet);
+            }
+        }
+
+        if (!(palletList.Count > 0))
+            return;
+
+        var palletListUid = palletList[_random.Next(palletList.Count)];
+        Spawn(reward, Transform(palletListUid).Coordinates);
+    }
+
     private void OnExpeditionSpawnComplete(EntityUid uid, SalvageExpeditionDataComponent component, ExpeditionSpawnCompleteEvent ev)
     {
         if (component.ActiveMission == ev.MissionIndex && !ev.Success)

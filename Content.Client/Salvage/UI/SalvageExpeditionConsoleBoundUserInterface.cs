@@ -19,9 +19,9 @@ public sealed class SalvageExpeditionConsoleBoundUserInterface : BoundUserInterf
     [ViewVariables]
     private SalvageExpeditionWindow? _window; // Frontier: OfferingWindow<SalvageExpeditionWindow
 
-    [Dependency] private readonly IConfigurationManager _cfgManager = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
+    [Dependency] private IConfigurationManager _cfgManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private IPrototypeManager _protoManager = default!;
 
     public SalvageExpeditionConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
@@ -62,7 +62,6 @@ public sealed class SalvageExpeditionConsoleBoundUserInterface : BoundUserInterf
             var difficultyProto = _protoManager.Index<SalvageDifficultyPrototype>(difficultyId);
             // TODO: Selectable difficulty soon.
             var mission = salvage.GetMission(missionParams.MissionType, difficultyProto, missionParams.Seed); // Frontier: add missionParams.MissionType
-
             // Difficulty
             // Details
             offering.AddContent(new Label()
@@ -168,6 +167,20 @@ public sealed class SalvageExpeditionConsoleBoundUserInterface : BoundUserInterf
             offering.AddContent(new Label
             {
                 Text = string.Join("\n", mods.Select(o => "- " + o)).TrimEnd(),
+                FontColorOverride = StyleNano.NanoGold,
+                HorizontalAlignment = Control.HAlignment.Left,
+                Margin = new Thickness(0f, 0f, 0f, 5f),
+            });
+
+            // Reward
+            offering.AddContent(new Label
+            {
+                Text = Loc.GetString("salvage-expedition-window-reward")
+            });
+
+            offering.AddContent(new Label
+            {
+                Text = Loc.GetString($"salvage-expedition-reward-{missionParams.Difficulty}"), // Triad: parameterize loc string
                 FontColorOverride = StyleNano.NanoGold,
                 HorizontalAlignment = Control.HAlignment.Left,
                 Margin = new Thickness(0f, 0f, 0f, 5f),

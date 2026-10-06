@@ -1,0 +1,21 @@
+- type: entity
+  parent: BaseItem
+  id: ExpeditionCaseRewardT1
+  name: expedition reward case
+  description: A case full of bills fresh from the digital mint. Smells like success and unpaid taxes.
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  suffix: Money
+  components:
+  - type: Sprite
+    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+  - type: IgnoreMarketModifier # Worth exactly what it says.
+  - type: SpawnItemsOnUse
+    items:
+      - id: SpaceCash10000
+    sound:
+      path: /Audio/Machines/windoor_open.ogg
