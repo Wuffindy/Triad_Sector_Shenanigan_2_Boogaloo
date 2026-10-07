@@ -36,6 +36,7 @@ public sealed partial class SalvageSystem
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
     private const double SalvageJobTime = 0.002;
     private readonly List<(ProtoId<SalvageDifficultyPrototype> id, int value)> _missionDifficulties = [("NFModerate", 0), ("NFHazardous", 1), ("NFExtreme", 2)]; // Frontier: mission difficulties with order
+    // private readonly ISawmill _sawmill;
 
     [Dependency] private IConfigurationManager _cfgManager = default!; // Frontier
 
@@ -185,7 +186,6 @@ public sealed partial class SalvageSystem
             component.CooldownTime = TimeSpan.FromSeconds(_cooldown);
             Announce(uid, Loc.GetString("salvage-expedition-mission-completed"));
 
-            // Get the active mission's difficulty and look up the prototype
             if (component.Missions.TryGetValue(component.ActiveMission, out var mission))
             {
                 var difficultyProto = _prototypeManager.Index<SalvageDifficultyPrototype>(mission.Difficulty);
@@ -258,13 +258,11 @@ public sealed partial class SalvageSystem
             EntityManager,
             _timing,
             _logManager,
-            _mapSystem,
             _prototypeManager,
             _anchorable,
             _biome,
             _dungeon,
             _metaData,
-            _transform,
             _mapSystem,
             _station, // Frontier
             _shuttle, // Frontier
@@ -282,9 +280,6 @@ public sealed partial class SalvageSystem
     {
         args.PushMarkup(Loc.GetString("salvage-expedition-structure-examine"));
     }
-
-    // Frontier: exped job handling, ghost reparenting
-    // Handle exped spawn job failures gracefully - reset the console
 
     private void GiveRewards(SalvageExpeditionComponent comp, SalvageDifficultyPrototype difficulty)
     {
@@ -306,9 +301,11 @@ public sealed partial class SalvageSystem
             return;
 
         var palletListUid = palletList[_random.Next(palletList.Count)];
+        Logger.Debug($"Giving reward {reward} to pallet {palletListUid}"); // Triad, check if reward are showing up correctly in the pallet
         Spawn(reward, Transform(palletListUid).Coordinates);
     }
 
+    // Frontier: exped job handling, ghost reparenting
     private void OnExpeditionSpawnComplete(EntityUid uid, SalvageExpeditionDataComponent component, ExpeditionSpawnCompleteEvent ev)
     {
         if (component.ActiveMission == ev.MissionIndex && !ev.Success)
