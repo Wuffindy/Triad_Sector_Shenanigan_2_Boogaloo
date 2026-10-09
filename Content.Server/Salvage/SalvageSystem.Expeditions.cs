@@ -189,6 +189,7 @@ public sealed partial class SalvageSystem
             if (component.Missions.TryGetValue(component.ActiveMission, out var mission))
             {
                 var difficultyProto = _prototypeManager.Index<SalvageDifficultyPrototype>(mission.Difficulty);
+                Logger.Debug($"difficultyProto = {difficultyProto}"); //Check what difficulty it selected
                 GiveRewards(expeditionComp, difficultyProto);
             }
         }
@@ -289,6 +290,8 @@ public sealed partial class SalvageSystem
         var palletList = new List<EntityUid>();
         var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
         var reward = difficulty.ExpeditionReward;
+        Logger.Debug($"ExpeditionReward: {difficulty.ExpeditionReward}");
+        Logger.Debug($"reward: {reward}");
         while (pallets.MoveNext(out var pallet, out var palletComp))
         {
             if (_station.GetOwningStation(pallet) == comp.Station)
