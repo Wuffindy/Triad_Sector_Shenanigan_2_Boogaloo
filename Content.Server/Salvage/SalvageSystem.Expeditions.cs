@@ -36,7 +36,6 @@ public sealed partial class SalvageSystem
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
     private const double SalvageJobTime = 0.002;
     private readonly List<(ProtoId<SalvageDifficultyPrototype> id, int value)> _missionDifficulties = [("NFModerate", 0), ("NFHazardous", 1), ("NFExtreme", 2)]; // Frontier: mission difficulties with order
-    // private readonly ISawmill _sawmill;
 
     [Dependency] private IConfigurationManager _cfgManager = default!; // Frontier
 
@@ -189,7 +188,10 @@ public sealed partial class SalvageSystem
             if (component.Missions.TryGetValue(component.ActiveMission, out var mission))
             {
                 var difficultyProto = _prototypeManager.Index<SalvageDifficultyPrototype>(mission.Difficulty);
-                Logger.Debug($"difficultyProto = {difficultyProto}"); //Check what difficulty it selected
+                //Check what difficulty it selected
+                Logger.Debug($"component = {component}"); //what's this
+                Logger.Debug($"mission = {mission}"); //idk if this is the right one
+                Logger.Debug($"difficultyProto = {difficultyProto.ID}");
                 GiveRewards(expeditionComp, difficultyProto);
             }
         }
@@ -290,7 +292,8 @@ public sealed partial class SalvageSystem
         var palletList = new List<EntityUid>();
         var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
         var reward = difficulty.ExpeditionReward;
-        Logger.Debug($"ExpeditionReward: {difficulty.ExpeditionReward}");
+
+        Logger.Debug($"difficulty in GiveRewards: {difficulty.ID}");
         Logger.Debug($"reward: {reward}");
         while (pallets.MoveNext(out var pallet, out var palletComp))
         {
