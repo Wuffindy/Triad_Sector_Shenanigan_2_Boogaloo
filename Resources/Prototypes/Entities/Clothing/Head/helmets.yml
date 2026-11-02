@@ -475,7 +475,7 @@
     energy: 1.4
     color: red
     netsync: false
-    mask: /Textures/Effects/LightMasks/double_cone.png
+    lightMask: ConeDouble
   - type: RotatingLight
     speed: 360
   - type: PowerCellSlot
@@ -506,11 +506,13 @@
         name: power-cell-slot-component-slot-name-default
 
 - type: entity
+  parent: BaseAction
   id: ActionToggleJusticeHelm
   name: Toggle Justice Helm
   description: Toggles the justice helm on and off.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1
     itemIconStyle: BigItem
+  - type: InstantAction
     event: !type:ToggleActionEvent

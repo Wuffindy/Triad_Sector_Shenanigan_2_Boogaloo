@@ -36,8 +36,8 @@
 
 - type: marking
   id: ReptilianDrawingWarpaint
-  bodyPart: Chest
-  markingCategory: Chest
+  bodyPart: Head
+  markingCategory: Head
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: _ADT/Mobs/Customization/Reptilian/custom.rsi
@@ -230,7 +230,7 @@
 - type: marking
   id: ReptilianTattoSkeletLegL
   bodyPart: LLeg
-  markingCategory: Legs # Triad #Triad
+  markingCategory: Legs # Triad
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: _ADT/Mobs/Customization/Reptilian/custom.rsi
@@ -239,7 +239,7 @@
 - type: marking
   id: ReptilianTattoSkeletLegR
   bodyPart: RLeg
-  markingCategory: Legs #Traid
+  markingCategory: Legs #Triad
   speciesRestriction: [Reptilian]
   sprites:
   - sprite: _ADT/Mobs/Customization/Reptilian/custom.rsi

@@ -9,7 +9,7 @@
   startingGear: SecurityGuardGear
   alwaysUseSpawner: true
   icon: "JobIconSecurityGuard"
-  supervisors: job-supervisors-sr
+  supervisors: job-supervisors-overseer # Triad
   assignedCompany: Colonial
   weight: 80
   displayWeight: 20 # Second from the bottom
@@ -19,6 +19,7 @@
   - GeneralTdfAccess
   - AllAccessColonial
   # Triad End
+  setPreference: false # Triad - disabled this
   ranks: # Triad, ranks
     RankStationGuardSenior:
     - !type:RoleTimeRequirement
@@ -38,7 +39,7 @@
   - !type:AddComponentSpecial # Triad
     components:
       - type: ShipSavingBlacklist # Triad - can't save ships
-      - type: NpcFactionMember
+      - type: AddNpcFactionOnMapInit
         factions:
         - TDF # Triad - They aren't apart of the TDF, but they are friendly and work with them
       - type: CryoSleepRadioOverride

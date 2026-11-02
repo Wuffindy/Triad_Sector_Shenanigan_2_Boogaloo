@@ -1,12 +1,25 @@
 {
     "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Ovinia sprites made by P4yn7 (Discord) for Den",
     "size": {
         "x": 32,
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Felinid sprites made by Adrian16199 (Github), Rodentia sprites made by portfiend, Feroxi sprites made by BlitzTheSquishy",
+    "copyright": "Felinid sprites made by Adrian16199 (Github), Rodentia sprites made by portfiend, paper sprites by Nikovnik (Github: nkokic), Feroxi sprites made by BlitzTheSquishy, AAC sprites by _.requiem._ (Discord)",
     "states": [
+        {
+            "name": "aac0",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
         {
             "name": "felinid0",
             "delays": [
@@ -113,6 +126,23 @@
         },
         {
             "name": "feroxi3"
+        },
+        {
+            "name": "ovinia0",
+            "delays": [
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "ovinia-idle"
+        },
+        {
+            "name": "ovinia2"
         }
     ]
 }

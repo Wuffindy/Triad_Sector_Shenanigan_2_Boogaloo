@@ -92,7 +92,6 @@
   - type: ActionGrant
     actions:
     - ActionJumpToCore
-    - ActionSurvCameraLights
     - ActionAIViewLaws
     - ActionOpenRemoteDevicesMenu # Corvax-Next-AiRemoteControl
   - type: UserInterface
@@ -489,7 +488,7 @@
 - type: entity
   id: PlayerStationAiTSFMC
   parent: PlayerStationAiEmpty
-  suffix: Ghost Role, TSFMC
+  suffix: Ghost Role, TDF
   components:
   - type: ContainerComp
     proto: AiHeldTSFMC
@@ -528,11 +527,11 @@
     speaks:
     - TauCetiBasic
     - RobotTalk
-    - SolCommon
+    - Triadian
     understands:
     - TauCetiBasic
     - RobotTalk
-    - SolCommon
+    - Triadian
 
 - type: entity
   id: AiHeldTSFMC

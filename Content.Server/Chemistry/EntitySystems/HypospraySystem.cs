@@ -1,3 +1,5 @@
+using Content.Shared.Administration.Logs;
+using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -19,10 +21,10 @@ using Content.Shared.DoAfter; // Frontier
 
 namespace Content.Server.Chemistry.EntitySystems;
 
-public sealed class HypospraySystem : SharedHypospraySystem
+public sealed partial class HypospraySystem : SharedHypospraySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!; // Frontier - Upstream: #30704 - MIT
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!; // Frontier - Upstream: #30704 - MIT
 
     public override void Initialize()
     {

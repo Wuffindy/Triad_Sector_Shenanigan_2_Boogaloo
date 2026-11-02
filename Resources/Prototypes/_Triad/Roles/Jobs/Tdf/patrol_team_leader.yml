@@ -19,7 +19,7 @@
   startingGear: TdfLeaderGear
   alwaysUseSpawner: true
   icon: JobIconTdfPatrolTeamLeader
-  supervisors: job-supervisors-tdf-enforcer
+  supervisors: job-supervisors-tdf-lieutenant
   weight: 140
   displayWeight: 50
   assignedCompany: TDF
@@ -28,20 +28,23 @@
   - GeneralTdfAccessBrig
   access:
   - TdfPatrolTeamLeader
+  - Command
   - Medical
   - Chemistry
+  - TdfPermitControl
   ranks:
     RankSeniorEnforcer: []
   special:
   - !type:AddComponentSpecial
     components:
-    - type: NpcFactionMember
+    - type: AddNpcFactionOnMapInit
       factions:
       - TDF
     - type: ShipSavingBlacklist # TDF can't save ships
     - type: CryoSleepRadioOverride
       overrides:
       - Nfsd # TDF radio
+    - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial

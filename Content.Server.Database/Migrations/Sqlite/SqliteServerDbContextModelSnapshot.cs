@@ -751,6 +751,26 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("blacklist", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CompanyMember", b =>
+                {
+                    b.Property<Guid>("PlayerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("player_user_id");
+
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("company_id");
+
+                    b.Property<bool>("Owner")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("owner");
+
+                    b.HasKey("PlayerUserId", "CompanyId")
+                        .HasName("PK_company_members");
+
+                    b.ToTable("company_members", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Property<int>("Id")
@@ -901,6 +921,36 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("consent_toggle", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("dbjob_alternate_title_id");
+
+                    b.Property<string>("AlternateTitle")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("alternate_title");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("profile_id");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("role_name");
+
+                    b.HasKey("Id")
+                        .HasName("PK_dbjob_alternate_title");
+
+                    b.HasIndex("ProfileId", "RoleName", "AlternateTitle")
+                        .IsUnique();
+
+                    b.ToTable("dbjob_alternate_title", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
                 {
                     b.Property<int>("Id")
@@ -963,6 +1013,257 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasFilter("priority = 3");
 
                     b.ToTable("job", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketPriceStat", b =>
+                {
+                    b.Property<string>("EntityProto")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("entity_proto");
+
+                    b.Property<string>("Currency")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("currency");
+
+                    b.Property<string>("Direction")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("direction");
+
+                    b.Property<DateOnly>("Day")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("day");
+
+                    b.Property<long>("MaxUnit")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("max_unit");
+
+                    b.Property<long>("MinUnit")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("min_unit");
+
+                    b.Property<long>("TotalValue")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("total_value");
+
+                    b.Property<int>("TradeCount")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("trade_count");
+
+                    b.Property<long>("Units")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("units");
+
+                    b.HasKey("EntityProto", "Currency", "Direction", "Day")
+                        .HasName("PK_market_price_stat");
+
+                    b.ToTable("market_price_stat", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketRoundParticipant", b =>
+                {
+                    b.Property<int>("RoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("round_id");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("CharacterName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("character_name");
+
+                    b.HasKey("RoundId", "UserId", "CharacterName")
+                        .HasName("PK_market_round_participant");
+
+                    b.ToTable("market_round_participant", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("market_transaction_id");
+
+                    b.Property<Guid?>("ActorUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("actor_user_id");
+
+                    b.Property<string>("Calc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("calc");
+
+                    b.Property<string>("ConsoleProto")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("console_proto");
+
+                    b.Property<string>("Currency")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("currency");
+
+                    b.Property<string>("FailReason")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("fail_reason");
+
+                    b.Property<long>("Gross")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("gross");
+
+                    b.Property<string>("Kind")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("kind");
+
+                    b.Property<string>("LedgerEntryType")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ledger_entry_type");
+
+                    b.Property<long?>("ListPrice")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("list_price");
+
+                    b.Property<string>("LocationName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("location_name");
+
+                    b.Property<float?>("MarketMod")
+                        .HasColumnType("REAL")
+                        .HasColumnName("market_mod");
+
+                    b.Property<long>("Net")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("net");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("occurred_at");
+
+                    b.Property<string>("Rail")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("rail");
+
+                    b.Property<int?>("RoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("round_id");
+
+                    b.Property<Guid?>("ShipGuid")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ship_guid");
+
+                    b.Property<bool>("Succeeded")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("succeeded");
+
+                    b.Property<long>("Tax")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("tax");
+
+                    b.HasKey("Id")
+                        .HasName("PK_market_transaction");
+
+                    b.HasIndex("RoundId")
+                        .HasDatabaseName("IX_market_transaction_round_id");
+
+                    b.HasIndex("ActorUserId", "OccurredAt");
+
+                    b.HasIndex("Kind", "OccurredAt");
+
+                    b.ToTable("market_transaction", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionLine", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("market_transaction_line_id");
+
+                    b.Property<string>("Direction")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("direction");
+
+                    b.Property<string>("EntityProto")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("entity_proto");
+
+                    b.Property<int>("LineIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("line_index");
+
+                    b.Property<long>("LineTotal")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("line_total");
+
+                    b.Property<float?>("Multiplier")
+                        .HasColumnType("REAL")
+                        .HasColumnName("multiplier");
+
+                    b.Property<DateTime>("OccurredAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("occurred_at");
+
+                    b.Property<int?>("ParentLineIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("parent_line_index");
+
+                    b.Property<string>("PriceSource")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("price_source");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("quantity");
+
+                    b.Property<long>("TransactionId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("transaction_id");
+
+                    b.Property<long>("UnitPrice")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("unit_price");
+
+                    b.HasKey("Id")
+                        .HasName("PK_market_transaction_line");
+
+                    b.HasIndex("TransactionId")
+                        .HasDatabaseName("IX_market_transaction_line_transaction_id");
+
+                    b.HasIndex("TransactionId", "LineIndex")
+                        .IsUnique();
+
+                    b.HasIndex("EntityProto", "Direction", "OccurredAt");
+
+                    b.ToTable("market_transaction_line", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionSplit", b =>
+                {
+                    b.Property<long>("TransactionId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("transaction_id");
+
+                    b.Property<string>("Account")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("account");
+
+                    b.Property<string>("EntryType")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("entry_type");
+
+                    b.Property<long>("Amount")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("amount");
+
+                    b.HasKey("TransactionId", "Account", "EntryType")
+                        .HasName("PK_market_transaction_split");
+
+                    b.ToTable("market_transaction_split", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.PlayTime", b =>
@@ -1313,6 +1614,41 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("round", (string)null);
                 });
 
+            modelBuilder.Entity("Content.Server.Database.SectorAccountSample", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("sector_account_sample_id");
+
+                    b.Property<string>("Account")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("account");
+
+                    b.Property<long>("Balance")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("balance");
+
+                    b.Property<int>("RoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("round_id");
+
+                    b.Property<DateTime>("SampledAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("sampled_at");
+
+                    b.HasKey("Id")
+                        .HasName("PK_sector_account_sample");
+
+                    b.HasIndex("RoundId")
+                        .HasDatabaseName("IX_sector_account_sample_round_id");
+
+                    b.HasIndex("Account", "SampledAt");
+
+                    b.ToTable("sector_account_sample", (string)null);
+                });
+
             modelBuilder.Entity("Content.Server.Database.Server", b =>
                 {
                     b.Property<int>("Id")
@@ -1614,6 +1950,91 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasName("PK_uploaded_resource_log");
 
                     b.ToTable("uploaded_resource_log", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBox", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("wayfarer_safety_deposit_box_id");
+
+                    b.Property<Guid>("BoxId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("box_id");
+
+                    b.Property<int>("CharacterIndex")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("character_index");
+
+                    b.Property<DateTime?>("LastWithdrawn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("last_withdrawn");
+
+                    b.Property<int?>("LastWithdrawnRoundId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("last_withdrawn_round_id");
+
+                    b.Property<string>("Nickname")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("nickname");
+
+                    b.Property<string>("OwnerName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("owner_name");
+
+                    b.Property<Guid>("OwnerUserId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("owner_user_id");
+
+                    b.Property<string>("ProtoId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("proto_id");
+
+                    b.Property<DateTime>("PurchaseDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("purchase_date");
+
+                    b.HasKey("Id")
+                        .HasName("PK_wayfarer_safety_deposit_box");
+
+                    b.HasIndex("BoxId")
+                        .IsUnique();
+
+                    b.HasIndex("OwnerUserId");
+
+                    b.ToTable("wayfarer_safety_deposit_box", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBoxItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("wayfarer_safety_deposit_box_item_id");
+
+                    b.Property<int>("BoxId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("box_id");
+
+                    b.Property<DateTime>("DepositDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("deposit_date");
+
+                    b.Property<string>("EntityData")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("entity_data");
+
+                    b.HasKey("Id")
+                        .HasName("PK_wayfarer_safety_deposit_box_item");
+
+                    b.HasIndex("BoxId")
+                        .HasDatabaseName("IX_wayfarer_safety_deposit_box_item_box_id");
+
+                    b.ToTable("wayfarer_safety_deposit_box_item", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.Whitelist", b =>
@@ -1984,6 +2405,19 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Round");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.CompanyMember", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Player")
+                        .WithMany("CompanyMembers")
+                        .HasForeignKey("PlayerUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_company_members_player_player_user_id");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -2058,6 +2492,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("ConsentSettings");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.DBJobAlternateTitle", b =>
+                {
+                    b.HasOne("Content.Server.Database.Profile", "Profile")
+                        .WithMany("AltTitles")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_dbjob_alternate_title_profile_profile_id");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Job", b =>
                 {
                     b.HasOne("Content.Server.Database.Profile", "Profile")
@@ -2068,6 +2514,62 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_job_profile_profile_id");
 
                     b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketRoundParticipant", b =>
+                {
+                    b.HasOne("Content.Server.Database.Round", "Round")
+                        .WithMany()
+                        .HasForeignKey("RoundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_market_round_participant_round_round_id");
+
+                    b.Navigation("Round");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>
+                {
+                    b.HasOne("Content.Server.Database.Player", "Actor")
+                        .WithMany()
+                        .HasForeignKey("ActorUserId")
+                        .HasPrincipalKey("UserId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_market_transaction_player_actor_id");
+
+                    b.HasOne("Content.Server.Database.Round", "Round")
+                        .WithMany()
+                        .HasForeignKey("RoundId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("FK_market_transaction_round_round_id");
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("Round");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionLine", b =>
+                {
+                    b.HasOne("Content.Server.Database.MarketTransaction", "Transaction")
+                        .WithMany("Lines")
+                        .HasForeignKey("TransactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_market_transaction_line_market_transaction_transaction_id");
+
+                    b.Navigation("Transaction");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.MarketTransactionSplit", b =>
+                {
+                    b.HasOne("Content.Server.Database.MarketTransaction", "Transaction")
+                        .WithMany("Splits")
+                        .HasForeignKey("TransactionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_market_transaction_split_market_transaction_transaction_id");
+
+                    b.Navigation("Transaction");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2174,6 +2676,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Server");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.SectorAccountSample", b =>
+                {
+                    b.HasOne("Content.Server.Database.Round", "Round")
+                        .WithMany()
+                        .HasForeignKey("RoundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_sector_account_sample_round_round_id");
+
+                    b.Navigation("Round");
+                });
+
             modelBuilder.Entity("Content.Server.Database.ServerBanHit", b =>
                 {
                     b.HasOne("Content.Server.Database.Ban", "Ban")
@@ -2217,6 +2731,18 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasConstraintName("FK_unban_ban_ban_id");
 
                     b.Navigation("Ban");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBoxItem", b =>
+                {
+                    b.HasOne("Content.Server.Database.WayfarerSafetyDepositBox", "Box")
+                        .WithMany("Items")
+                        .HasForeignKey("BoxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_wayfarer_safety_deposit_box_item_wayfarer_safety_deposit_box_box_id");
+
+                    b.Navigation("Box");
                 });
 
             modelBuilder.Entity("PlayerRound", b =>
@@ -2282,6 +2808,13 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("ReadReceipts");
                 });
 
+            modelBuilder.Entity("Content.Server.Database.MarketTransaction", b =>
+                {
+                    b.Navigation("Lines");
+
+                    b.Navigation("Splits");
+                });
+
             modelBuilder.Entity("Content.Server.Database.Player", b =>
                 {
                     b.Navigation("AdminLogs");
@@ -2314,6 +2847,8 @@ namespace Content.Server.Database.Migrations.Sqlite
 
                     b.Navigation("AdminWatchlistsReceived");
 
+                    b.Navigation("CompanyMembers");
+
                     b.Navigation("JobWhitelists");
                 });
 
@@ -2324,6 +2859,8 @@ namespace Content.Server.Database.Migrations.Sqlite
 
             modelBuilder.Entity("Content.Server.Database.Profile", b =>
                 {
+                    b.Navigation("AltTitles");
+
                     b.Navigation("Antags");
 
                     b.Navigation("ConsentSettings");
@@ -2355,6 +2892,11 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("ConnectionLogs");
 
                     b.Navigation("Rounds");
+                });
+
+            modelBuilder.Entity("Content.Server.Database.WayfarerSafetyDepositBox", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

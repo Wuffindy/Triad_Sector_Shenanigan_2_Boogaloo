@@ -8,6 +8,9 @@
   spawnGroup: Required
   gridPath: /Maps/_Triad/POI/tdfoutpost.yml
   addComponents:
+  # Triad: added to the bus route. Its berth is the pair of lobby-frontage docks on the south face,
+  # uids 1303 and 1321 in the map, tagged DockTransit.
+  - type: StationTransit
   - type: IFF
     color: "#FFD580"
     readOnly: true
@@ -25,7 +28,7 @@
       stationProto: SecurityFrontierOutpost
       gridComponents:
       - type: VesselInfo
-        description: "Home of the Triad Defense Force, the last bastion of law and safety."
+        description: "The district's last bastion of law and safety."
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Auric Outpost'
@@ -39,7 +42,7 @@
         - type: StationJobs
           availableJobs:
             TdfChiefEnforcer: [ 1, 1 ]
-            TdfWarden: [1, 1 ]
+            TdfLieutenant: [1, 1 ]
             TdfPatrolTeamLeader: [ 2, 2 ]
             TdfMedic: [ 2, 2 ]
             TdfEnforcer: [ 5, 5 ]

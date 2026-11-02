@@ -85,7 +85,7 @@ public sealed class PopupOverlay : Overlay
 
         foreach (var popup in _popup.WorldLabels)
         {
-            var mapPos = popup.InitialPos.ToMap(_entManager, _transform);
+            var mapPos = _transform.ToMapCoordinates(popup.InitialPos);
 
             if (mapPos.MapId != args.MapId)
                 continue;
@@ -94,7 +94,7 @@ public sealed class PopupOverlay : Overlay
 
             // Should handle fade here too wyci.
             if (!args.WorldBounds.Contains(mapPos.Position) || !_examine.InRangeUnOccluded(viewPos, mapPos, distance,
-                    e => e == popup.InitialPos.EntityId || e == ourEntity, entMan: _entManager))
+                    e => e == popup.InitialPos.EntityId || e == ourEntity))
                 continue;
 
             var pos = Vector2.Transform(mapPos.Position, matrix);

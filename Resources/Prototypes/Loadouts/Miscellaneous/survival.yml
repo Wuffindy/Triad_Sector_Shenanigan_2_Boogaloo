@@ -21,7 +21,8 @@
     - Protogen
     - Yowie # Goobstation
     - Tajaran # Goobstation
-    - Avali #🌟Starlight🌟
+    - Avali #??Starlight??
+    - Ovinia
 
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
@@ -225,7 +226,7 @@
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesVox
   equipment:
-    mask: ClothingMaskBreath
+    mask: ClothingMaskVoxTrochar # Triad: ClothingMaskVox -> ClothingMaskVoxTrochar
 
 - type: loadout
   id: LoadoutSpeciesBreathToolMedical
@@ -233,7 +234,7 @@
   - !type:GroupLoadoutEffect
     proto: EffectSpeciesVox
   equipment:
-    mask: ClothingMaskBreathMedical
+    mask: ClothingMaskVoxTrochar # Triad: ClothingMaskVoxMedical -> ClothingMaskVoxTrochar
 
 - type: loadout
   id: LoadoutSpeciesBreathToolSecurity

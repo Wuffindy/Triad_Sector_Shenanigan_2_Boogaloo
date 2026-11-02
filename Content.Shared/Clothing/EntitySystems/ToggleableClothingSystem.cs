@@ -18,18 +18,18 @@ using System.Linq;
 namespace Content.Shared.Clothing.EntitySystems;
 
 // GOOBSTATION - MODSUITS - THIS SYSTEM FULLY CHANGED
-public sealed class ToggleableClothingSystem : EntitySystem
+public sealed partial class ToggleableClothingSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _netMan = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedStrippableSystem _strippable = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _uiSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _netMan = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private ActionContainerSystem _actionContainer = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedStrippableSystem _strippable = default!;
+    [Dependency] private SharedUserInterfaceSystem _uiSystem = default!;
 
     public override void Initialize()
     {
@@ -284,6 +284,13 @@ public sealed class ToggleableClothingSystem : EntitySystem
         if (!TryComp(comp.AttachedUid, out ToggleableClothingComponent? toggleableComp))
             return;
 
+        // Triad: every lifecycle guard here is component-level, and a terminating entity still holds
+        // its components at Running while its clothing is unequipped as part of teardown. That let
+        // this re-insert a helmet into a hardsuit that was already dying, which the container system
+        // rejects and logs. There is nothing left to put the attachment back into, so stop.
+        if (TerminatingOrDeleted(comp.AttachedUid))
+            return;
+
         if (toggleableComp.LifeStage > ComponentLifeStage.Running)
             return;
 
@@ -401,6 +408,9 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
     private void UnequipClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid clothing, string slot)
     {
+        if (clothing == EntityUid.Invalid)
+            return;
+
         var parent = Transform(toggleable.Owner).ParentUid;
 
         _inventorySystem.TryUnequip(user, parent, slot, force: true);
@@ -416,6 +426,9 @@ public sealed class ToggleableClothingSystem : EntitySystem
     }
     private void EquipClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, EntityUid clothing, string slot)
     {
+        if (clothing == EntityUid.Invalid)
+            return;
+
         var parent = Transform(toggleable.Owner).ParentUid;
         var comp = toggleable.Comp;
 
@@ -454,6 +467,23 @@ public sealed class ToggleableClothingSystem : EntitySystem
         var comp = toggleable.Comp;
 
         comp.Container = _containerSystem.EnsureContainer<Container>(toggleable, comp.ContainerId);
+
+        // Triad - check if uids exist
+        if (comp.ClothingUids.Count != 0)
+        {
+            var toRemove = new List<EntityUid>();
+            foreach (var clothing in comp.ClothingUids.Keys)
+            {
+                if (!Exists(clothing) || clothing == EntityUid.Invalid)
+                    toRemove.Add(clothing);
+            }
+
+            foreach (var clothing in toRemove)
+            {
+                comp.ClothingUids.Remove(clothing);
+            }
+        }
+        // Triad End
     }
 
     private void OnAttachedInit(Entity<AttachedClothingComponent> attached, ref ComponentInit args)
@@ -509,7 +539,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
         Dirty(toggleable, comp);
 
         if (_actionContainer.EnsureAction(toggleable, ref comp.ActionEntity, out var action, comp.Action))
-            _actionsSystem.SetEntityIcon(comp.ActionEntity.Value, toggleable, action);
+            _actionsSystem.SetEntityIcon((comp.ActionEntity.Value, action), toggleable);
     }
 
     // Checks status of all attached clothings toggle status

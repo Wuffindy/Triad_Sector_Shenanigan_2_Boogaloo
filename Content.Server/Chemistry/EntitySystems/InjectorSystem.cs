@@ -5,7 +5,7 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Body.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -19,11 +19,11 @@ using System.Linq; // Frontier
 
 namespace Content.Server.Chemistry.EntitySystems;
 
-public sealed class InjectorSystem : SharedInjectorSystem
+public sealed partial class InjectorSystem : SharedInjectorSystem
 {
-    [Dependency] private readonly BloodstreamSystem _blood = default!;
-    [Dependency] private readonly ReactiveSystem _reactiveSystem = default!;
-    [Dependency] private readonly OpenableSystem _openable = default!;
+    [Dependency] private BloodstreamSystem _blood = default!;
+    [Dependency] private ReactiveSystem _reactiveSystem = default!;
+    [Dependency] private OpenableSystem _openable = default!;
 
     public override void Initialize()
     {
@@ -245,7 +245,7 @@ public sealed class InjectorSystem : SharedInjectorSystem
         // Move units from attackSolution to targetSolution
         var removedSolution = SolutionContainers.SplitSolution(target.Comp.ChemicalSolution.Value, realTransferAmount);
 
-        _blood.TryAddToChemicals(target, removedSolution, target.Comp);
+        _blood.TryAddToChemicals(target.AsNullable(), removedSolution);
 
         _reactiveSystem.DoEntityReaction(target, removedSolution, ReactionMethod.Injection);
 

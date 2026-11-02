@@ -29,9 +29,29 @@
     - type: Rotatable
       rotateWhileAnchored: true
     - type: Thruster
+      # Triad Start - Thruster restriction changes
       damage:
         types:
-          Heat: 40
+          Heat: 200
+      burnShape: ["-0.25,0.5","-0.0,5.6","0.25,0.5","0.0,-0.2","-0.25,0.5"]
+      originalLoad: 1500
+      burnWhitelist:
+        components:
+        - MobState
+        - Door
+        - PowerSupplier
+        - SpaceArtillery
+        tags:
+        - Window
+        - Wall
+        - Structure
+        - Diagonal
+      burnBlacklist:
+        tags:
+        - IgnoreThrusterDamage
+    - type: ThrusterProfile
+      profile: Small
+    # Triad End
     - type: ThermalSignature # Mono
     - type: InteractionOutline
     - type: Sprite
@@ -124,7 +144,7 @@
       shape: Square
       respectZoom: true
       rotate: true
-      bounds: "-0.5,-0.5,0.5,0.5"
+      bounds: "-0.45,-0.45,0.45,0.45"
   # Mono
   - type: ShipRepairable
     repairTime: 5
@@ -178,6 +198,8 @@
     thrust: 2000
     machinePartThrust: Manipulator
     heatSignatureRatio: 0.5 # Mono
+  - type: ThrusterProfile
+    profile: NeverBlocked # Triad
   - type: Sprite
     # Listen I'm not the biggest fan of the sprite but it was the most appropriate thing I could find.
     sprite: Structures/Shuttles/gyroscope.rsi
@@ -200,7 +222,7 @@
     radius: 1.3
     energy: 0.8
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     offset: "0, 0.1" # shine from the top, not bottom of the computer
     color: "#4246b3"

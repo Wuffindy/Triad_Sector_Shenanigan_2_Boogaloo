@@ -12,17 +12,16 @@ namespace Content.Shared.Silicons.Borgs;
 /// Implements borg type switching.
 /// </summary>
 /// <seealso cref="BorgSwitchableTypeComponent"/>
-public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
+public abstract partial class SharedBorgSwitchableTypeSystem : EntitySystem
 {
     // TODO: Allow borgs to be reset to default configuration.
 
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
-    [Dependency] protected readonly IPrototypeManager Prototypes = default!;
-    [Dependency] private readonly InteractionPopupSystem _interactionPopup = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] protected IPrototypeManager Prototypes = default!;
+    [Dependency] private InteractionPopupSystem _interactionPopup = default!;
 
-    [ValidatePrototypeId<EntityPrototype>]
-    public const string ActionId = "ActionSelectBorgType";
+    public static readonly EntProtoId ActionId = "ActionSelectBorgType";
 
     public override void Initialize()
     {
@@ -59,7 +58,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
 
     private void OnShutdown(Entity<BorgSwitchableTypeComponent> ent, ref ComponentShutdown args)
     {
-        _actionsSystem.RemoveAction(ent, ent.Comp.SelectTypeAction);
+        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.SelectTypeAction);
     }
 
     private void OnSelectBorgTypeAction(Entity<BorgSwitchableTypeComponent> ent, ref BorgToggleSelectTypeEvent args)
@@ -104,7 +103,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         if (TryComp(ent, out BorgSwitchableSubtypeComponent? subtype))
             subtype.BorgSubtype = borgSubtype;
 
-        _actionsSystem.RemoveAction(ent, ent.Comp.SelectTypeAction);
+        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.SelectTypeAction);
         _userInterface.CloseUi(ent.Owner, BorgSwitchableTypeUiKey.SelectBorgType);
         ent.Comp.SelectTypeAction = null;
         Dirty(ent);

@@ -163,7 +163,7 @@ public sealed partial class BankSystem
 
         // validate stack prototypes
         if (!TryComp<StackComponent>(component.CashSlot.ContainerSlot.ContainedEntity, out var stackComponent) ||
-            stackComponent.StackTypeId == null)
+            string.IsNullOrEmpty(stackComponent.StackTypeId.Id))
         {
             _log.Info($"ATM cash slot contains bad stack prototype");
             ConsolePopup(args.Actor, Loc.GetString("bank-atm-menu-wrong-cash"));
@@ -333,11 +333,11 @@ public sealed partial class BankSystem
 
     private void PlayDenySound(EntityUid uid, StationBankATMComponent component)
     {
-        _audio.PlayPvs(_audio.GetSound(component.ErrorSound), uid);
+        _audio.PlayPvs(component.ErrorSound, uid);
     }
 
     private void PlayConfirmSound(EntityUid uid, StationBankATMComponent component)
     {
-        _audio.PlayPvs(_audio.GetSound(component.ConfirmSound), uid);
+        _audio.PlayPvs(component.ConfirmSound, uid);
     }
 }

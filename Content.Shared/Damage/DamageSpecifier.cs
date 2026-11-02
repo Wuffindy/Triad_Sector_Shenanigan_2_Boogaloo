@@ -1,9 +1,9 @@
+using System.Linq;
 using System.Text.Json.Serialization;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 using Robust.Shared.Utility;
 using Robust.Shared.Serialization;
 
@@ -20,13 +20,15 @@ namespace Content.Shared.Damage
     public sealed partial class DamageSpecifier : IEquatable<DamageSpecifier>
     {
         // These exist solely so the wiki works. Please do not touch them or use them.
+        // Triad: string-keyed on purpose. System.Text.Json cannot write a ProtoId dictionary key, and
+        // DamageSpecifierDictionarySerializer already validates both nodes against their prototypes.
         [JsonPropertyName("types")]
-        [DataField("types", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, DamageTypePrototype>))]
+        [DataField("types")]
         [UsedImplicitly]
-        private Dictionary<string,FixedPoint2>? _damageTypeDictionary;
+        private Dictionary<string, FixedPoint2>? _damageTypeDictionary;
 
         [JsonPropertyName("groups")]
-        [DataField("groups", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, DamageGroupPrototype>))]
+        [DataField("groups")]
         [UsedImplicitly]
         private Dictionary<string, FixedPoint2>? _damageGroupDictionary;
 
@@ -76,6 +78,11 @@ namespace Content.Shared.Damage
         /// </summary>
         [JsonIgnore]
         public bool Empty => DamageDict.Count == 0;
+
+        public override string ToString()
+        {
+            return "DamageSpecifier(" + string.Join("; ", DamageDict.Select(x => x.Key + ":" + x.Value)) + ")";
+        }
 
         #region constructors
         /// <summary>
@@ -195,6 +202,38 @@ namespace Content.Shared.Damage
                     DamageDict.Remove(key);
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns a new DamageSpecifier that only contains the entries with positive value.
+        /// </summary>
+        public static DamageSpecifier GetPositive(DamageSpecifier damageSpec)
+        {
+            DamageSpecifier newDamage = new();
+
+            foreach (var (key, value) in damageSpec.DamageDict)
+            {
+                if (value > 0)
+                    newDamage.DamageDict[key] = value;
+            }
+
+            return newDamage;
+        }
+
+        /// <summary>
+        /// Returns a new DamageSpecifier that only contains the entries with negative value.
+        /// </summary>
+        public static DamageSpecifier GetNegative(DamageSpecifier damageSpec)
+        {
+            DamageSpecifier newDamage = new();
+
+            foreach (var (key, value) in damageSpec.DamageDict)
+            {
+                if (value < 0)
+                    newDamage.DamageDict[key] = value;
+            }
+
+            return newDamage;
         }
 
         /// <summary>

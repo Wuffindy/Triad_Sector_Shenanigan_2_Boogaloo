@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._Triad.Ghost; // Triad: admin-only warp maps
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers; // Frontier
 using Content.Server.Cargo.Systems; // Frontier
@@ -44,35 +45,35 @@ using Content.Server.Preferences.Managers;
 
 namespace Content.Server.Ghost
 {
-    public sealed class GhostSystem : SharedGhostSystem
+    public sealed partial class GhostSystem : SharedGhostSystem
     {
-        [Dependency] private readonly SharedActionsSystem _actions = default!;
-        [Dependency] private readonly IAdminLogManager _adminLog = default!;
-        [Dependency] private readonly SharedEyeSystem _eye = default!;
-        [Dependency] private readonly FollowerSystem _followerSystem = default!;
-        [Dependency] private readonly IGameTiming _gameTiming = default!;
-        [Dependency] private readonly JobSystem _jobs = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly MindSystem _minds = default!;
-        [Dependency] private readonly MobStateSystem _mobState = default!;
-        [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly TransformSystem _transformSystem = default!;
-        [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
-        [Dependency] private readonly MetaDataSystem _metaData = default!;
-        [Dependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-        [Dependency] private readonly IChatManager _chatManager = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly GameTicker _gameTicker = default!;
-        [Dependency] private readonly DamageableSystem _damageable = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly TagSystem _tag = default!;
-        [Dependency] private readonly IAdminManager _admin = default!; // Frontier
-        [Dependency] private readonly IServerPreferencesManager _preferencesManager = default!;
-        [Dependency] private readonly GhostSpriteStateSystem _ghostState = default!;
+        [Dependency] private SharedActionsSystem _actions = default!;
+        [Dependency] private IAdminLogManager _adminLog = default!;
+        [Dependency] private SharedEyeSystem _eye = default!;
+        [Dependency] private FollowerSystem _followerSystem = default!;
+        [Dependency] private IGameTiming _gameTiming = default!;
+        [Dependency] private JobSystem _jobs = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private MindSystem _minds = default!;
+        [Dependency] private MobStateSystem _mobState = default!;
+        [Dependency] private SharedPhysicsSystem _physics = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private TransformSystem _transformSystem = default!;
+        [Dependency] private VisibilitySystem _visibilitySystem = default!;
+        [Dependency] private MetaDataSystem _metaData = default!;
+        [Dependency] private MobThresholdSystem _mobThresholdSystem = default!;
+        [Dependency] private IPrototypeManager _prototypeManager = default!;
+        [Dependency] private IConfigurationManager _configurationManager = default!;
+        [Dependency] private IChatManager _chatManager = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private GameTicker _gameTicker = default!;
+        [Dependency] private DamageableSystem _damageable = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private TagSystem _tag = default!;
+        [Dependency] private IAdminManager _admin = default!; // Frontier
+        [Dependency] private IServerPreferencesManager _preferencesManager = default!;
+        [Dependency] private GhostSpriteStateSystem _ghostState = default!;
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -307,7 +308,7 @@ namespace Content.Server.Ghost
             bool isAdmin = _admin.IsAdmin(entity);
 
             // Only include admin ghosts if the requester is an admin
-            var warps = GetPlayerWarps(entity)
+            var warps = GetPlayerWarps(entity, isAdmin) // Triad: pass isAdmin for admin-only warp maps
                 .Concat(GetLocationWarps(isAdmin));
 
             if (isAdmin)
@@ -349,6 +350,15 @@ namespace Content.Server.Ghost
             }
             // End Frontier
 
+            // Triad: nothing on an admin-only warp map is reachable by a ghost without an admin rank.
+            if (!CanGhostReach(attached, target))
+            {
+                Log.Warning($"User {args.SenderSession.Name} tried to warp to {msg.Target} on an admin-only map");
+                _adminLog.Add(LogType.Action, LogImpact.Medium, $"{EntityManager.ToPrettyString(attached):player} tried to warp to {EntityManager.ToPrettyString(msg.Target)} on an admin-only map");
+                return;
+            }
+            // End Triad
+
             WarpTo(attached, target);
         }
 
@@ -363,6 +373,11 @@ namespace Content.Server.Ghost
 
             if (_followerSystem.GetMostGhostFollowed() is not {} target)
                 return;
+
+            // Triad: the most followed entity can be standing on an admin-only warp map.
+            if (!CanGhostReach(uid, target))
+                return;
+            // End Triad
 
             WarpTo(uid, target);
         }
@@ -397,7 +412,7 @@ namespace Content.Server.Ghost
             }
         }
 
-        private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except)
+        private IEnumerable<GhostWarp> GetPlayerWarps(EntityUid except, bool isAdmin) // Triad: add isAdmin
         {
             foreach (var player in _playerManager.Sessions)
             {
@@ -405,6 +420,11 @@ namespace Content.Server.Ghost
                     continue;
 
                 if (attached == except) continue;
+
+                // Triad: players on an admin-only warp map are listed to admin ghosts only.
+                if (!isAdmin && OnAdminOnlyWarpMap(attached))
+                    continue;
+                // End Triad
 
                 TryComp<MindContainerComponent>(attached, out var mind);
 
@@ -415,6 +435,22 @@ namespace Content.Server.Ghost
                     yield return new GhostWarp(GetNetEntity(attached), playerInfo, false);
             }
         }
+
+        // Triad: admin-only warp maps.
+        /// <summary>
+        /// Whether a ghost may reach an entity. Anything on a map carrying <see cref="AdminOnlyWarpMapComponent"/>
+        /// is reachable by admin ghosts only.
+        /// </summary>
+        private bool CanGhostReach(EntityUid ghost, EntityUid target)
+        {
+            return !OnAdminOnlyWarpMap(target) || _admin.IsAdmin(ghost);
+        }
+
+        private bool OnAdminOnlyWarpMap(EntityUid uid)
+        {
+            return Transform(uid).MapUid is { } map && HasComp<AdminOnlyWarpMapComponent>(map);
+        }
+        // End Triad
 
         private IEnumerable<GhostWarp> GetAdminGhostWarps(EntityUid except)
         {

@@ -20,7 +20,7 @@
   startingGear: TdfMedicGear
   alwaysUseSpawner: true
   icon: JobIconTdfMedic
-  supervisors: job-supervisors-tdf-warden
+  supervisors: job-supervisors-tdf-lieutenant
   weight: 125
   displayWeight: 35
   assignedCompany: TDF
@@ -32,7 +32,7 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: NpcFactionMember
+    - type: AddNpcFactionOnMapInit
       factions:
       - TDF
     - type: ShipSavingBlacklist # TDF can't save ships
@@ -41,6 +41,7 @@
     - type: CryoSleepRadioOverride
       overrides:
       - Nfsd # TDF radio
+    - type: ContrabandPermitOwnerBlacklist # No giving the TDF permits!
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial

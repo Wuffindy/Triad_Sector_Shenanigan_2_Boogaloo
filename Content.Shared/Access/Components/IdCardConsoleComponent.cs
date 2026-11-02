@@ -47,7 +47,7 @@ public sealed partial class IdCardConsoleComponent : Component
     {
         "Armory",
         "Atmospherics", // Triad, restored this
-        "TdfWarden", // Triad
+        "TdfLieutenant", // Triad
         //"Bar",
         "Brig",
         "Detective",
@@ -56,11 +56,11 @@ public sealed partial class IdCardConsoleComponent : Component
         //"Chapel",
         //"Chemistry",
         //"ChiefEngineer",
-        //"ChiefMedicalOfficer",
+        "ChiefMedicalOfficer", // Triad - DoC access
         "Command",
         //"Cryogenics",
         "Engineering", // Triad: restored - engineering is a player-delegatable role on Triad (plant + ship engineers)
-        //"External", // Triad: removed - universal baseline via GeneralAccess, every ID already has it, nothing to grant
+        "External", // Triad - needed so ID card consoles don't remove this access from player IDs
         "Frontier", // Frontier
         "HeadOfPersonnel",
         "TdfChiefEnforcer", // Triad
@@ -68,11 +68,11 @@ public sealed partial class IdCardConsoleComponent : Component
         "Janitor",
         //"Kitchen",
         "Mail", // Frontier
-        "Mercenary", // Frontier
+        "Civilian", // Triad
         //"Quartermaster",
         //"Research",
         "Lawyer",
-        //"Maintenance", // Triad: removed - universal baseline via GeneralAccess, every ID already has it, nothing to grant
+        "Maintenance", // Triad - needed so ID card consoles don't remove this access from player IDs
         "Medical", // Frontier
         //"Quartermaster",
         //"Research",
@@ -80,11 +80,9 @@ public sealed partial class IdCardConsoleComponent : Component
         //"Salvage",
         "Security",
         "TdfPatrolTeamLeader", // Triad
+        "TdfPermitControl", // Triad
         "Service",
         "StationTrafficController", // Frontier
-        //"USSP", // Mono
-        //"USSPHigh", // Mono
-        //"USSPCommand", // Mono
         //"Theatre",
     };
 

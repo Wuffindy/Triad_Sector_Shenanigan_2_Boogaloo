@@ -137,15 +137,16 @@
     attributes:
       gender: male
   - type: Sharp
-  - type: NightVision # Gen 3 wide-quadtube
+  - type: NightVision
     relayOverlay: false
     goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
+    viewCircleRadius: 1080
+    viewCircleCount: 1
     action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
+    phosphorColor: "#a3a3a3"
+    lightingColor: "#525252"
+    activateSound: null
+    deactivateSound: null
 
 - type: entity
   id: MobRatKingBuff
@@ -328,16 +329,16 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
-  - type: NightVision # Gen 3 wide-quadtube
+  - type: NightVision
     relayOverlay: false
     goggleEffect: true
-    viewCircleRadius: 450
-    viewCircleCount: 4
-    viewCircleSpacing: 280
+    viewCircleRadius: 1080
+    viewCircleCount: 1
     action: ActionToggleNightVision
-    phosphorColor: "#00FF00"
-    lightingColor: "#FFFFFF32"
-
+    phosphorColor: "#a3a3a3"
+    lightingColor: "#525252"
+    activateSound: null
+    deactivateSound: null
 
 - type: weightedRandomEntity
   id: RatKingLoot
@@ -348,35 +349,40 @@
 #    RandomFoodSingle: 5
 
 - type: entity
+  parent: BaseAction
   id: ActionRatKingRaiseArmy
   name: Raise Army
   description: Spend some hunger to summon an allied rat to help defend you.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 4
     icon:
       sprite: Interface/Actions/actions_rat_king.rsi
       state: ratKingArmy
+  - type: InstantAction
     event: !type:RatKingRaiseArmyActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionRatKingDomain
   name: Rat King's Domain
   description: Spend some hunger to release a cloud of ammonia into the air.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 6
     icon:
       sprite: Interface/Actions/actions_rat_king.rsi
       state: ratKingDomain
+  - type: InstantAction
     event: !type:RatKingDomainActionEvent
 
 - type: entity
+  parent: BaseAction
   id: ActionRatKingOrderStay
   name: Stay
   description: Command your army to stand in place.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1
     icon:
       sprite: Interface/Actions/actions_rat_king.rsi
@@ -384,17 +390,18 @@
     iconOn:
       sprite: Interface/Actions/actions_rat_king.rsi
       state: stay
-    event:
-      !type:RatKingOrderActionEvent
-      type: Stay
     priority: 5
+  - type: InstantAction
+    event: !type:RatKingOrderActionEvent
+      type: Stay
 
 - type: entity
+  parent: BaseAction
   id: ActionRatKingOrderFollow
   name: Follow
   description: Command your army to follow you around.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1
     icon:
       sprite: Interface/Actions/actions_rat_king.rsi
@@ -402,17 +409,18 @@
     iconOn:
       sprite: Interface/Actions/actions_rat_king.rsi
       state: follow
-    event:
-      !type:RatKingOrderActionEvent
-      type: Follow
     priority: 6
+  - type: InstantAction
+    event: !type:RatKingOrderActionEvent
+      type: Follow
 
 - type: entity
+  parent: BaseAction
   id: ActionRatKingOrderCheeseEm
   name: Cheese 'Em
   description: Command your army to attack whoever you point at.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1
     icon:
       sprite: Interface/Actions/actions_rat_king.rsi
@@ -420,17 +428,18 @@
     iconOn:
       sprite: Interface/Actions/actions_rat_king.rsi
       state: attack
-    event:
-      !type:RatKingOrderActionEvent
-      type: CheeseEm
     priority: 7
+  - type: InstantAction
+    event: !type:RatKingOrderActionEvent
+      type: CheeseEm
 
 - type: entity
+  parent: BaseAction
   id: ActionRatKingOrderLoose
   name: Loose
   description: Command your army to act at their own will.
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 1
     icon:
       sprite: Interface/Actions/actions_rat_king.rsi
@@ -438,7 +447,8 @@
     iconOn:
       sprite: Interface/Actions/actions_rat_king.rsi
       state: loose
+    priority: 8
+  - type: InstantAction
     event:
       !type:RatKingOrderActionEvent
       type: Loose
-    priority: 8

@@ -21,13 +21,13 @@
     openingAnimationTime: 1.0
     closingAnimationTime: 1.0
     canPry: false
-    crushDamage:
-      types:
-        Blunt: 25 # yowch
+    crushDamage: null
+    canCrush: false
     openSound:
       path: /Audio/Machines/blastdoor.ogg
     closeSound:
       path: /Audio/Machines/blastdoor.ogg
+    performCollisionCheck: false # So it can close on anything
   - type: Occluder
   - type: Appearance
   - type: RadiationBlocker
@@ -46,7 +46,7 @@
 - type: entity
   id: BlastDoorIndestructible
   parent: BaseBlastDoorIndestructible
-  suffix: indestructible
+  suffix: Indestructible
   components:
   - type: Occluder
 
@@ -65,3 +65,32 @@
     airBlocked: false
   - type: RadiationBlocker
     enabled: false
+
+# Variant for indestructible for POI usage.
+- type: entity
+  parent: BaseBlastDoorIndestructible
+  id: BlastDoorMonolithicIndestructible
+  name: monolith tenebris crack
+  description: Some kind of break in the surrounding dark tenebris.
+  suffix: Indestructible
+  components:
+  - type: Sprite
+    sprite: _Mono/Structures/Doors/monolith_door.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.7
+    openTimeOne: 0.4
+    openTimeTwo: 0.7
+    openingAnimationTime: 1.1
+    closingAnimationTime: 1.0
+    canPry: true
+    crushDamage:
+      types:
+        Blunt: 25
+        Sharp: 25
+  - type: IconSmooth
+    key: chitin
+    mode: NoSprite

@@ -18,26 +18,29 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Robust.Shared.Prototypes;
+using Content.Shared.Weapons.Ranged.Systems; // Triad
+using Content.Shared.Weapons.Ranged.Components; // Triad
 
 namespace Content.Shared.Inventory;
 
 public abstract partial class InventorySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] private readonly SharedItemSystem _item = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedStrippableSystem _strippable = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] private SharedItemSystem _item = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _containerSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private SharedStrippableSystem _strippable = default!;
+    [Dependency] private SharedGunSystem _gunSystem = default!; // Triad
 
-    [ValidatePrototypeId<ItemSizePrototype>]
-    private const string PocketableItemSize = "Small";
+    private static readonly ProtoId<ItemSizePrototype> PocketableItemSize = "Small";
 
     private void InitializeEquip()
     {
@@ -191,6 +194,11 @@ public abstract partial class InventorySystem
         }
 
         Dirty(target, inventory);
+
+        // Start Triad: Ensure modsuit guns work after being loading from stash
+        if (TryComp<GunComponent>(itemUid, out var gunComp))
+            _gunSystem.RefreshModifiers((itemUid, gunComp));
+        // End Triad
 
         _movementSpeed.RefreshMovementSpeedModifiers(target);
 

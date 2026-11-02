@@ -1,13 +1,16 @@
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.StatusEffect;
@@ -17,22 +20,22 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Medical
 {
-    public sealed class VomitSystem : EntitySystem
+    public sealed partial class VomitSystem : EntitySystem
     {
-        [Dependency] private readonly IPrototypeManager _proto = default!;
-        [Dependency] private readonly AudioSystem _audio = default!;
-        [Dependency] private readonly BodySystem _body = default!;
-        [Dependency] private readonly HungerSystem _hunger = default!;
-        [Dependency] private readonly PopupSystem _popup = default!;
-        [Dependency] private readonly PuddleSystem _puddle = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-        [Dependency] private readonly StunSystem _stun = default!;
-        [Dependency] private readonly ThirstSystem _thirst = default!;
-        [Dependency] private readonly ForensicsSystem _forensics = default!;
-        [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
+        [Dependency] private IPrototypeManager _proto = default!;
+        [Dependency] private AudioSystem _audio = default!;
+        [Dependency] private BodySystem _body = default!;
+        [Dependency] private HungerSystem _hunger = default!;
+        [Dependency] private MobStateSystem _mobstate = default!;
+        [Dependency] private PopupSystem _popup = default!;
+        [Dependency] private PuddleSystem _puddle = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+        [Dependency] private StunSystem _stun = default!;
+        [Dependency] private ThirstSystem _thirst = default!;
+        [Dependency] private ForensicsSystem _forensics = default!;
+        [Dependency] private BloodstreamSystem _bloodstream = default!;
 
-        [ValidatePrototypeId<SoundCollectionPrototype>]
-        private const string VomitCollection = "Vomit";
+        private static readonly ProtoId<SoundCollectionPrototype> VomitCollection = "Vomit";
 
         private readonly SoundSpecifier _vomitSound = new SoundCollectionSpecifier(VomitCollection,
             AudioParams.Default.WithVariation(0.2f).WithVolume(-4f));
@@ -40,11 +43,16 @@ namespace Content.Server.Medical
         /// <summary>
         /// Make an entity vomit, if they have a stomach.
         /// </summary>
-        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f)
+        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f, bool force = false)
         {
             // Main requirement: You have a stomach
             var stomachList = _body.GetBodyOrganEntityComps<StomachComponent>(uid);
             if (stomachList.Count == 0)
+                return;
+
+            //  Vomit only if entity is alive
+            //  Ignore condition if force was set to true
+            if (!force && _mobstate.IsDead(uid))
                 return;
 
             // Vomiting makes you hungrier and thirstier

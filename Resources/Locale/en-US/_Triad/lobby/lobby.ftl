@@ -1,5 +1,5 @@
-triad-lobby-tdf-subtext = The base of operations for the TDF.
-triad-lobby-tdf-description = The first and primary outpost of the TDF, where they linger and keep a watchful eye on the sector. Here you can:
+triad-lobby-tdf-subtext = The base of operations for the TDF in the Auric District.
+triad-lobby-tdf-description = The primary outpost of the local TDF, where they linger and keep a watchful eye on the sector. Here you can:
    - Join the TDF as an enforcer
    - Apply for a bounty hunting license
    - Report crimes
@@ -17,5 +17,5 @@ triad-lobby-triad-description = Awaken from cryosleep here to:
    - Find a crew to join
    - Purchase ships
    - Socialize with other pioneers
-   - Work under the TFA as a service worker, guard, or mail carrier
+   - Work under the TFA as a service worker or mail carrier
  Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.

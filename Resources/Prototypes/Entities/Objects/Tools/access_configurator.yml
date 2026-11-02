@@ -23,7 +23,7 @@
       - Atmospherics
       - Bar
       - Brig
-      - TdfWarden # Triad
+      - TdfLieutenant # Triad
       - TdfPatrolTeamLeader # Triad
       - Captain
       - Cargo
@@ -37,6 +37,7 @@
       - Frontier # Frontier
       - HeadOfPersonnel
       - TdfChiefEnforcer # Triad
+      - TdfPermitControl # Triad
       - Hydroponics
       - Janitor
       - Kitchen
@@ -44,7 +45,7 @@
       - Mail # Frontier
       - Maintenance
       - Medical
-      - Mercenary # Frontier
+      - Civilian # Triad
       - Quartermaster
       - Research
       - ResearchDirector
@@ -112,7 +113,7 @@
     - External
     - Frontier # Frontier
     - HeadOfPersonnel
-    - TdfWarden # Triad
+    - TdfLieutenant # Triad
     - TdfPatrolTeamLeader # Triad
     - TdfChiefEnforcer # Triad
     - Hydroponics
@@ -122,7 +123,7 @@
     - Mail # Frontier
     - Maintenance
     - Medical
-    - Mercenary # Frontier
+    - Civilian # Triad
     - Pirate # Frontier
     - Quartermaster
     - Research
@@ -139,6 +140,7 @@
     - Wizard
     - Solarian # Triad
     - Coalition # Triad
+    - TdfPermitControl # Triad
     privilegedIdSlot:
       name: id-card-console-privileged-id
       ejectSound: /Audio/Machines/id_swipe.ogg

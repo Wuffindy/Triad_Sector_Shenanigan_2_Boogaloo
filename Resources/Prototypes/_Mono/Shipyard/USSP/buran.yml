@@ -7,7 +7,7 @@
   description: USSP capital-sized frigate with tremendous broadside firepower and thick armor. Glory to commissariat.
   price: 320000
   category: Large
-  group: Ussp
+  group: BlackMarket
   access: Mercenary
   shuttlePath: /Maps/_Mono/Shuttles/USSP/buran.yml
   guidebookPage: Null
@@ -35,6 +35,5 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            Mercenary: [ 0, 0 ]
-            Pilot: [ 0, 0 ]
+            Contractor: [ 0, 0 ]
 

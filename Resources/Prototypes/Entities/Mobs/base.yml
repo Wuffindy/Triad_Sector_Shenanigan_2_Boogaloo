@@ -88,6 +88,21 @@
 #      - !type:PlaySoundBehavior
 #        sound:
 #          collection: MeatLaserImpact
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 15
+      behaviors:
+      - !type:PopupBehavior
+        popup: mouth-taste-metal
+        popupType: LargeCaution
+        targetOnly: true
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Radiation
+        damage: 40
+      behaviors:
+      - !type:VomitBehavior
   - type: RadiationReceiver
   - type: Stamina
   - type: MobState
@@ -123,6 +138,9 @@
   - type: LightningTarget
     priority: 1 # Mono
     lightningExplode: false
+    # Triad: bolts that overflow the coils and rods electrocute whoever they land on.
+    # Insulated gloves apply; lightningResistance stays 1 so the bolt can arc once more onward.
+    electrocuteOnStrike: true
 
 # Used for mobs that can enter combat mode and can attack.
 - type: entity

@@ -102,8 +102,10 @@
 - type: entity
   id: ShutterNormalIndestructible
   parent: BaseShutterIndestructible
-  suffix: indestructible
+  suffix: Indestructible
   components:
+  - type: AccessReader
+    containerAccessProvider: board # So that you can't link to locked shutters
   - type: Occluder
 
 - type: entity
@@ -124,7 +126,7 @@
   id: ShutterWindowIndestructible
   parent: BaseShutterIndestructible
   name: window shutter
-  suffix: indestructible
+  suffix: Indestructible
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters_window.rsi
@@ -137,7 +139,7 @@
 - type: entity
   id: ShutterWindowIndestructibleOpen
   parent: ShutterWindowIndestructible
-  suffix: Open
+  suffix: Indestructible, Open
   components:
   - type: Door
     state: Open

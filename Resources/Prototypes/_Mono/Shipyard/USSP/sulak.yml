@@ -7,7 +7,7 @@
   description: A medium sized destroyer armed with a Charon Massdriver for taking down large targets.
   price: 142500
   category: Medium
-  group: Ussp
+  group: BlackMarket
   access: Mercenary
   shuttlePath: /Maps/_Mono/Shuttles/USSP/sulak.yml
   guidebookPage: Null
@@ -33,5 +33,4 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            Mercenary: [ 0, 0 ]
-            Pilot: [ 0, 0 ]
+            Contractor: [ 0, 0 ]

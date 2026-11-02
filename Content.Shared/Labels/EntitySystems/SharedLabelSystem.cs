@@ -7,7 +7,7 @@ namespace Content.Shared.Labels.EntitySystems;
 
 public abstract partial class SharedLabelSystem : EntitySystem
 {
-    [Dependency] protected readonly NameModifierSystem NameMod = default!;
+    [Dependency] protected NameModifierSystem NameMod = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -55,7 +55,7 @@ public abstract partial class SharedLabelSystem : EntitySystem
 
     private void OnRefreshNameModifiers(Entity<LabelComponent> entity, ref RefreshNameModifiersEvent args)
     {
-        if (!string.IsNullOrEmpty(entity.Comp.CurrentLabel))
+        if (!string.IsNullOrEmpty(entity.Comp.CurrentLabel) && entity.Comp.LifeStage < ComponentLifeStage.Stopping)
             args.AddModifier("comp-label-format", extraArgs: ("label", entity.Comp.CurrentLabel));
     }
 }

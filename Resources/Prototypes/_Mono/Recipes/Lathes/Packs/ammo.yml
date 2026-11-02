@@ -109,7 +109,6 @@
   - Magazine762x39mmPractice
   - Magazine762x39mmEmpty
   - Magazine762x39mmUranium
-  - MagazineDP29
   - Magazine762x39mmSubsonic
   - Magazine762x39mmHP
   - Magazine762x39mmRIP
@@ -154,7 +153,7 @@
   - AmmoBox68x52mmRubber
   - AmmoBox68x52mmPractice
   - Magazine46x30mmPistolFMJ
-  - Magazine46x30mmPistolPlasteelAP
+  #- Magazine46x30mmPistolPlasteelAP #Triad
   - Magazine46x30mmPistolRubber
   - Magazine46x30mmPistolIncendiary
   - Magazine46x30mmPistolPractice
@@ -163,7 +162,7 @@
   - Magazine46x30mmPistolHP
   - Magazine46x30mmPistolRIP
   - Magazine46x30mmSubMachineGunFMJ
-  - Magazine46x30mmSubMachineGunPlasteelAP
+  #- Magazine46x30mmSubMachineGunPlasteelAP #Triad, Commented out until a better solution is found
   - Magazine46x30mmSubMachineGunRubber
   - Magazine46x30mmSubMachineGunIncendiary
   - Magazine46x30mmSubMachineGunPractice
@@ -174,7 +173,7 @@
   - Magazine46x30mmSubMachineGunHP
   - Magazine46x30mmSubMachineGunRIP
   - AmmoBox46x30mmFMJ
-  - AmmoBox46x30mmPlasteelAP
+  #- AmmoBox46x30mmPlasteelAP #Triad, Commented out until a better solution is found
   - AmmoBox46x30mmRubber
   - AmmoBox46x30mmIncendiary
   - AmmoBox46x30mmPractice
@@ -182,7 +181,7 @@
   - AmmoBox46x30mmHP
   - AmmoBox46x30mmRIP
   - Magazine57x28mmPistolFMJ
-  - Magazine57x28mmPistolPlasteelAP
+  #- Magazine57x28mmPistolPlasteelAP #Triad, Commented out until a better solution is found
   - Magazine57x28mmPistolRubber
   - Magazine57x28mmPistolIncendiary
   - Magazine57x28mmPistolPractice
@@ -191,7 +190,7 @@
   - Magazine57x28mmPistolHP
   - Magazine57x28mmPistolRIP
   - Magazine57x28mmSubMachineGunFMJ
-  - Magazine57x28mmSubMachineGunPlasteelAP
+  #- Magazine57x28mmSubMachineGunPlasteelAP #Triad, Commented out until a better solution is found
   - Magazine57x28mmSubMachineGunRubber
   - Magazine57x28mmSubMachineGunIncendiary
   - Magazine57x28mmSubMachineGunPractice
@@ -202,7 +201,7 @@
   - Magazine57x28mmSubMachineGunHP
   - Magazine57x28mmSubMachineGunRIP
   - AmmoBox57x28mmFMJ
-  - AmmoBox57x28mmPlasteelAP
+  #- AmmoBox57x28mmPlasteelAP #Triad, Commented out until a better solution is found
   - AmmoBox57x28mmRubber
   - AmmoBox57x28mmIncendiary
   - AmmoBox57x28mmPractice
@@ -507,12 +506,12 @@
   - Magazine68x52mmPlasteelAP
   - AmmoBox68x52mmPlasteelAP
   - SpeedLoader45_magnumPlasteelAP
-  - Magazine46x30mmPistolPlasteelAP
-  - Magazine46x30mmSubMachineGunPlasteelAP
-  - AmmoBox46x30mmPlasteelAP
-  - Magazine57x28mmPistolPlasteelAP
-  - Magazine57x28mmSubMachineGunPlasteelAP
-  - AmmoBox57x28mmPlasteelAP
+  #- Magazine46x30mmPistolPlasteelAP #Triad, Commented out until a better solution is found
+  #- Magazine46x30mmSubMachineGunPlasteelAP #Triad, Commented out until a better solution is found
+  #- AmmoBox46x30mmPlasteelAP #Triad, Commented out until a better solution is found
+  #- Magazine57x28mmPistolPlasteelAP #Triad, Commented out until a better solution is found
+  #- Magazine57x28mmSubMachineGunPlasteelAP #Triad, Commented out until a better solution is found
+  #- AmmoBox57x28mmPlasteelAP #Triad, Commented out until a better solution is found
   - Magazine9x19mmPistolPlasteelAP
   - Magazine9x19mmSubMachineGunPlasteelAP
   - AmmoBox9x19mmPlasteelAP
@@ -594,7 +593,10 @@
 
   - AmmoBox23x75mmBuckshot
   - Magazine12_gaugeBuckshot
+  - ShortMagazine12_gaugeBuckshot # Triad
   - AmmoBox12_gaugeBuckshot
+  - Magazine185x76mm #Triad
+  - AmmoBox185x76mmFMJ #Triad
   - Magazine762x51mmFMJ
   - AmmoBox762x51mmFMJ
   - Magazine762x54mmRFMJ
@@ -626,6 +628,8 @@
   - Magazine9x19mmSubMachineGunTopMountedFMJ
   - SpeedLoader9x19mmFMJ
   - AmmoBox9x19mmFMJ
+  - Magazine635x40mmCaseless #Triad
+  - AmmoBox635x40mmCaseless #Triad
   - Magazine45_ACPPistolFMJ
   - Magazine45_ACPPistolHighCapacityFMJ # Triad
   - Magazine45_ACPSubMachineGunFMJ
@@ -636,6 +640,7 @@
   - AmmoBox12_gaugeOOBuckshot
   - AmmoBox23x75mmSlug
   - Magazine12_gaugeSlug
+  - ShortMagazine12_gaugeSlug
   - AmmoBox12_gaugeSlug
   - MagazineAsmgtUniversal9x19mm
   - MagazineAsmgtUniversal762x39mm
@@ -644,11 +649,13 @@
 #SKR
 
   - Magazine8x65mmSKR
+  - AmmoBox8x65mmSKR
 
 #Practice recipes
 
   - AmmoBox23x75mmPractice
   - Magazine12_gaugePractice
+  - ShortMagazine12_gaugePractice # Triad
   - AmmoBox12_gaugePractice
   - Magazine762x51mmPractice
   - AmmoBox762x51mmPractice
@@ -686,6 +693,8 @@
 #Empty recipes
 
   - Magazine12_gaugeEmpty
+  - ShortMagazine12_gaugeEmpty # Triad
+  - Magazine185x76mmEmpty #Triad
   - Magazine762x51mmEmpty
   - Magazine762x54mmREmpty
   - Magazine8x65mmEmpty
@@ -747,6 +756,7 @@
   - AmmoBox45_ACPRubber
   - AmmoBox23x75mmBeanbag
   - Magazine12_gaugeBeanbag
+  - ShortMagazine12_gaugeBeanbag # Triad
   - AmmoBox12_gaugeBeanbag
 
 #HP recipes
@@ -781,8 +791,8 @@
   - AmmoBox68x52mmHP
 
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
+#  - Magazine700Thz
+#  - AmmoBox700Thz
   - Magazine10Phz
   - AmmoBox10Phz
 
@@ -795,6 +805,7 @@
 
   - AmmoBox23x75mmUranium
   - Magazine12_gaugeUranium
+  - ShortMagazine12_gaugeUranium # Triad
   - AmmoBox12_gaugeUranium
   - Magazine762x51mmUranium
   - AmmoBox762x51mmUranium
@@ -829,6 +840,7 @@
 
   - AmmoBox23x75mmIncendiary
   - Magazine12_gaugeIncendiary
+  - ShortMagazine12_gaugeIncendiary
   - AmmoBox12_gaugeIncendiary
   - Magazine762x51mmIncendiary
   - AmmoBox762x51mmIncendiary
@@ -878,12 +890,12 @@
   - SpeedLoader45_magnumPlasteelAP
   - Magazine68x52mmPlasteelAP
   - AmmoBox68x52mmPlasteelAP
-  - Magazine46x30mmPistolPlasteelAP
-  - Magazine46x30mmSubMachineGunPlasteelAP
-  - AmmoBox46x30mmPlasteelAP
-  - Magazine57x28mmPistolPlasteelAP
-  - Magazine57x28mmSubMachineGunPlasteelAP
-  - AmmoBox57x28mmPlasteelAP
+  # - Magazine46x30mmPistolPlasteelAP #Triad
+  # - Magazine46x30mmSubMachineGunPlasteelAP #Triad
+  # - AmmoBox46x30mmPlasteelAP #Triad
+  # - Magazine57x28mmPistolPlasteelAP #Triad
+  # - Magazine57x28mmSubMachineGunPlasteelAP #Triad
+  # - AmmoBox57x28mmPlasteelAP #Triad
   - Magazine9x19mmPistolPlasteelAP
   # - Magazine9x19mmPistolHighCapacityPlasteelAP # Triad
   - Magazine9x19mmSubMachineGunPlasteelAP
@@ -897,6 +909,7 @@
   - AmmoBox12_gaugeSlugAP
   - AmmoBox23x75mmFlechette
   - Magazine12_gaugeFlechette
+  - ShortMagazine12_gaugeFlechette # Triad
   - AmmoBox12_gaugeFlechette
 
 #RIP recipes
@@ -948,17 +961,27 @@
   - MagazineSmartMagnumExt
   - AmmoBox145x114mm
   - AmmoBox145x114mmBig
-
-#DP
-  - MagazineDP29
+  - Magazine185x76mmHighEx #Each 185x76mm recipe is from Triad
+  - AmmoBox185x76mmHighEx
+  - Magazine185x76mmHighExIncendiary
+  - AmmoBox185x76mmHighExIncendiary
+  - Magazine185x76mmHighExRad
+  - AmmoBox185x76mmHighExRad
+  - Magazine185x76mmFragmentation
+  - AmmoBox185x76mmFragmentation
+  - Magazine185x76mmFragmentationIncendiary
+  - AmmoBox185x76mmFragmentationIncendiary
+  - Magazine185x76mmAnti-Materiel
+  - AmmoBox185x76mmAnti-Materiel
+  - Magazine185x76mmEMP
 
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
+#  - Magazine700Thz
+#  - AmmoBox700Thz
   - Magazine10Phz
   - AmmoBox10Phz
-  - LargePowerCell400Thz
-  - LargePowerCell700Thz
+#  - LargePowerCell400Thz
+#  - LargePowerCell700Thz
 
 #Big Ammo Boxes
   - AmmoBox762x39mmBigFMJ
@@ -969,7 +992,7 @@
   - AmmoBox45_magnumBigFMJ
   - AmmoBox46x30mmBigFMJ
   - AmmoBox556x45mmBigFMJ
-  - AmmoBox57x28mmBigFMJ
+#  - AmmoBox57x28mmBigFMJ
   - AmmoBox635x40mmCaselessBig #PDV
   - AmmoBox68x52mmCaselessBig #TSF
 
@@ -980,9 +1003,9 @@
   id: EnergyAmmo # All energy ammo (which isn't a lot.)
   recipes:
 # Energy
-  - Magazine700Thz
-  - AmmoBox700Thz
+#  - Magazine700Thz
+#  - AmmoBox700Thz
   - Magazine10Phz
   - AmmoBox10Phz
-  - LargePowerCell400Thz
-  - LargePowerCell700Thz
+#  - LargePowerCell400Thz
+#  - LargePowerCell700Thz

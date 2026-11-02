@@ -35,15 +35,15 @@ namespace Content.Server.StationRecords.Systems;
 ///     depend on this general record being created. This is subject
 ///     to change.
 /// </summary>
-public sealed class StationRecordsSystem : SharedStationRecordsSystem
+public sealed partial class StationRecordsSystem : SharedStationRecordsSystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly StationRecordKeyStorageSystem _keyStorage = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IdCardSystem _idCard = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SectorServiceSystem _sectorService = default!; // Frontier
-    [Dependency] private readonly ForensicsSystem _forensics = default!; // Frontier
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private StationRecordKeyStorageSystem _keyStorage = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IdCardSystem _idCard = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SectorServiceSystem _sectorService = default!; // Frontier
+    [Dependency] private ForensicsSystem _forensics = default!; // Frontier
 
     static readonly ProtoId<JobPrototype>[] FakeJobIds = ["Contractor", "Pilot", "Mercenary"]; // Frontier
 
@@ -174,17 +174,42 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
-        if (GetRecordByName(station, name, records) is {} id)
+        if (GetRecordByName(station, name, records) is { } id)
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
+        }
+
+        string? jobTitle = null;
+
+        Entity<IdCardComponent>? card = null;
+        if (idUid != null && _idCard.TryFindIdCard(idUid.Value, out var cardUid) && TryComp(cardUid, out IdCardComponent? comp))
+        {
+            card = (cardUid, comp);
+        }
+
+        if (card.HasValue)
+        {
+            var cardComp = card.Value.Comp;
+            if (!string.IsNullOrEmpty(cardComp.LocalizedJobTitle))
+                jobTitle = cardComp.LocalizedJobTitle;
+        }
+        if (string.IsNullOrEmpty(jobTitle) && profile.AlternateJobTitle != null &&
+            _prototypeManager.TryIndex<JobAlternateTitlePrototype>(profile.AlternateJobTitle, out var altTitle))
+        {
+            jobTitle = altTitle.LocalizedName;
+        }
+
+        if (string.IsNullOrEmpty(jobTitle))
+        {
+            jobTitle = jobPrototype.LocalizedName;
         }
 
         var record = new GeneralStationRecord()
         {
             Name = name,
             Age = age,
-            JobTitle = jobPrototype.LocalizedName,
+            JobTitle = jobTitle,
             JobIcon = jobPrototype.Icon,
             JobPrototype = jobId,
             Species = species,

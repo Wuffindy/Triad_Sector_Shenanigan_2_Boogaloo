@@ -1,5 +1,5 @@
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Shared.Body.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Devour;
 using Content.Shared.Devour.Components;
@@ -7,9 +7,9 @@ using Content.Shared.Humanoid;
 
 namespace Content.Server.Devour;
 
-public sealed class DevourSystem : SharedDevourSystem
+public sealed partial class DevourSystem : SharedDevourSystem
 {
-    [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
+    [Dependency] private BloodstreamSystem _bloodstreamSystem = default!;
 
     public override void Initialize()
     {

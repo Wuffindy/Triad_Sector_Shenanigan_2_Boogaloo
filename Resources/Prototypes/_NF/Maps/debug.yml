@@ -30,19 +30,17 @@
         - type: StationJobs
           availableJobs:
             Contractor: [ -1, -1 ]
-            Pilot: [ -1, -1 ]
-            Mercenary: [ -1, -1 ]
             Borg: [ -1, -1]
             StationRepresentative: [ -1, -1 ]
             StationTrafficController: [ -1, -1 ]
             DirectorOfCare: [ -1, -1 ]
             MdMedic: [ -1, -1 ] # mono
-            SecurityGuard: [ -1, -1 ]
+            # SecurityGuard: [ -1, -1 ] Triad
             CCServiceWorker: [ -1, -1 ]
             NFJanitor: [ -1, -1 ]
             MailCarrier: [ -1, -1 ]
             TdfChiefEnforcer: [ -1, -1]
-            TdfWarden: [ -1, -1]
+            TdfLieutenant: [ -1, -1]
             TdfPatrolTeamLeader: [ -1, -1]
             TdfMedic: [ -1, -1]
             # NFDetective: [ -1, -1] Mono

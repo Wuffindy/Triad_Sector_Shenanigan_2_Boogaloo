@@ -28,6 +28,7 @@
   - PowerCageMedium
   - PowerCageSmall
   - Signaller
+  - ClothingBeltBandolier
 
 - type: latheRecipePack
   id: TdfTechfabDynamic
@@ -56,10 +57,12 @@
   id: TdfDynamicGun
   recipes:
   - WeaponRifleLecterRecipeTdf
-  - WeaponRifleMR8TRecipeTdf
+  - WeaponSubMachineGunDrozdRecipeTdf
+  - WeaponRifleBishopRecipeTdf
   - WeaponLMGRiotTdf
   - WeaponShotgunDoubleBarreledTdfBastion
-  - AmmoBox68x52mmCaselessBig
+  - WeaponShotgunBombadier
+  - WeaponLauncherBearsLegRecipeTdf
 
 - type: latheRecipePack
   id: TDFDynamicVoucher
@@ -74,3 +77,6 @@
   - ClothingOuterHardsuitTdf
   - ClothingOuterHardsuitTdfMedic
   - ClothingOuterHardsuitTdfTA29
+  - ClothingOuterHardsuitTdfHazmat
+  - ClothingOuterHardsuitTdfExperimental
+  - ClothingOuterHardsuitTdfCasket

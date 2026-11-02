@@ -5,9 +5,9 @@ using Content.Shared.NameModifier.Components;
 namespace Content.Shared.NameModifier.EntitySystems;
 
 /// <inheritdoc cref="NameModifierComponent"/>
-public sealed class NameModifierSystem : EntitySystem
+public sealed partial class NameModifierSystem : EntitySystem
 {
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
 
     public override void Initialize()
     {
@@ -55,14 +55,11 @@ public sealed class NameModifierSystem : EntitySystem
         // Nothing added a modifier, so we can just use the base name
         if (modifierEvent.ModifierCount == 0)
         {
-            // If the entity doesn't have the component, we're done
             if (entity.Comp == null)
                 return;
 
-            // Restore the base name
+            // Restore the original name.
             _metaData.SetEntityName(entity, entity.Comp.BaseName, meta, raiseEvents: false);
-            // The component isn't doing anything anymore, so remove it
-            RemComp<NameModifierComponent>(entity);
             return;
         }
         // We have at least one modifier, so we need to apply it to the entity.

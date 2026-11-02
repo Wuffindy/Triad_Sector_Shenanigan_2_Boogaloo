@@ -14,6 +14,8 @@ public sealed class AddAccentClothingSystem : EntitySystem
         SubscribeLocalEvent<AddAccentClothingComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAltVerbs); // Frontier
     }
 
+
+//  TODO: Turn this into a relay event.
     private void OnGotEquipped(EntityUid uid, AddAccentClothingComponent component, ref ClothingGotEquippedEvent args)
     {
         // does the user already has this accent?
@@ -27,7 +29,7 @@ public sealed class AddAccentClothingSystem : EntitySystem
 
         // snowflake case for replacement accent
         if (accentComponent is ReplacementAccentComponent rep)
-            rep.Accent = component.ReplacementPrototype!;
+            rep.Accent = component.ReplacementPrototype!.Value;
 
         component.IsActive = true;
         component.Wearer = args.Wearer; // Frontier
@@ -87,7 +89,7 @@ public sealed class AddAccentClothingSystem : EntitySystem
 
             // snowflake case for replacement accent
             if (accentComponent is ReplacementAccentComponent rep)
-                rep.Accent = component.ReplacementPrototype!;
+                rep.Accent = component.ReplacementPrototype!.Value;
 
             component.IsActive = true;
         }

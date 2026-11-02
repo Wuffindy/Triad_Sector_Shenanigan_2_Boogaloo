@@ -1,4 +1,3 @@
-using Content.Shared._Goobstation.Flashbang;
 using Content.Shared.Actions;
 using Content.Shared.Inventory;
 using Robust.Shared.Audio.Systems;
@@ -9,14 +8,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._White.Overlays;
 
-public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // this should get move to a white module if we ever do anything with forks..
+public abstract partial class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // this should get move to a white module if we ever do anything with forks..
     where TComp : SwitchableVisionOverlayComponent
     where TEvent : InstantActionEvent
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -27,29 +26,6 @@ public abstract class SwitchableOverlaySystem<TComp, TEvent> : EntitySystem // t
         SubscribeLocalEvent<TComp, GetItemActionsEvent>(OnGetItemActions);
         SubscribeLocalEvent<TComp, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<TComp, ComponentHandleState>(OnHandleState);
-        SubscribeLocalEvent<TComp, FlashDurationMultiplierEvent>(OnGetFlashMultiplier);
-        SubscribeLocalEvent<TComp, InventoryRelayedEvent<FlashDurationMultiplierEvent>>(OnGetInventoryFlashMultiplier);
-    }
-
-    private void OnGetFlashMultiplier(Entity<TComp> ent, ref FlashDurationMultiplierEvent args)
-    {
-        if (!ent.Comp.IsEquipment)
-            args.Multiplier *= GetFlashMultiplier(ent);
-    }
-
-    private void OnGetInventoryFlashMultiplier(Entity<TComp> ent,
-        ref InventoryRelayedEvent<FlashDurationMultiplierEvent> args)
-    {
-        if (ent.Comp.IsEquipment)
-            args.Args.Multiplier *= GetFlashMultiplier(ent);
-    }
-
-    private float GetFlashMultiplier(TComp comp)
-    {
-        if (!comp.IsActive && (comp.PulseTime <= 0f || comp.PulseAccumulator >= comp.PulseTime))
-            return 1f;
-
-        return comp.FlashDurationMultiplier;
     }
 
     public override void FrameUpdate(float frameTime)

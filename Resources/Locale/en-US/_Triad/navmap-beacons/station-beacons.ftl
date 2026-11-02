@@ -1,6 +1,12 @@
 station-beacon-tdf-chief = CE
+station-beacon-tdf-lieutenant = Lieutenant
 station-beacon-tdf-patrol-lead = PTL quarters
 station-beacon-overseer = Overseer
 station-beacon-briefing = Briefing
 station-beacon-locker-room = Locker room
 station-beacon-restaurant = Restaurant
+station-beacon-nuclear-reactor = Nuclear Reactor
+station-beacon-receptionist = Receptionist
+station-beacon-vault-checkpoint = Vault Checkpoint
+station-beacon-salvage-drone-bay = Salvage Drone Bay
+station-beacon-freezer = Freezer

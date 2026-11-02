@@ -69,6 +69,13 @@
   - ClothingOuterEVASuitPrivateSec
 ## Storage
   - MedkitCombat
+  # Triad Start
+  - MedkitCombatAdvanced
+  - MedkitCombatBurn
+  - MedkitCombatToxin
+  - MedkitCombatO2
+  - MedkitCombatRadiation
+  # Triad End
   - WeaponCaseShort
   - WeaponCaseLong
   - WeaponCaseHeavy
@@ -143,9 +150,17 @@
   - ClothingOuterHardsuitMercenary
   - ClothingOuterHardsuitPrivateSecurity
   - ClothingOuterHardsuitScaf
+  - ClothingOuterHardsuitPirateScaf # Triad : PDV scafsuit now normal tech
   - ClothingModsuitMercenaryPowerCell # Mono edit
   - ClothingShoesBootsMagSecurity
   - ClothingShoesBootsMagMercenary
+# Triad Start
+  - ClothingOuterHardsuitRmtL10
+  - ClothingOuterHardsuitRmtM10
+  - ClothingOuterHardsuitIndustrialEngi
+  - ClothingOuterHardsuitRmtL10A
+  - ClothingModsuitHZDBesieger
+# Triad End
 ## Utilities
   - ForensicPad
   - ClothingEyesHudBountyHunter
@@ -211,6 +226,7 @@
 #Triad Start
   - WeaponPistolStiletto
   - WeaponRiflePike
+  - WeaponShotgunBombadier
 #Triad End
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag

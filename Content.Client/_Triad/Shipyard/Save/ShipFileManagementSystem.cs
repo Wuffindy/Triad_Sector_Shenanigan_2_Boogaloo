@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using System.Linq;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Utility;
+using System.Text;
 
 namespace Content.Client._Triad.Shipyard.Save;
 
-public sealed class ShipFileManagementSystem : EntitySystem
+public sealed partial class ShipFileManagementSystem : EntitySystem
 {
-    [Dependency] private readonly IResourceManager _resourceManager = default!;
-    [Dependency] private readonly ILogManager _log = default!;
+    [Dependency] private IResourceManager _resourceManager = default!;
+    [Dependency] private ILogManager _log = default!;
 
     // Static data shared across all instances to handle multiple system instances
     private static readonly Dictionary<string, string> CachedShipData = new();
@@ -90,7 +91,21 @@ public sealed class ShipFileManagementSystem : EntitySystem
         // Ensure directory exists before saving
         EnsureSavedShipsDirectoryExists();
 
-        var fileName = $"/Exports/{message.ShipName}_{DateTime.Now:yyyyMMdd_HHmmss}.yml";
+        var safeFilename = new StringBuilder();
+
+        foreach (var c in message.ShipName)
+        {
+            if (c == '-' || char.IsAsciiLetterOrDigit(c))
+            {
+                safeFilename.Append(c);
+            }
+            else
+            {
+                safeFilename.Append('-');
+            }
+        }
+
+        var fileName = $"/Exports/{safeFilename}_{DateTime.Now:yyyyMMdd_HHmmss}.yml";
 
         try
         {

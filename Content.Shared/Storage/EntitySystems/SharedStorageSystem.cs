@@ -1,7 +1,7 @@
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._RMC14.Storage;
+using Content.Shared._Triad.Storage;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -47,33 +47,33 @@ using Robust.Shared.Map.Enumerators;
 
 namespace Content.Shared.Storage.EntitySystems;
 
-public abstract class SharedStorageSystem : EntitySystem
+public abstract partial class SharedStorageSystem : EntitySystem
 {
-    [Dependency] private   readonly IConfigurationManager _cfg = default!;
-    [Dependency] private   readonly IPrototypeManager _prototype = default!;
-    [Dependency] protected readonly IRobustRandom Random = default!;
-    [Dependency] private   readonly ISharedAdminLogManager _adminLog = default!;
+    [Dependency] private   IConfigurationManager _cfg = default!;
+    [Dependency] private   IPrototypeManager _prototype = default!;
+    [Dependency] protected IRobustRandom Random = default!;
+    [Dependency] private   ISharedAdminLogManager _adminLog = default!;
 
-    [Dependency] protected readonly ActionBlockerSystem ActionBlocker = default!;
-    [Dependency] private   readonly EntityLookupSystem _entityLookupSystem = default!;
-    [Dependency] private   readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private   readonly InventorySystem _inventory = default!;
-    [Dependency] private   readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] protected readonly SharedAudioSystem Audio = default!;
-    [Dependency] protected readonly SharedContainerSystem ContainerSystem = default!;
-    [Dependency] private   readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] protected readonly SharedEntityStorageSystem EntityStorage = default!;
-    [Dependency] private   readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] protected readonly SharedItemSystem ItemSystem = default!;
-    [Dependency] private   readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private   readonly SharedHandsSystem _sharedHandsSystem = default!;
-    [Dependency] private   readonly SharedStackSystem _stack = default!;
-    [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-    [Dependency] protected readonly SharedUserInterfaceSystem UI = default!;
-    [Dependency] protected readonly UseDelaySystem UseDelay = default!;
+    [Dependency] protected ActionBlockerSystem ActionBlocker = default!;
+    [Dependency] private   EntityLookupSystem _entityLookupSystem = default!;
+    [Dependency] private   EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private   InventorySystem _inventory = default!;
+    [Dependency] private   SharedAppearanceSystem _appearance = default!;
+    [Dependency] protected SharedAudioSystem Audio = default!;
+    [Dependency] protected SharedContainerSystem ContainerSystem = default!;
+    [Dependency] private   SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] protected SharedEntityStorageSystem EntityStorage = default!;
+    [Dependency] private   SharedInteractionSystem _interactionSystem = default!;
+    [Dependency] protected SharedItemSystem ItemSystem = default!;
+    [Dependency] private   SharedPopupSystem _popupSystem = default!;
+    [Dependency] private   SharedHandsSystem _sharedHandsSystem = default!;
+    [Dependency] private   SharedStackSystem _stack = default!;
+    [Dependency] protected SharedTransformSystem TransformSystem = default!;
+    [Dependency] protected SharedUserInterfaceSystem UI = default!;
+    [Dependency] protected UseDelaySystem UseDelay = default!;
 
-    // RMC14
-    [Dependency] protected readonly RMCStorageSystem RMCStorage = default!;
+    // Triad
+    [Dependency] protected TriadStorageSystem TriadStorage = default!;
 
     private EntityQuery<ItemComponent> _itemQuery;
     private EntityQuery<StackComponent> _stackQuery;
@@ -85,8 +85,7 @@ public abstract class SharedStorageSystem : EntitySystem
     /// </summary>
     public bool NestedStorage = true;
 
-    [ValidatePrototypeId<ItemSizePrototype>]
-    public const string DefaultStorageMaxItemSize = "Normal";
+    public static readonly ProtoId<ItemSizePrototype> DefaultStorageMaxItemSize = "Normal";
 
     public const float AreaInsertDelayPerItem = 0.075f;
     private static AudioParams _audioParams = AudioParams.Default
@@ -1135,7 +1134,7 @@ public abstract class SharedStorageSystem : EntitySystem
             }
         }
 
-        if (!RMCStorage.CanInsert((uid, storageComp), insertEnt, out var popup))
+        if (!TriadStorage.CanInsert((uid, storageComp), insertEnt, out var popup))
         {
             reason = popup;
             return false;
@@ -1411,7 +1410,7 @@ public abstract class SharedStorageSystem : EntitySystem
         // This uses a faster path than the typical codepaths
         // as we can cache a bunch more data and re-use it to avoid a bunch of component overhead.
 
-        // So if we have an item that occupies 0,0 we can assume that the tile itself we're checking
+        // So if we have an item that occupies 0,0 and is a single rectangle we can assume that the tile itself we're checking
         // is always in its shapes regardless of angle. This matches virtually every item in the game and
         // means we can skip getting the item's rotated shape at all if the tile is occupied.
         // This mostly makes heavy checks (e.g. area insert) much, much faster.
@@ -1419,14 +1418,8 @@ public abstract class SharedStorageSystem : EntitySystem
         var itemShape = ItemSystem.GetItemShape(itemEnt);
         var fastAngles = itemShape.Count == 1;
 
-        foreach (var shape in itemShape)
-        {
-            if (shape.Contains(Vector2i.Zero))
-            {
-                fastPath = true;
-                break;
-            }
-        }
+        if (itemShape.Count == 1 && itemShape[0].Contains(Vector2i.Zero))
+            fastPath = true;
 
         var chunkEnumerator = new ChunkIndicesEnumerator(storageBounding, StorageComponent.ChunkSize);
         var angles = new ValueList<Angle>();
