@@ -10,6 +10,7 @@ namespace Content.Shared.Tiles;
 public sealed partial class ProtectedGridComponent : Component
 {
     // Frontier: define protection types.
+    // Triad: added PreventBuild
     [DataField]
     public bool PreventFloorRemoval = false;
     [DataField]
@@ -22,6 +23,8 @@ public sealed partial class ProtectedGridComponent : Component
     public bool PreventExplosions = false;
     [DataField]
     public bool PreventArtifactTriggers = false;
+    [DataField]
+    public bool PreventBuild = false;
     [DataField]
     public bool KillHostileMobs = false;
 

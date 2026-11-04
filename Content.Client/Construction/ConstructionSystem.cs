@@ -7,6 +7,7 @@ using Content.Shared.Examine;
 using Content.Shared.Input;
 using Content.Shared.Interaction;
 using Content.Shared.Wall;
+using Content.Shared.Tiles;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -259,6 +260,12 @@ namespace Content.Client.Construction
                         }
                     }
 
+                    return false;
+                }
+
+                if (TryComp<ProtectedGridComponent>(user, out var prot) && prot.PreventBuild)
+                {
+                    _popupSystem.PopupCoordinates(Loc.GetString("rcd-component-use-blocked"), loc);
                     return false;
                 }
             }
